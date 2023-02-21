@@ -10,8 +10,8 @@ import ResultsPage from './ResultsPage';
 const App = () => {
   return (
       <div className="App">
-        <ResultsPage />
-        {/* <LandingPage /> */}
+        {/* <ResultsPage /> */}
+        <LandingPage />
         {/* <SearchBar /> */}
         {/* Add other components here */}
         {/* <Roadmap /> */}

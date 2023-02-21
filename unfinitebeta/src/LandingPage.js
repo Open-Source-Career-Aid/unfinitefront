@@ -3,7 +3,22 @@ import './LandingPage.css';
 
 // create a function that accepts first name, last name, email, password, password confirmation, and a beta key
 
-function signupform() {
+function SignupForm() {
+
+  const [formdata, setFormdata] = useState(null)
+
+  // const handleInputChange = (event) => {
+  //   // const { name, value } = event.target;
+  //   // setFormData({ ...formData, [name]: value });
+  // };  
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const params = new URLSearchParams(formData);
+  //   console.log(params);
+  //   // Use the params to make a request or navigate to a new page
+  // };  
+
     return (
       <div className="signupform">
         <form>
@@ -45,15 +60,18 @@ function LandingPage() {
 
     const [userstatus, setUserstatus] = useState(null);
 
+    const handleClick = (event) => {
+        setUserstatus(event.target.value);
+    }
     return (
         <div className="LandingPage">
             {userstatus === null ? <>
             <h1>Unfinite Beta</h1>
             <p>The new way to learn something.</p>
-            <button onClick={() => setUserstatus('hasBeta')}>Sign Up</button>
-            <button onClick={() => setUserstatus('isUser')}>Sign in</button>
+            <button onClick={handleClick} value='hasBeta'>Sign Up</button>
+            <button onClick={handleClick} value='isUser'>Sign in</button>
             </> : null}
-            {userstatus === 'hasBeta' ? signupform() : null}
+            {userstatus === 'hasBeta' ? SignupForm() : null}
             {userstatus === 'isUser' ? loginform() : null}
         </div>
     );
