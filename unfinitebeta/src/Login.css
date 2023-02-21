@@ -6,7 +6,7 @@
   }
   
   /* Landing page styles */
-  .LandingPage {
+  .Login {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,19 +16,19 @@
     background-color: #f5f5f5;
   }
   
-  .LandingPage h1 {
+  .Login h1 {
     font-size: 1rem;
     margin-bottom: 10px;
     text-align: center;
   }
   
-  .LandingPage p {
+  .Login p {
     font-size: 0.8rem;
     margin-bottom: 10px;
     text-align: center;
   }
   
-  .LandingPage button {
+  .Login button {
     /* padding: 10px 20px; */
     margin: 10px;
     font-size: 0.5rem;
@@ -42,34 +42,53 @@
     width: 200px;
   }
   
-  .LandingPage button:hover {
+  .Login button:hover {
     background-color: #005fa3;
   }
   
   /* Media queries */
   @media screen and (min-width: 768px) {
-    .LandingPage {
+    .Login {
       padding: 0 40px;
     }
   
-    .LandingPage h1 {
+    .Login h1 {
       font-size: 4rem;
     }
   
-    .LandingPage p {
+    .Login p {
       font-size: 1.8rem;
       margin-bottom: 60px;
     }
   
-    .LandingPage button {
+    .Login button {
       font-size: 1.5rem;
       padding: 15px 30px;
     }
   }
 
-  .beta-symbol {
-    color: #D4AF37; /* sets the color to dull yellow */
-    font-weight: bold; /* makes the text bold */
-    font-style: italic; /* makes the text italic */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 500px;
   }
-  
+
+  label {
+    display: block;
+    width: 80%;
+    margin-bottom: 5px;
+  }
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 80%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 25px;
+  required: true;
+}

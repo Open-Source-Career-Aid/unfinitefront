@@ -3,6 +3,8 @@ import SearchBar from './SearchBar';
 import Roadmap from './Roadmap';
 import LandingPage from './LandingPage';
 import ResultsPage from './ResultsPage';
+import Signup from './Signup';
+import Login from './Login';
 // import react-dom-router
 // import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -10,6 +12,8 @@ import ResultsPage from './ResultsPage';
 const App = () => {
   return (
       <div className="App">
+        {/* <Login /> */}
+        {/* <Signup /> */}
         {/* <ResultsPage /> */}
         <LandingPage />
         {/* <SearchBar /> */}
