@@ -4,7 +4,25 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+   /* move the content up */
+    margin-top: -80px;
   }
+
+/* Set the styles for the containerusername */
+.containerusername {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 30px; /* adjust this value as needed */
+  padding: 10px;
+}
+
+/* Set the styles for the heading */
+h4 {
+  margin: 0;
+  padding: 10px;
+}
+
   
   h1 {
     font-size: 3rem;

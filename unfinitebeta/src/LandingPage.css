@@ -1,0 +1,201 @@
+/* Global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Landing page styles */
+  .LandingPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .LandingPage h1 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .LandingPage p {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .LandingPage button {
+    /* padding: 10px 20px; */
+    margin: 10px;
+    font-size: 0.5rem;
+    font-weight: light;
+    color: #fff;
+    background-color: #0077cc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    width: 200px;
+  }
+  
+  .LandingPage button:hover {
+    background-color: #005fa3;
+  }
+  
+  /* Media queries */
+  @media screen and (min-width: 768px) {
+    .LandingPage {
+      padding: 0 40px;
+    }
+  
+    .LandingPage h1 {
+      font-size: 4rem;
+    }
+  
+    .LandingPage p {
+      font-size: 1.8rem;
+      margin-bottom: 60px;
+    }
+  
+    .LandingPage button {
+      font-size: 1.5rem;
+      padding: 15px 30px;
+    }
+  }
+  
+  .signupform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  .signupform form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .signupform label {
+    font-size: 1rem;
+    margin: 10px 0;
+    text-align: left;
+  }
+  
+  .signupform input[type="text"],
+  .signupform input[type="email"],
+  .signupform input[type="password"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    height: 20px;
+  }
+  
+  .signupform input[type="password"] {
+    font-family: "Arial", sans-serif;
+  }
+  
+  .signupform input[type="submit"] {
+    padding: 10px 20px;
+    margin: 20px 0;
+    font-size: 11px;
+    font-weight: lighter;
+    color: #fff;
+    background-color: #0077cc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    width: 200px;
+  }
+  
+  .signupform input[type="submit"]:hover {
+    background-color: #005fa3;
+  }
+  
+  .signupform input:required:invalid {
+    border: 2px solid red;
+  }
+  
+  .signupform input:focus:invalid {
+    outline: none;
+  }
+  
+  .signupform input[type="submit"] {
+    background-color: #4CAF50;
+  }
+  
+  .signupform input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .signupform form {
+      width: 400px;
+    }
+  }
+
+/* Login form styles */
+.loginform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .loginform form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .loginform label {
+    font-size: 0.8rem;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+  }
+  
+  .loginform input {
+    font-size: 0.8rem;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .loginform input[type="submit"] {
+    padding: 10px 20px;
+    margin: 20px 0 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0077cc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .loginform input[type="submit"]:hover {
+    background-color: #005fa3;
+  }
+  

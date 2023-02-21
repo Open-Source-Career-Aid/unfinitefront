@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Roadmap from './Roadmap';
 import './SearchBar.css';
 
-function SearchBar() {
+function SearchBar(props) {
+  const [userlocation, setUserlocation] = useState('landing');
   const [searchTerm, setSearchTerm] = useState('');
   const [showroadmap, setShowroadmap] = useState(false);
 
@@ -17,7 +18,12 @@ function SearchBar() {
     };
 
   return (
-    <div className='container'>
+    <div>
+      <div class="containerusername">
+        <h4>Welcome! <span class="username">props.username</span></h4>
+      </div>
+      {userlocation === 'landing' ?
+        <div className='container'>
         <h1>Unfinite Beta</h1>
         <form>
             <div>
@@ -30,7 +36,10 @@ function SearchBar() {
                 <button type="submit" onClick={handleFormSubmit}>Search</button>
             </div>
         </form>
-        {showroadmap ? <Roadmap query={searchTerm}/>: null}
+        {showroadmap ? setUserlocation('results'): null}
+        </div>
+        : null}
+      {userlocation === 'results' ? <Roadmap query={searchTerm}/> : null}
     </div>
   );
 }
