@@ -1,12 +1,14 @@
 import React from 'react';
 // import SearchBar from './SearchBar';
 // import Roadmap from './Roadmap';
-import LandingPage from './LandingPage';
-import ResultsPage from './ResultsPage';
-import Signup from './Signup';
-import Login from './Login';
-import SearchBar from './SearchBar';
-import Test from './test';
+import LandingPage from './Pages/LandingPage';
+import ResultsPage from './Pages/ResultsPage';
+import Signup from './Pages/Signup';
+import Login from './Pages/Login';
+import SearchBar from './Pages/SearchBar';
+// import Test from './test';
+import Navbar from './Components/Navbar';
+
 // import react-dom-router
 import { Route, Routes } from "react-router-dom";
 
@@ -20,7 +22,8 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/results" element={<ResultsPage />} />
             <Route path="/search" element={<SearchBar />} />
-            <Route path="/test" element={<Test />} />
+            {/* <Route path="/test" element={<Test />} /> */}
+            <Route path="/navbar" element={<Navbar />} />
           </Routes>
         </div>
 
