@@ -35,16 +35,6 @@ function SearchBar(props) {
 
   }, []);  
 
-  // const handleInputChange = (event) => {
-  //   setSearchTerm(event.target.value);
-  // };
-
-  // const handleFormSubmit = (event) => {
-  //   event.preventDefault();
-  //   {searchTerm ? setShowroadmap(true): setShowroadmap(false)};
-  //   console.log(searchTerm);
-  //   };
-
   const handleLogout = (event) => {
     event.preventDefault();
     logout();
@@ -72,7 +62,6 @@ function SearchBar(props) {
                 <button type="submit"><Link to={{ pathname: '/results', search: `?query=${query}` }}>Search</Link></button>
             </div>
         </form>
-        {/* {showroadmap ? setUserlocation('results'): null} */}
         </div>
 
     </div>

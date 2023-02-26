@@ -26,23 +26,3 @@ function logout() {
   }
   
 export default logout;
-
-
-// async function logout () {
-
-//     const csrfToken = localStorage.getItem('csrfToken');
-//     const response = await fetch(`${API_HOST}/api/logout/`, {
-//         method: 'POST',
-//         headers: {
-//         'X-CSRFToken': csrfToken,
-//         'Content-Type': 'application/json'
-//         },
-//         credentials: 'include',
-//     });
-
-//     const data = await response.json();
-//     console.log(data);
-//     return data;
-// }
-
-// export default logout;

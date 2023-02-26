@@ -5,7 +5,7 @@ import LandingPage from './Pages/LandingPage';
 import ResultsPage from './Pages/ResultsPage';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
-import SearchBar from './Pages/SearchBar';
+import SearchPage from './Pages/SearchPage';
 // import Test from './test';
 import Navbar from './Components/Navbar';
 
@@ -21,7 +21,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/results" element={<ResultsPage />} />
-            <Route path="/search" element={<SearchBar />} />
+            <Route path="/search" element={<SearchPage />} />
             {/* <Route path="/test" element={<Test />} /> */}
             <Route path="/navbar" element={<Navbar />} />
           </Routes>

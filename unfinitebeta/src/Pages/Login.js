@@ -10,31 +10,6 @@ import Navbar from "../Components/Navbar";
 // a form that takes in email and password, stores it in a constant, and then sends it to the backend
 const API_HOST = 'http://localhost:8000';
 
-// async function postLogin(email, password) {
-
-//     // const csrfToken = localStorage.getItem('csrfToken');
-//     const csrfToken = getCookie('csrftoken');
-
-//     const response = await fetch(`${API_HOST}/api/login/`, {
-//         method: 'POST',
-//         headers: {
-//         'X-CSRFToken': csrfToken,
-//         'Content-Type': 'application/json'
-//         },
-//         credentials: 'include',
-//         body: JSON.stringify({
-        
-//         email: email,
-//         password: password,
-
-//         })
-//     });
-//     const data = await response.json();
-//     // console.log(data.detail);
-//     // console.log(data.result);
-//     return data.result;
-//     }
-
 function postLogin(email, password) {
     const csrfToken = getCookie('csrftoken');
 
@@ -63,8 +38,6 @@ function postLogin(email, password) {
 function Login() {
 
     const navigate = useNavigate();
-
-    // const [response, setResponse] = useState(null);
     const [userstatus, setUserstatus] = useState(false);
 
     useEffect(() => {
@@ -146,3 +119,28 @@ function Login() {
 }
 
 export default Login;
+
+// async function postLogin(email, password) {
+
+//     // const csrfToken = localStorage.getItem('csrfToken');
+//     const csrfToken = getCookie('csrftoken');
+
+//     const response = await fetch(`${API_HOST}/api/login/`, {
+//         method: 'POST',
+//         headers: {
+//         'X-CSRFToken': csrfToken,
+//         'Content-Type': 'application/json'
+//         },
+//         credentials: 'include',
+//         body: JSON.stringify({
+        
+//         email: email,
+//         password: password,
+
+//         })
+//     });
+//     const data = await response.json();
+//     // console.log(data.detail);
+//     // console.log(data.result);
+//     return data.result;
+//     }
