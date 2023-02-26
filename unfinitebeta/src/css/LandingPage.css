@@ -10,6 +10,7 @@
     background-image: url(../../public/assets/bgimage.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,14 +41,18 @@
   }
   
   .LandingPage button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 5%;
     width: 15%;
-    left: 560px;
-    top: 477px;
     border-radius: 50px;
     background-color: #0D1022;
+    opacity: 0.9;
     border: none;
     margin: 10px;
+    text-decoration: none;
+    font-size: 40%;
   }
   
   .LandingPage button:hover {
@@ -70,7 +75,7 @@
     }
   
     .LandingPage button {
-      font-size: 1.5rem;
+      font-size: 1.5em;
       padding: 15px 30px;
     }
 
@@ -85,4 +90,3 @@
     font-weight: bold; /* makes the text bold */
     font-style: italic; /* makes the text italic */
   }
-  
