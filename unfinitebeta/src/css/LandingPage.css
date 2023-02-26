@@ -7,39 +7,47 @@
   
   /* Landing page styles */
   .LandingPage {
+    background-image: url(../../public/assets/bgimage.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     padding: 0 20px;
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
   }
   
   .LandingPage h1 {
     font-size: 1rem;
     margin-bottom: 10px;
     text-align: center;
+    color: white;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
   }
   
   .LandingPage p {
     font-size: 0.8rem;
-    margin-bottom: 10px;
+    margin-bottom: -10px;
     text-align: center;
+    color: white;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 300;
   }
   
   .LandingPage button {
-    /* padding: 10px 20px; */
-    margin: 10px;
-    font-size: 0.5rem;
-    font-weight: light;
-    color: #fff;
-    background-color: #0077cc;
+    height: 5%;
+    width: 15%;
+    left: 560px;
+    top: 477px;
+    border-radius: 50px;
+    background-color: #0D1022;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    width: 200px;
+    margin: 10px;
   }
   
   .LandingPage button:hover {
@@ -57,8 +65,8 @@
     }
   
     .LandingPage p {
-      font-size: 1.8rem;
-      margin-bottom: 60px;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
     }
   
     .LandingPage button {
