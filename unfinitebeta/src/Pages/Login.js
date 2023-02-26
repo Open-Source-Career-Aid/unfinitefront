@@ -12,9 +12,9 @@ import getCSRF from "../Functions/getCSRF";
 // a form that takes in email and password, stores it in a constant, and then sends it to the backend
 const API_HOST = 'http://localhost:8000';
 
-function postLogin(email, password) {
+async function postLogin(email, password) {
 
-    getCSRF();
+    await getCSRF();
     const csrfToken = getCookie('csrftoken');
 
     return fetch(`${API_HOST}/api/login/`, {
@@ -28,13 +28,15 @@ function postLogin(email, password) {
             email: email,
             password: password,
         })
-    })
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        return data.result;
     });
+    //.then(response => {
+    //    console.log(response);
+    //    return response.json();
+    //});
+    //.then(data => {
+    //    console.log(data);
+     //   return data.result;
+    //});
 }
 
 
@@ -50,6 +52,8 @@ function Login() {
         const checkUserStatus = async () => {
             const status = await isAuthenticated();
             setUserstatus(status);
+            //console.log("userstatus");
+            //console.log(userstatus);
     
             if (!status) {
                 console.log("User is not logged in");
@@ -79,21 +83,24 @@ function Login() {
     const handleSubmit = async (event) => {
         // event.preventDefault();
         // console.log("Login form submitted");
-      
+        event.preventDefault();
         if (formdata.email.toString() === "" || formdata.password.toString() === "") {
           alert("Please fill out all fields");
         } 
         else {
           
-          setUserstatus(true);
-          const response = await postLogin(formdata.email, formdata.password);
-
-        //   const status = await isAuthenticated();
+          //setUserstatus(true);
+          let response = await postLogin(formdata.email, formdata.password);
+          //console.log('response:')
+          //console.log(response);
+          //console.log(response.status);
           if (response.status === 200) {
             const status = await isAuthenticated();
+            //console.log(status);
             setUserstatus(status);
+            //console.log(userstatus);
     
-            if (userstatus) {
+            if (status) {
               console.log('User is logged in');
               navigate('/search');
             }

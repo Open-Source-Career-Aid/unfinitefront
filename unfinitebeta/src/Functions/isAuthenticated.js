@@ -9,7 +9,7 @@ function isAuthenticated() {
     })
         .then(response => response.json())
         .then(data => {
-            // console.log(data.is_authenticated);
+            //console.log(data.is_authenticated);
             return data.is_authenticated;
         });
 }

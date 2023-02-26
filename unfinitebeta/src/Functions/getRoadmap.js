@@ -2,7 +2,7 @@ import React from "react";
 import getCookie from "./getCookie";
 import getCSRF from "./getCSRF";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "http://localhost:8000";
 
 // function getRoadmap(query) {
 
@@ -29,7 +29,9 @@ const API_URL = "http://127.0.0.1:8000";
 
 async function getRoadmap(query) {
 
+  await getCSRF();
   const csrfToken = getCookie('csrftoken');
+  console.log(csrfToken);
 
   const response = await fetch(`${API_URL}/api/query/`, {
     method: 'POST',
@@ -38,6 +40,7 @@ async function getRoadmap(query) {
       'Content-Type': 'application/json'
     },
     credentials: 'include',
+    crossDomain: true,
     body: JSON.stringify({
       query_text: query,
     })

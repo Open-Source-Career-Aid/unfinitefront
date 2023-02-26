@@ -1,12 +1,12 @@
 import React from "react";
 
-function getCSRF() {
+async function getCSRF() {
 
     let _csrfToken = null;
 
     async function getCsrfToken() {
         if (_csrfToken === null) {
-          const response = await fetch(`http://localhost:8000/api/csrf_cookie`, {
+          const response = await fetch(`http://localhost:8000/api/csrf_cookie/`, {
             credentials: 'include',
           });
           const data = await response.json();
@@ -15,8 +15,8 @@ function getCSRF() {
         return _csrfToken;
       }
 
-    getCsrfToken().then((csrfToken) => {
-        // console.log(csrfToken);
+    await getCsrfToken().then((csrfToken) => {
+        //console.log(document.cookie);
         // localStorage.setItem('csrfToken', csrfToken);
         document.cookie = `csrftoken=${csrfToken}`;
     }, []);
