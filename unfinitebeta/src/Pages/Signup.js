@@ -42,8 +42,9 @@ function Signup() {
 
     useEffect(() => {
       async function checkAuth() {
-        // const status = await isAuthenticated();
-        // setUserstatus(status);
+
+        const status = await isAuthenticated();
+        setUserstatus(status);
     
         if (userstatus) {
           navigate('/search');
@@ -53,7 +54,7 @@ function Signup() {
       }
     
       checkAuth();
-    }, []);       
+    }, [userstatus]);       
 
     const [formdata, setFormdata] = useState({
         firstName: "",

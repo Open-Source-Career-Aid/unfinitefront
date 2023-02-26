@@ -47,8 +47,9 @@ async function getRoadmap(query) {
   });
 
   const data = await response.json();
+  // console.log(data.id);
 
-  return data.result;
+  return [data.id, JSON.parse(data.skeleton)];
 }
 
 export default getRoadmap;

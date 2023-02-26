@@ -35,19 +35,9 @@ function SearchBar(props) {
 
   }, []);  
 
-  const handleLogout = (event) => {
-    event.preventDefault();
-    logout();
-    navigate('/login');
-  };
-
   return (
     <div>
-      {/* <Navbar /> */}
-      <div className="containerusername">
-        <h4>Welcome! <span className="username"><button onClick={handleLogout}>Logout</button></span></h4>
-      </div>
-      
+      <Navbar />
         <div className='container'>
           <h1>UNFINITE <span className="beta-symbol">&beta;</span></h1>
             <form>
