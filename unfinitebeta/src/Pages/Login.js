@@ -7,11 +7,14 @@ import { useNavigate } from "react-router-dom";
 import getCookie from "../Functions/getCookie";
 import Navbar from "../Components/Navbar";
 import { Link } from "react-router-dom";
+import getCSRF from "../Functions/getCSRF";
 
 // a form that takes in email and password, stores it in a constant, and then sends it to the backend
 const API_HOST = 'http://localhost:8000';
 
 function postLogin(email, password) {
+
+    getCSRF();
     const csrfToken = getCookie('csrftoken');
 
     return fetch(`${API_HOST}/api/login/`, {
