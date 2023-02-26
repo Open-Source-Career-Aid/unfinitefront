@@ -4,15 +4,10 @@ import { Link } from "react-router-dom";
 import isAuthenticated from '../Functions/isAuthenticated';
 import { useNavigate } from "react-router-dom";
 
-// const API_HOST = 'http://localhost:8000';
-
-// create a function that accepts first name, last name, email, password, password confirmation, and a beta key
-
 function LandingPage() {
 
-    // const [csrfToken, setCsrfToken] = useState(null);
     const navigate = useNavigate();
-    const [userstatus, setUserstatus] = useState(null);
+    const [userstatus, setUserstatus] = useState(false);
 
     useEffect(() => {
 

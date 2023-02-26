@@ -1,30 +1,16 @@
 import React, { useState , useEffect } from "react";
 import "../css/Signup.css";
 import isAuthenticated from '../Functions/isAuthenticated';
-// import saveSessionId from "./saveSessionid";
 import getCSRF from "../Functions/getCSRF";
 import { useNavigate } from "react-router-dom";
-// import getCookie from "./getCookie";
 import Navbar from "../Components/Navbar";
-
-// a form that takes in first name, last name, email, password, password confirmation, and a beta key, stores it in a constant, and then sends it to the backend
+import getCookie from "../Functions/getCookie";
 
 const API_HOST = 'http://localhost:8000';
 
-    // useevent that runs the getcsrf token function when the page loads
-
-
-// const getCookie = (name) => {
-//     const value = "; " + document.cookie;
-//     const parts = value.split("; " + name + "=");
-//     if (parts.length === 2) {
-//         return parts.pop().split(";").shift();
-//     }
-//     };
-
 function postRegister(email, password, cfmPassword, firstName, lastName, betaKey) {
 
-    const csrfToken = localStorage.getItem('csrfToken');
+    const csrfToken = getCookie('csrftoken');
   
     fetch(`${API_HOST}/api/register/`, {
       method: 'POST',
@@ -44,77 +30,29 @@ function postRegister(email, password, cfmPassword, firstName, lastName, betaKey
     })
     .then(response => { return response.json()})
     .then(data => {
-    //   console.log(data.result);/
       return data.result;
     });
   }
-  
-
-// async function postRegister(email, password, cfmPassword, firstName, lastName, betaKey) {
-
-//     const csrfToken = localStorage.getItem('csrfToken');
-
-//     const response = await fetch(`${API_HOST}/api/register/`, {
-//         method: 'POST',
-//         headers: {
-//         'X-CSRFToken': csrfToken,
-//         'Content-Type': 'application/json'
-//         },
-//         credentials: 'include',
-//         body: JSON.stringify({
-        
-//         email: email,
-//         password: password,
-//         cfm_Password: cfmPassword,
-//         first_name: firstName,
-//         last_name: lastName,
-//         beta_key: betaKey,
-
-//         })
-//     });
-//     const data = await response.json();
-//     console.log(data.result);
-//     return data.result;
-//     }
-
 
 function Signup() {
 
     const navigate = useNavigate();
-    const [userstatus, setUserstatus] = useState(null);
-
-    // const [response, setResponse] = useState(null);
+    const [userstatus, setUserstatus] = useState(false);
 
     useEffect(() => {
-
-        getCSRF();
-
-        const status = isAuthenticated();
-        setUserstatus(status);
-
-        if (userstatus) {
-            navigate('/search');
-        }
-
-        // async function getCsrfToken() {
-        //     if (_csrfToken === null) {
-        //       const response = await fetch(`http://localhost:8000/api/csrf_cookie`, {
-        //         credentials: 'include',
-        //       });
-        //       const data = await response.json();
-        //       _csrfToken = data.csrfToken;
-        //     }
-        //     return _csrfToken;
-        //   }
-
-        // getCsrfToken().then((csrfToken) => {
-        //     console.log(csrfToken);
-        //     localStorage.setItem('csrfToken', csrfToken);
-        //     document.cookie = `csrftoken=${csrfToken}`;
-        // }, []);
-
-    }, []);
+      async function checkAuth() {
+        // const status = await isAuthenticated();
+        // setUserstatus(status);
     
+        if (userstatus) {
+          navigate('/search');
+        } else {
+          getCSRF();
+        }
+      }
+    
+      checkAuth();
+    }, []);       
 
     const [formdata, setFormdata] = useState({
         firstName: "",
@@ -133,8 +71,8 @@ function Signup() {
     }
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        console.log(formdata);
+        // event.preventDefault();
+        // console.log(formdata);
       
         if (formdata.password.toString() !== formdata.passwordConfirmation.toString()) {
           alert("Passwords do not match");
@@ -157,11 +95,17 @@ function Signup() {
             formdata.betaKey
           );
           
-          console.log(response.status)
-          if (response === 200) {
-            navigate('/login');
+          // console.log(response.status)
+          if (response.status === 200) {
+            const status = await isAuthenticated();
+            setUserstatus(status);
+    
+            if (userstatus) {
+              console.log('User is logged in');
+              navigate('/search');
+            }
           } else {
-            // handle error
+            alert('Sign up failed. Please try again.');
           }
         }
       };

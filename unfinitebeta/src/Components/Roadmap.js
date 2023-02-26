@@ -7,17 +7,40 @@ import getCSRF from '../Functions/getCSRF';
 
 const API_URL = "http://127.0.0.1:8000";
 
-function GetRoadmap({ query }) {
-    console.log("getroadmap works")
+function GetRoadmap(query) {
 
-    // const data = postQuery(query)
-    // console.log(data)
-    return (
-        <div className="roadmap">
-            <h1>{query}</h1>
-        </div>
-    )
-}
+    // getCSRF();
+    const csrfToken = getCookie('csrftoken');
+  
+    fetch(`${API_URL}/api/query/`, {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': csrfToken,
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        query_text: query,
+      })
+    })
+    .then(response => { return response.json()})
+    .then(data => {
+      return data.result;
+    });
+  }
+
+// function GetRoadmap({ query }) {
+
+
+
+//     // const data = postQuery(query)
+//     // console.log(data)
+//     return (
+//         <div className="roadmap">
+//             <h1>{query}</h1>
+//         </div>
+//     )
+// }
 
 function Roadmap() {
 
@@ -27,7 +50,7 @@ function Roadmap() {
 
     // const response = fetch(API_URL + props.query)
     // const data = response.json()
-    const data = [1, 2, 3, 4, 5]
+    const data = GetRoadmap(query)
     
     console.log("roadmap works")
     {// returns data in a list of items}

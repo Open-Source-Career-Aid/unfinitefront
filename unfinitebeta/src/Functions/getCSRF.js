@@ -17,7 +17,7 @@ function getCSRF() {
 
     getCsrfToken().then((csrfToken) => {
         // console.log(csrfToken);
-        localStorage.setItem('csrfToken', csrfToken);
+        // localStorage.setItem('csrfToken', csrfToken);
         document.cookie = `csrftoken=${csrfToken}`;
     }, []);
     return null;
