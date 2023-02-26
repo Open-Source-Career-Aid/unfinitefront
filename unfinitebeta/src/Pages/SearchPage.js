@@ -1,6 +1,6 @@
 import React, { useState , useEffect } from 'react';
 import Roadmap from '../Components/Roadmap';
-import '../css/SearchBar.css';
+import '../css/SearchPage.css';
 import isAuthenticated from '../Functions/isAuthenticated';
 import { useNavigate } from "react-router-dom";
 import getCSRF from "../Functions/getCSRF";
@@ -49,19 +49,13 @@ function SearchBar(props) {
       </div>
       
         <div className='container'>
-        <h1>Unfinite Beta</h1>
-        <form>
-            <div>
-                <input
-                    type="text"
-                    placeholder="Let's learn something new..."
-                    value={query}
-                    onChange={handleInputChange}
-                />
-                
-                <button type="submit"><Link to={{ pathname: '/results', search: `?query=${query}` }}>Search</Link></button>
-            </div>
-        </form>
+          <h1>UNFINITE <span className="beta-symbol">&beta;</span></h1>
+            <form>
+                <div className='searchbarcontainer'>
+                    <input type="text" className='searchbar' placeholder="What would you explore today?" value={query} onChange={handleInputChange} />
+                    <button type="submit"><Link to={{ pathname: '/results', search: `?query=${query}` }}>Search</Link></button>
+                </div>
+            </form>
         </div>
 
     </div>
