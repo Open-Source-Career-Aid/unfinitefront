@@ -6,6 +6,7 @@ import isAuthenticated from '../Functions/isAuthenticated';
 import { useNavigate } from "react-router-dom";
 import getCookie from "../Functions/getCookie";
 import Navbar from "../Components/Navbar";
+import { Link } from "react-router-dom";
 
 // a form that takes in email and password, stores it in a constant, and then sends it to the backend
 const API_HOST = 'http://localhost:8000';
@@ -102,19 +103,20 @@ function Login() {
 
     return (
         <>
-        <Navbar />
-        <div className="Login">
-            
+            {/* <Navbar /> */}
+            <div className="Login">
                 <form>
-                    <h1>Login</h1>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" name="email" value={formdata.email} onChange={handleChange} required/>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" value={formdata.password} onChange={handleChange} required/>
-                    <button onClick={handleSubmit}>Submit</button>
+                <h1>Login</h1>
+                {/* <label htmlFor="email">Email</label> */}
+                <input type="email" name="email" placeholder="Email ID" value={formdata.email} onChange={handleChange} required/>
+                {/* <label htmlFor="password">Password</label> */}
+                <input type="password" name="password" placeholder="Password" value={formdata.password} onChange={handleChange} required/>
+                <button className='submit' onClick={handleSubmit}>Submit</button>
                 </form>
-        </div>
+                <p className='signuptext'>Don't have an account yet? <Link to='/signup'>Signup</Link> or <Link to='/'>Home</Link></p>
+            </div>
         </>
+
         );
 }
 

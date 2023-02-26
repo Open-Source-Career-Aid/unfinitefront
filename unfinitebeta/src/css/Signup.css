@@ -1,142 +1,146 @@
 /* Global styles */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  body {
-    background-image: url(../../public/assets/bgimage.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-  }
-  
-  /* Landing page styles */
-  .Signup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 70%;
-    width: 25%;
-    background-color: #ffffff;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  
-  .Signup h1 {
-    font-size: 1.5rem;
-    margin-bottom: 50px;
-    text-align: center;
-  }
-  
-  .Signup p {
-    font-size: 0.8rem;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
+body {
+  background-image: url(../../public/assets/bgimage.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+/* Landing page styles */
+.Signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  width: 25%;
+  background-color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.Signup h1 {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.Signup p {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 .submit {
-    background-color: #000000;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
-  }
-  
-  .submit:hover {
-    background-color: #0058C9;
-  }
-  
-  
-  /* Media queries */
-  /* @media screen and (min-width: 768px) {
-    .Signup {
-      padding: 0 20px;
-      height: 60%;
-      width: 20%;
-    }
-  
-    .Signup h1 {
-      font-size: 1.8rem;
-    }
-  
-    .Signup p {
-      font-size: 1.8rem;
-      margin-bottom: 60px;
-    }
-  
-    .Signup button {
-      font-size: 1.5rem;
-      padding: 15px 30px;
-    }
-  } */
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  width: 30%;
+  height: 20%;
+  margin-top: 20px;
+}
 
-  .Signup form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    /* max-width: 500px; */
+.submit:hover {
+  background-color: #0058C9;
+}
+
+
+/* Media queries */
+/* @media screen and (min-width: 768px) {
+  .Signup {
+    padding: 0 20px;
+    height: 60%;
+    width: 20%;
   }
 
-  .Signup label {
-    display: block;
-    width: 80%;
-    margin-bottom: 5px;
+  .Signup h1 {
+    font-size: 1.8rem;
   }
+
+  .Signup p {
+    font-size: 1.8rem;
+    margin-bottom: 60px;
+  }
+
+  .Signup button {
+    font-size: 1.5rem;
+    padding: 15px 30px;
+  }
+} */
+
+.Signup form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  /* max-width: 500px; */
+}
+
+.Signup label {
+  display: block;
+  width: 80%;
+  margin-bottom: 5px;
+}
 
 .fullname {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 80%;
-  gap: 5%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+width: 80%;
+gap: 5%;
 }
 
 .Signup input[type="text"],
 .Signup input[type="email"],
 .Signup input[type="password"] {
-  width: 80%;
-  padding: 4px;
-  border: none;
-  border-bottom: 2px solid #999;
-  margin-bottom: 10px;
-  height: 35px;
-  outline: none;
+width: 80%;
+padding: 4px;
+border: none;
+border-bottom: 2px solid #999;
+margin-bottom: 30px;
+height: 35px;
+outline: none;
+font-size: small;
 }
 
 .Signup input[type="text"]::placeholder,
 .Signup input[type="email"]::placeholder,
 .Signup input[type="password"]::placeholder {
-  color: #999;
-  font-size: 0.6rem;
-  padding-left: 10px;
+color: #999;
+font-size: 0.6rem;
+padding-left: 10px;
 }
 
 .Signup input[type="text"]:focus,
 .Signup input[type="email"]:focus,
 .Signup input[type="password"]:focus {
-  border: none;
-  outline: none;
-  border-bottom: 2px solid #000000;
+border: none;
+outline: none;
+border-bottom: 2px solid #000000;
 }
 
 .logintext {
-  margin-top: 20px;
-  font-size: 1em;
+margin-top: 20px;
+font-size: 1em;
 }
 
 .logintext a {
-  font-weight: bold;
-  text-decoration: underline;
+font-weight: bold;
+text-decoration: underline;
 }
