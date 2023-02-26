@@ -4,13 +4,17 @@
     margin: 0;
     padding: 0;
   }
-  
-  /* Landing page styles */
-  .LandingPage {
+
+  body {
     background-image: url(../../public/assets/bgimage.png);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 50%;
+    background-attachment: fixed;
+    background-position: center;
+  }
+  
+  /* Landing page styles */
+  .LandingPage {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -117,19 +117,20 @@ function Signup() {
         <div className="Signup">
             <form>
                 <h1>Sign Up</h1>
-                <label htmlFor="firstName">First Name</label>
-                <input type="text" name="firstName" value={formdata.firstName} onChange={handleChange} required />
-                <label htmlFor="lastName">Last Name</label>
-                <input type="text" name="lastName" value={formdata.lastName} onChange={handleChange} required />
+                <label htmlFor="firstName">Full Name</label>
+                <div className='fullname'>
+                  <input type="text" name="firstName" placeholder="First Name" value={formdata.firstName} onChange={handleChange} required />
+                  <input type="text" name="lastName" placeholder="Last Name" value={formdata.lastName} onChange={handleChange} required />
+                </div>
                 <label htmlFor="email">Email</label>
-                <input type="email" name="email" value={formdata.email} onChange={handleChange} required />
+                <input type="email" name="email" placeholder="Email ID" value={formdata.email} onChange={handleChange} required />
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" value={formdata.password} onChange={handleChange} required />
+                <input type="password" name="password" placeholder="Password" value={formdata.password} onChange={handleChange} required />
                 <label htmlFor="passwordConfirmation">Password Confirmation</label>
-                <input type="password" name="passwordConfirmation" value={formdata.passwordConfirmation} onChange={handleChange} required />
+                <input type="password" name="passwordConfirmation" placeholder="Confirm Password" value={formdata.passwordConfirmation} onChange={handleChange} required />
                 <label htmlFor="betaKey">Beta Key</label>
-                <input type="text" name="betaKey" value={formdata.betaKey} onChange={handleChange} required />
-                <button type="submit" onClick={handleSubmit}>Submit</button>
+                <input type="text" name="betaKey" placeholder="Private Beta Key" value={formdata.betaKey} onChange={handleChange} required />
+                <button type="submit" className="submit" onClick={handleSubmit}>Submit</button>
             </form>
         </div>
         </>
