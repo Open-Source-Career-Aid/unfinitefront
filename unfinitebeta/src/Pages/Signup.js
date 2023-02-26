@@ -5,6 +5,7 @@ import getCSRF from "../Functions/getCSRF";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import getCookie from "../Functions/getCookie";
+import { Link } from "react-router-dom";
 
 const API_HOST = 'http://localhost:8000';
 
@@ -113,7 +114,7 @@ function Signup() {
 
     return (
         <>
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="Signup">
             <form>
                 <h1>Sign Up</h1>
@@ -132,6 +133,7 @@ function Signup() {
                 <input type="text" name="betaKey" placeholder="Private Beta Key" value={formdata.betaKey} onChange={handleChange} required />
                 <button type="submit" className="submit" onClick={handleSubmit}>Submit</button>
             </form>
+            <p className='logintext'>Already have an account? <Link to='/login'>Login</Link> or <Link to='/'>Home</Link></p>
         </div>
         </>
     );

@@ -27,7 +27,7 @@ function LandingPage() {
         <div className="LandingPage">
             <h1>UNFINITE <span className="beta-symbol">&beta;</span></h1>
             <p>The new way to learn something.</p>
-            <button value='hasBeta'><Link to='/signup/'>Sign Up</Link></button>
+            <button value='hasBeta'><Link to='/signup'>Sign Up</Link></button>
             <button value='isUser'><Link to='/login'>Log in</Link></button>
         </div>
     );
