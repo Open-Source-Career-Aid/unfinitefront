@@ -24,6 +24,7 @@ function Roadmap() {
     const [roadmapid, setRoadmapid] = useState(null);
     const [searchresults, setSearchresults] = useState([]);
     const [topicid, setTopicid] = useState(null);
+    const [roadmaprender, setRoadmaprender] = useState(null);
 
     useEffect(() => {
 
@@ -74,7 +75,7 @@ function Roadmap() {
     };
 
     const roadmaprender = roadmap.map((str, index) => (
-      <a key={str} onClick={() => handleTopicClick(index)}>
+      <a className='topics' key={str} onClick={() => handleTopicClick(index)}>
         {str}
       </a>
     ));
@@ -85,7 +86,7 @@ function Roadmap() {
 
     return (
         <>
-            <Navbar />
+            <Navbar page={'navbardark'}/>
             <div className='resultspage'>
 
                 {/* <getRoadmap query={query}/> */}
@@ -108,7 +109,7 @@ function Roadmap() {
                   <div>
                     {searchresults.map(([link, title]) => (
                       <div className="searchcard" key={link}>
-                        <a href={link} target="_blank" rel="noopener noreferrer">
+                        <a className='searchresults' href={link} target="_blank" rel="noopener noreferrer">
                           <div className="card-body">
                             <h5 className="card-title">{title}</h5>
                             <p className="card-text">{link}</p>

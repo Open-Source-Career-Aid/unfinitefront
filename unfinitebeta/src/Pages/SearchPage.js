@@ -35,20 +35,27 @@ function SearchBar(props) {
 
   }, []);  
 
-  return (
-    <div>
-      <Navbar />
-        <div className='container'>
-          <h1>UNFINITE <span className="beta-symbol">&beta;</span></h1>
-            <form>
-                <div className='searchbarcontainer'>
-                    <input type="text" className='searchbar' placeholder="What would you explore today?" value={query} onChange={handleInputChange} />
-                    <button type="submit"><Link to={{ pathname: '/results', search: `?query=${query}` }}>Search</Link></button>
-                </div>
-            </form>
-        </div>
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    navigate(`/results?query=${query}`);
+  };
 
-    </div>
+
+  return (
+      <div className='bodyoverflow'>
+          <Navbar page={'navbarsearchpage'}/>
+          <div className='SearchPage'>
+            <h1 className='logocenter'>UNFINITE <span className="beta-symbol">&beta;</span></h1>
+              <form onSubmit={handleSubmit}>
+                  <div className='searchbarcontainer'>
+                      <input type="text" className='searchbar' placeholder="What would you explore today?" value={query} onChange={handleInputChange} />
+                      <button className='searchbutton' type="submit">button</button>
+                      {/* <button type="submit"><Link to={{ pathname: '/results', search: `?query=${query}` }}>Search</Link></button> */}
+                  </div>
+              </form>
+          </div>
+
+      </div>
   );
 }
 

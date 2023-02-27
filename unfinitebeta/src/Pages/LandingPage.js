@@ -25,10 +25,10 @@ function LandingPage() {
     
     return (
         <div className="LandingPage">
-            <h1>UNFINITE <span className="beta-symbol">&beta;</span></h1>
+            <h1 className="logocenter">UNFINITE <span className="beta-symbol">&beta;</span></h1>
             <p>The new way to learn something.</p>
-            <button value='hasBeta'><Link to='/signup'>Sign Up</Link></button>
-            <button value='isUser'><Link to='/login'>Log in</Link></button>
+            <Link className='signupbutton' to='/signup'>Sign Up</Link>
+            <Link className='loginbutton' to='/login'>Log in</Link>
         </div>
     );
 }

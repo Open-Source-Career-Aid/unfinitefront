@@ -1,5 +1,5 @@
 import React, { useState , useEffect} from "react";
-import "../css/Login.css";
+import "../css/Authentication.css";
 import isAuthenticated from '../Functions/isAuthenticated';
 // import saveSessionId from "./saveSessionid";
 // import getCSRF from "./getCSRF";
@@ -114,16 +114,16 @@ function Login() {
     return (
         <>
             {/* <Navbar /> */}
-            <div className="Login">
+            <div className="authentication">
                 <form>
-                <h1>Login</h1>
+                <h1 className='h1auth'>Login</h1>
                 {/* <label htmlFor="email">Email</label> */}
                 <input type="email" name="email" placeholder="Email ID" value={formdata.email} onChange={handleChange} required/>
                 {/* <label htmlFor="password">Password</label> */}
                 <input type="password" name="password" placeholder="Password" value={formdata.password} onChange={handleChange} required/>
                 <button className='submit' onClick={handleSubmit}>Submit</button>
                 </form>
-                <p className='signuptext'>Don't have an account yet? <Link to='/signup'>Signup</Link> or <Link to='/'>Home</Link></p>
+                <p className='authtext'>Don't have an account yet? <Link className="aauth" to='/signup'>Signup</Link> or <Link className="aauth" to='/'>Home</Link></p>
             </div>
         </>
 

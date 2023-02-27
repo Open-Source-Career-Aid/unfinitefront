@@ -4,7 +4,7 @@ import "../css/Navbar.css";
 import logout from "../Functions/userLogout";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({page}) => {
 
     const navigate = useNavigate();
 
@@ -15,22 +15,18 @@ const Navbar = () => {
       };
 
     return (
-        <nav className="navbar">
-            <Link className="navbar-brand" to="/">
-                Unfinite
+        <nav className={page}>
+            <Link className="navbar-brand" to="/search">
+                UNFINITE<span className="beta-symbol"> &beta;</span>
             </Link>
 
             {/* <button className="navbar-toggler" type="button">
                 <span className="navbar-toggler-icon"></span>
             </button> */}
 
-            <div className="collapse navbar-collapse" id="navbarNav">
-
-                <Link className="nav-link" onClick={handleLogout} to="/signup">
-                Logout
-                </Link>
-
-            </div>
+            <Link className="nav-link" onClick={handleLogout} to="/signup">
+            Logout
+            </Link>
         </nav>
     );
     }

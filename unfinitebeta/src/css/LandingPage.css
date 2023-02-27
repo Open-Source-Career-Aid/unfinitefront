@@ -1,10 +1,4 @@
 /* Global styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
   body {
     background-image: url(../../public/assets/bgimage.png);
     background-repeat: no-repeat;
@@ -20,13 +14,14 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    padding: 0 20px;
+    /* padding: 0 20px; */
     /* background-color: #f5f5f5; */
   }
   
-  .LandingPage h1 {
-    font-size: 1rem;
-    margin-bottom: 10px;
+  .LandingPage .logocenter {
+    margin: 0 auto;
+    font-size: 4rem;
+    margin-bottom: 10px; 
     text-align: center;
     color: white;
     font-family: "Montserrat";
@@ -35,7 +30,7 @@
   }
   
   .LandingPage p {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     margin-bottom: -10px;
     text-align: center;
     color: white;
@@ -58,19 +53,59 @@
     text-decoration: none;
     font-size: 40%;
   }
+
+  .LandingPage .signupbutton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5%;
+    width: 15%;
+    border-radius: 50px;
+    background-color: #0D1022;
+    opacity: 0.9;
+    border: none;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 150%;
+  }
+
+  .LandingPage .loginbutton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5%;
+    width: 15%;
+    border-radius: 50px;
+    background-color: #0D1022;
+    opacity: 0.9;
+    border: none;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 150%;
+  }
   
-  .LandingPage button:hover {
+  .LandingPage .signupbutton:hover {
+    background-color: #005fa3;
+  }
+
+  .LandingPage .loginbutton:hover {
     background-color: #005fa3;
   }
   
   /* Media queries */
   @media screen and (min-width: 768px) {
-    .LandingPage {
+    /* .LandingPage {
       padding: 0 40px;
-    }
+    } */
   
-    .LandingPage h1 {
+    .LandingPage .logocenter {
       font-size: 4rem;
+      margin-bottom: 10px; 
+      text-align: center;
+      color: white;
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 400;
     }
   
     .LandingPage p {
@@ -80,7 +115,7 @@
   
     .LandingPage button {
       font-size: 1.5em;
-      padding: 15px 30px;
+      /* padding: 15px 30px; */
     }
 
     .LandingPage a {

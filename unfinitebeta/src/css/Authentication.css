@@ -1,9 +1,9 @@
-/* Global styles */
+/* Global styles
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
+} */
 
 body {
   background-image: url(../../public/assets/bgimage.png);
@@ -14,7 +14,7 @@ body {
 }
 
 /* Landing page styles */
-.Signup {
+.authentication {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,19 +29,21 @@ body {
 }
 
 
-.Signup h1 {
+.authentication .h1auth {
+  margin: 0 auto;
   font-size: 1.5rem;
   margin-bottom: 50px;
   text-align: center;
+  color: #000000;
 }
 
-.Signup p {
+.authentication p {
   font-size: 0.8rem;
   margin-bottom: 10px;
   text-align: center;
 }
 
-.submit {
+.authentication .submit {
   background-color: #000000;
   color: #fff;
   border: none;
@@ -51,8 +53,8 @@ body {
   font-size: 16px;
   transition: all 0.3s ease;
   width: 30%;
-  height: 20%;
-  margin-top: 20px;
+  height: 50px;
+  margin-top: 15px;
 }
 
 .submit:hover {
@@ -62,28 +64,28 @@ body {
 
 /* Media queries */
 /* @media screen and (min-width: 768px) {
-  .Signup {
+  .authentication {
     padding: 0 20px;
     height: 60%;
     width: 20%;
   }
 
-  .Signup h1 {
+  .authentication h1 {
     font-size: 1.8rem;
   }
 
-  .Signup p {
+  .authentication p {
     font-size: 1.8rem;
     margin-bottom: 60px;
   }
 
-  .Signup button {
+  .authentication button {
     font-size: 1.5rem;
     padding: 15px 30px;
   }
 } */
 
-.Signup form {
+.authentication form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,7 +93,7 @@ body {
   /* max-width: 500px; */
 }
 
-.Signup label {
+.authentication label {
   display: block;
   width: 80%;
   margin-bottom: 5px;
@@ -106,9 +108,9 @@ width: 80%;
 gap: 5%;
 }
 
-.Signup input[type="text"],
-.Signup input[type="email"],
-.Signup input[type="password"] {
+.authentication input[type="text"],
+.authentication input[type="email"],
+.authentication input[type="password"] {
 width: 80%;
 padding: 4px;
 border: none;
@@ -119,28 +121,34 @@ outline: none;
 font-size: small;
 }
 
-.Signup input[type="text"]::placeholder,
-.Signup input[type="email"]::placeholder,
-.Signup input[type="password"]::placeholder {
+.authentication input[type="text"]::placeholder,
+.authentication input[type="email"]::placeholder,
+.authentication input[type="password"]::placeholder {
 color: #999;
 font-size: 0.6rem;
 padding-left: 10px;
 }
 
-.Signup input[type="text"]:focus,
-.Signup input[type="email"]:focus,
-.Signup input[type="password"]:focus {
+.authentication input[type="text"]:focus,
+.authentication input[type="email"]:focus,
+.authentication input[type="password"]:focus {
 border: none;
 outline: none;
 border-bottom: 2px solid #000000;
 }
 
-.logintext {
+.authentication .authtext {
 margin-top: 20px;
 font-size: 1em;
 }
 
-.logintext a {
+.authentication .authtext .aauth {
 font-weight: bold;
 text-decoration: underline;
+color: #000000;
+}
+
+.authentication .authtext .aauth:hover {
+color: #0058C9;
+background-color: transparent;
 }

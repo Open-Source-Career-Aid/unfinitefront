@@ -1,9 +1,8 @@
 import React, { useState , useEffect } from "react";
-import "../css/Signup.css";
+import "../css/Authentication.css";
 import isAuthenticated from '../Functions/isAuthenticated';
 import getCSRF from "../Functions/getCSRF";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../Components/Navbar";
 import getCookie from "../Functions/getCookie";
 import { Link } from "react-router-dom";
 
@@ -116,9 +115,9 @@ function Signup() {
     return (
         <>
         {/* <Navbar /> */}
-        <div className="Signup">
+        <div className="authentication">
             <form>
-                <h1>Sign Up</h1>
+                <h1 className='h1auth'>Sign Up</h1>
                 {/* <label htmlFor="firstName">Full Name</label> */}
                 <div className='fullname'>
                   <input type="text" name="firstName" placeholder="First Name" value={formdata.firstName} onChange={handleChange} required />
@@ -134,7 +133,7 @@ function Signup() {
                 <input type="text" name="betaKey" placeholder="Private Beta Key" value={formdata.betaKey} onChange={handleChange} required />
                 <button type="submit" className="submit" onClick={handleSubmit}>Submit</button>
             </form>
-            <p className='logintext'>Already have an account? <Link to='/login'>Login</Link> or <Link to='/'>Home</Link></p>
+            <p className='authtext'>Already have an account? <Link className="aauth" to='/login'>Login</Link> or <Link className="aauth" to='/'>Home</Link></p>
         </div>
         </>
     );
