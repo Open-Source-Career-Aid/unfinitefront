@@ -7,10 +7,6 @@ body {
   /* overflow: hidden; */
 }
 
-.bodyoverflow {
-  overflow: hidden;
-}
-
 .SearchPage {
   display: flex;
   flex-direction: column;
@@ -19,7 +15,7 @@ body {
   background-color: transparent;
   max-width: 100%;
   text-align: center;
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   overflow: hidden;
   }
@@ -41,7 +37,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 800px;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
 }
 
 .SearchPage .searchbar {

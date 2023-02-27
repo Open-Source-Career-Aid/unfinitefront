@@ -8,7 +8,7 @@ body {
   flex-direction: row;
   justify-content: center;
   background-color: #f1f1f1;
-  height: 140vh;
+  height: 100vh;
   overflow: scroll;
   /* width: 100%; */
 }
