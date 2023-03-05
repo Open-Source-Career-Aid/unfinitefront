@@ -169,7 +169,9 @@ function Roadmap() {
                     type="radio"
                     name={`like-dislike-${index}`}
                     value="like"
-                    onChange={handleLikeDislike}
+                    onChange={(event) => {
+						handleLikeDislike(event, index);
+					}}
                   />
                   {/* <span className="like-icon"></span> */}
                 </label>
@@ -178,7 +180,9 @@ function Roadmap() {
                     type="radio"
                     name={`like-dislike-${index}`}
                     value="dislike"
-                    onChange={handleLikeDislike}
+                    onChange={(event) => {
+						handleLikeDislike(event, index);
+					}}
                   />
                   {/* <span></span> */}
                 </label>
