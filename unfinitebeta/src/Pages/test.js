@@ -1,7 +1,6 @@
 import React from 'react';
 import getRoadmap from '../Functions/getRoadmap';
-
-const API_HOST = 'http://localhost:8000';
+import { API_URL } from '../API_URL';
 
 async function Test() {
 

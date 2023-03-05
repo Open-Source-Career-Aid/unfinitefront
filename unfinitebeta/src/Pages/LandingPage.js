@@ -24,11 +24,13 @@ function LandingPage() {
     }, []);
     
     return (
-        <div className="LandingPage">
-            <h1 className="logocenter">UNFINITE <span className="beta-symbol">&beta;</span></h1>
-            <p>The new way to learn something.</p>
-            <Link className='signupbutton' to='/signup'>Sign Up</Link>
-            <Link className='loginbutton' to='/login'>Log in</Link>
+        <div className='bodylandingpage'>
+            <div className="LandingPage">
+                <h1 className="logocenter">UNFINITE <span className="beta-symbol">&beta;</span></h1>
+                <p>The new way to learn something.</p>
+                <Link className='signupbutton' to='/signup'>Sign Up</Link>
+                <Link className='loginbutton' to='/login'>Log in</Link>
+            </div>
         </div>
     );
 }

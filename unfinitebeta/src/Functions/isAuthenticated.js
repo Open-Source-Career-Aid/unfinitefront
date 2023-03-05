@@ -1,9 +1,8 @@
 import React from "react";
-
-const API_HOST = 'http://localhost:8000';
+import { API_URL } from '../API_URL';
 
 function isAuthenticated() {
-    return fetch(`${API_HOST}/api/is_authenticated/`, {
+    return fetch(`${API_URL}is_authenticated/`, {
         method: 'GET',
         credentials: 'include',
     })

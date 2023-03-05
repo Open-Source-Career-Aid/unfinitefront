@@ -1,4 +1,5 @@
 import React from "react";
+import { API_URL } from '../API_URL';
 
 async function getCSRF() {
 
@@ -6,7 +7,7 @@ async function getCSRF() {
 
     async function getCsrfToken() {
         if (_csrfToken === null) {
-          const response = await fetch(`http://localhost:8000/api/csrf_cookie/`, {
+          const response = await fetch(`${API_URL}csrf_cookie/`, {
             credentials: 'include',
           });
           const data = await response.json();

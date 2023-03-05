@@ -42,18 +42,27 @@ function SearchBar(props) {
 
 
   return (
-      <div className='bodyoverflow'>
-          <Navbar page={'navbarsearchpage'}/>
-          <div className='SearchPage'>
-            <h1 className='logocenter'>UNFINITE <span className="beta-symbol">&beta;</span></h1>
-              <form onSubmit={handleSubmit}>
-                  <div className='searchbarcontainer'>
-                      <input type="text" className='searchbar' placeholder="What would you explore today?" value={query} onChange={handleInputChange} />
-                      <button className='searchbutton' type="submit">button</button>
-                      {/* <button type="submit"><Link to={{ pathname: '/results', search: `?query=${query}` }}>Search</Link></button> */}
-                  </div>
-              </form>
-          </div>
+      <div className='bodysearchpage'>
+        <div className='SearchPage'>
+            <Navbar page={'navbarsearchpage'}/>
+            <div className='SearchPageContent'>
+              <h1 className='logocenter'>UNFINITE <span className="beta-symbol">&beta;</span></h1>
+              <div className='topsearchcontainer'>
+                <form onSubmit={handleSubmit}>
+                    <div className='searchbarcontainer'>
+                        <input type="text" className='searchbar' placeholder="What would you explore today?" value={query} onChange={handleInputChange} />
+                        <button className='searchbutton' type="submit">button</button>
+                        {/* <button type="submit"><Link to={{ pathname: '/results', search: `?query=${query}` }}>Search</Link></button> */}
+                    </div>
+                </form>
+                <div className='example-searches'>
+                  <a className='example-search' href='/results?query=backend%20web-development%20with%20python'>backend web-development with python</a>
+                  <a className='example-search' href='/results?query=chaos%20theory'>chaos theory</a>
+                  <a className='example-search' href='/results?query=elements%20of%20an%20entrepreneurial%20ecosystem'>elements of an entrepreneurial ecosystem</a>
+                </div>
+              </div>
+            </div>
+        </div>
 
       </div>
   );

@@ -5,12 +5,13 @@
   padding: 0;
 } */
 
-body {
+body .bodyauthentication {
   background-image: url(../../public/assets/bgimage.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  height: 100vh;
 }
 
 /* Landing page styles */

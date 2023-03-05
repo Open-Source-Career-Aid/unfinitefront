@@ -8,16 +8,16 @@ import getCookie from "../Functions/getCookie";
 import Navbar from "../Components/Navbar";
 import { Link } from "react-router-dom";
 import getCSRF from "../Functions/getCSRF";
+import { API_URL } from "../API_URL";
 
 // a form that takes in email and password, stores it in a constant, and then sends it to the backend
-const API_HOST = 'http://localhost:8000';
 
 async function postLogin(email, password) {
 
     await getCSRF();
     const csrfToken = getCookie('csrftoken');
 
-    return fetch(`${API_HOST}/api/login/`, {
+    return fetch(`${API_URL}login/`, {
         method: 'POST',
         headers: {
             'X-CSRFToken': csrfToken,
@@ -114,16 +114,18 @@ function Login() {
     return (
         <>
             {/* <Navbar /> */}
-            <div className="authentication">
-                <form>
-                <h1 className='h1auth'>Login</h1>
-                {/* <label htmlFor="email">Email</label> */}
-                <input type="email" name="email" placeholder="Email ID" value={formdata.email} onChange={handleChange} required/>
-                {/* <label htmlFor="password">Password</label> */}
-                <input type="password" name="password" placeholder="Password" value={formdata.password} onChange={handleChange} required/>
-                <button className='submit' onClick={handleSubmit}>Submit</button>
-                </form>
-                <p className='authtext'>Don't have an account yet? <Link className="aauth" to='/signup'>Signup</Link> or <Link className="aauth" to='/'>Home</Link></p>
+            <div className="bodyauthentication">
+                <div className="authentication">
+                    <form>
+                    <h1 className='h1auth'>Login</h1>
+                    {/* <label htmlFor="email">Email</label> */}
+                    <input type="email" name="email" placeholder="Email ID" value={formdata.email} onChange={handleChange} required/>
+                    {/* <label htmlFor="password">Password</label> */}
+                    <input type="password" name="password" placeholder="Password" value={formdata.password} onChange={handleChange} required/>
+                    <button className='submit' onClick={handleSubmit}>Submit</button>
+                    </form>
+                    <p className='authtext'>Don't have an account yet? <Link className="aauth" to='/signup'>Signup</Link> or <Link className="aauth" to='/'>Home</Link></p>
+                </div>
             </div>
         </>
 

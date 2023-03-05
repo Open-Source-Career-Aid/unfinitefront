@@ -5,14 +5,13 @@ import getCSRF from "../Functions/getCSRF";
 import { useNavigate } from "react-router-dom";
 import getCookie from "../Functions/getCookie";
 import { Link } from "react-router-dom";
-
-const API_HOST = 'http://localhost:8000';
+import { API_URL } from "../API_URL";
 
 function postRegister(email, password, cfmPassword, firstName, lastName, betaKey) {
 
     const csrfToken = getCookie('csrftoken');
   
-    fetch(`${API_HOST}/api/register/`, {
+    fetch(`${API_URL}register/`, {
       method: 'POST',
       headers: {
         'X-CSRFToken': csrfToken,
@@ -115,6 +114,7 @@ function Signup() {
     return (
         <>
         {/* <Navbar /> */}
+        <div className='bodyauthentication'>
         <div className="authentication">
             <form>
                 <h1 className='h1auth'>Sign Up</h1>
@@ -134,6 +134,7 @@ function Signup() {
                 <button type="submit" className="submit" onClick={handleSubmit}>Submit</button>
             </form>
             <p className='authtext'>Already have an account? <Link className="aauth" to='/login'>Login</Link> or <Link className="aauth" to='/'>Home</Link></p>
+        </div>
         </div>
         </>
     );

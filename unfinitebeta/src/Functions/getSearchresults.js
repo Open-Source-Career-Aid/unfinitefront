@@ -1,8 +1,7 @@
 import React from "react";
 import getCookie from "./getCookie";
 import getCSRF from "./getCSRF";
-
-const API_URL = "http://localhost:8000";
+import { API_URL } from "../API_URL";
 
 async function getSearchresults(id, topicid) {
 
@@ -10,7 +9,7 @@ async function getSearchresults(id, topicid) {
     const csrfToken = getCookie('csrftoken');
     console.log(csrfToken);
   
-    const response = await fetch(`${API_URL}/api/search/`, {
+    const response = await fetch(`${API_URL}search/`, {
       method: 'POST',
       headers: {
         'X-CSRFToken': csrfToken,

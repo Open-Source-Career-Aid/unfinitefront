@@ -1,6 +1,6 @@
 import React, { useState , useEffect } from 'react';
 import Roadmap from '../Components/Roadmap';
-// import '../css/ResultsPage.css';
+import '../css/ResultsPage.css';
 import isAuthenticated from '../Functions/isAuthenticated';
 import { useNavigate } from "react-router-dom";
 
@@ -27,9 +27,12 @@ function ResultsPage({items}) {
       }, []);  
 
     return (
-        <div>
+
+      <div className='bodyresultspage'>
+        <div className='ResultsPage'>
             <Roadmap />
         </div>
+      </div>
     )
 }
 
