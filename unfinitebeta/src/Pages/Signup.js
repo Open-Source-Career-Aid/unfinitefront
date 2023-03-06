@@ -7,11 +7,12 @@ import getCookie from "../Functions/getCookie";
 import { Link } from "react-router-dom";
 import { API_URL } from "../API_URL";
 
-function postRegister(email, password, cfmPassword, firstName, lastName, betaKey) {
-
+async function postRegister(email, password, cfmPassword, firstName, lastName, betaKey) {
+	
+	await getCSRF();
     const csrfToken = getCookie('csrftoken');
   
-    fetch(`${API_URL}register/`, {
+    return fetch(`${API_URL}register/`, {
       method: 'POST',
       headers: {
         'X-CSRFToken': csrfToken,
@@ -26,11 +27,11 @@ function postRegister(email, password, cfmPassword, firstName, lastName, betaKey
         last_name: lastName,
         beta_key: betaKey,
       })
-    })
-    .then(response => { return response.json()})
-    .then(data => {
-      return data.result;
     });
+    //.then(response => { return response.json()})
+    //.then(data => {
+    //  return data.result;
+    //});
   }
 
 function Signup() {
@@ -73,7 +74,7 @@ function Signup() {
     const handleSubmit = async (event) => {
         // event.preventDefault();
         // console.log(formdata);
-      
+		event.preventDefault();
         if (formdata.password.toString() !== formdata.passwordConfirmation.toString()) {
           alert("Passwords do not match");
         } else if (
@@ -100,7 +101,7 @@ function Signup() {
             const status = await isAuthenticated();
             setUserstatus(status);
     
-            if (userstatus) {
+            if (status) {
               console.log('User is logged in');
               navigate('/search');
             }
