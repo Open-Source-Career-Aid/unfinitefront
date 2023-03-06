@@ -30,10 +30,8 @@ function Roadmap() {
     const [roadmapid, setRoadmapid] = useState(null);
     const [searchresults, setSearchresults] = useState([]);
     const [topicid, setTopicid] = useState(null);
-    const [roadmaprender, setRoadmaprender] = useState(null);
     const [thumbs, setThumbs] = useState(null);
     const [completion, setCompletion] = useState([null]);
-    const [searchrender, setSearchrender] = useState(null);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {

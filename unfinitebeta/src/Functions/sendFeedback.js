@@ -4,7 +4,7 @@ import getCSRF from './getCSRF';
 import getCookie from './getCookie';
 import { API_URL } from '../API_URL';
 
-async function sendFeedback({queryid, feedback}) {
+async function sendFeedback(queryid, feedback) {
 
     await getCSRF();
     const csrfToken = getCookie('csrftoken');
@@ -27,7 +27,7 @@ async function sendFeedback({queryid, feedback}) {
     const data = await response.json();
     console.log(data);
 
-    return [];
+    return data;
 }
 
 export default sendFeedback;

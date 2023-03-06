@@ -5,27 +5,50 @@ import sendFeedback from "../Functions/sendFeedback";
 
 const FeedbackBox = ( { query , queryid } ) => {
 
-    const [feedback, setFeedback] = useState("");
-    const [queryfeedback, setQueryfeedback] = useState(false);
-    const [feedbacksent, setFeedbacksent] = useState(false);
+    const [formdata, setFormdata] = useState({
+        feedback: "",
+        queryfeedback: false,
+    });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setFeedback(e.target.feedback.value);
-        setQueryfeedback(e.target.queryfeedback.checked);
+    const handleChange = (event) => {
+        setFormdata({
+            ...formdata,
+            [event.target.name]: event.target.value
+        });
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const feedback = formdata.feedback;
+        const queryfeedback = formdata.queryfeedback;
       
+        if (feedback.trim() === "") {
+          alert("Please fill feedback box");
+          return;
+        }
+      
+        let response;
         if (queryfeedback) {
-          const response = await sendFeedback({ queryid, feedback });
-          if (response.status === 200) {
-            setFeedbacksent(true);
-            }
+          response = await sendFeedback(queryid, feedback);
         } else {
-            const response = await sendFeedback({ queryid: null, feedback });
-            if (response.status === 200) {
-                setFeedbacksent(true);
-                }
+          response = await sendFeedback(null, feedback);
+        }
+
+        // console.log(response);
+        // console.log(response===200);
+      
+
+        // couldn't get response.status===200 to work
+        if (response.detail === 'Feedback submitted') {
+          alert("Feedback submitted");
+          setFormdata({
+            feedback: "",
+            queryfeedback: false,
+          });
         }
       };
+      
       
 
     return (
@@ -33,10 +56,10 @@ const FeedbackBox = ( { query , queryid } ) => {
     <>
         <form onSubmit={handleSubmit} method="POST">
             <label for="feedback-input">Feedback/Suggestions/Requests:</label>
-            <textarea id="feedback-input" name="feedback"></textarea>
+            <textarea type='text' name="feedback" value={formdata.feedback} onChange={handleChange} required></textarea>
             <div className="feedback-box-last-row">
                 <div class="checkbox-container">
-                <input type="checkbox" id="queryfeedback" value={ queryid } />
+                <input type="checkbox" id="queryfeedback" name="queryfeedback" value={true} onChange={handleChange} />
                 <label for="queryfeedback"> feedback related to "{ query }"?</label>
                 </div>
                 <button type="submit">Submit</button>
