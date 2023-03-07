@@ -20,7 +20,7 @@
   
   .LandingPage .logocenter {
     margin: 0 auto;
-    font-size: 4rem;
+    font-size: 3rem;
     margin-bottom: 10px; 
     text-align: center;
     color: white;
@@ -30,8 +30,8 @@
   }
   
   .LandingPage p {
-    font-size: 1.2rem;
-    margin-bottom: -10px;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
     text-align: center;
     color: white;
     font-family: "Montserrat";
@@ -59,7 +59,7 @@
     align-items: center;
     justify-content: center;
     height: 5%;
-    width: 15%;
+    min-width: 150px;
     border-radius: 50px;
     background-color: #0D1022;
     opacity: 0.9;
@@ -75,7 +75,7 @@
     align-items: center;
     justify-content: center;
     height: 5%;
-    width: 15%;
+    min-width: 150px;
     border-radius: 50px;
     background-color: #0D1022;
     opacity: 0.9;
@@ -92,6 +92,11 @@
 
   .LandingPage .loginbutton:hover {
     background-color: #005fa3;
+  }
+
+  .LandingPage a {
+    text-decoration: none;
+    color: #ffffff;
   }
   
   /* Media queries */
@@ -123,6 +128,38 @@
     .LandingPage a {
       text-decoration: none;
       color: #ffffff;
+    }
+
+    .LandingPage .signupbutton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 5%;
+      width: 15%;
+      border-radius: 50px;
+      background-color: #0D1022;
+      opacity: 0.9;
+      border: none;
+      margin: 10px;
+      text-decoration: none;
+      font-size: 150%;
+      transition: all 0.3s ease;
+    }
+
+    .LandingPage .loginbutton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 5%;
+      width: 15%;
+      border-radius: 50px;
+      background-color: #0D1022;
+      opacity: 0.9;
+      border: none;
+      margin: 10px;
+      text-decoration: none;
+      font-size: 150%;
+      transition: all 0.3s ease;
     }
   }
 
