@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import getCookie from "../Functions/getCookie";
 import { Link } from "react-router-dom";
 import { API_URL } from "../API_URL";
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-8YXPLS55QD');
 
 async function postRegister(email, password, cfmPassword, firstName, lastName, betaKey) {
 	
@@ -38,6 +40,10 @@ function Signup() {
 
     const navigate = useNavigate();
     const [userstatus, setUserstatus] = useState(false);
+
+    useEffect(() => {
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }, []);
 
     useEffect(() => {
       async function checkAuth() {

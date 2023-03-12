@@ -7,6 +7,8 @@ import getCSRF from "../Functions/getCSRF";
 import logout from '../Functions/userLogout';
 import Navbar from '../Components/Navbar';
 import { Link } from 'react-router-dom';
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-8YXPLS55QD');
 
 function SearchBar(props) {
 
@@ -20,6 +22,10 @@ function SearchBar(props) {
   const handleInputChange = (event) => {
     setQuery(event.target.value);
   };
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
 
   useEffect(() => {
 

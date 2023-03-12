@@ -3,11 +3,17 @@ import '../css/LandingPage.css';
 import { Link } from "react-router-dom";
 import isAuthenticated from '../Functions/isAuthenticated';
 import { useNavigate } from "react-router-dom";
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-8YXPLS55QD');
 
 function LandingPage() {
 
     const navigate = useNavigate();
     const [userstatus, setUserstatus] = useState(false);
+
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname + window.location.search);
+      }, []);
 
     useEffect(() => {
 

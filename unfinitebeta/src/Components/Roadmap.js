@@ -34,6 +34,7 @@ function Roadmap() {
     const [completion, setCompletion] = useState([null]);
     const [loading, setLoading] = useState(false);
     const [tracking, setTracking] = useState(false);
+    const [twothirdHeight, setTwothirdHeight] = useState('100vh');
 
     useEffect(() => {
 
@@ -46,6 +47,14 @@ function Roadmap() {
       };
     }, [userstatus]);
 
+    useEffect(() => {
+
+      if (searchresults.length !== 0) {
+        setTwothirdHeight('100%');
+      } else {
+        setTwothirdHeight('100vh');
+      }
+    }, [searchresults]);
 
     useEffect(() => {
 
@@ -223,16 +232,16 @@ function Roadmap() {
                     {roadmaprender}
                   </div>
 
-                  <div className='feedback-container'>
-                    <FeedbackBox query={query} queryid={roadmapid}/>
-                  </div>
+                  {/* <div className='feedback-container'> */}
+                    <FeedbackBox query={query} queryid={roadmapid} initialfeedbackstate={true}/>
+                  {/* </div> */}
                 </div>
 
                 {/* <div className='onethird'>
                   <h1>Questions</h1>
                 </div> */}
 
-                <div className='twothird'>
+                <div className='twothird' style={{ height: twothirdHeight }}>
                   <h1 className='heading'>LEARNING RESOURCES</h1>
 
                   <div className='searchresults'>

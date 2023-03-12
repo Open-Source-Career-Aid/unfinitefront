@@ -3,7 +3,9 @@ import { useState , useEffect } from "react";
 import "../css/FeedbackBox.css";
 import sendFeedback from "../Functions/sendFeedback";
 
-const FeedbackBox = ( { query , queryid } ) => {
+const FeedbackBox = ( { query , queryid , initialfeedbackstate} ) => {
+
+    const [isOpen, setIsOpen] = useState(initialfeedbackstate);
 
     const [formdata, setFormdata] = useState({
         feedback: "",
@@ -48,22 +50,41 @@ const FeedbackBox = ( { query , queryid } ) => {
           });
         }
       };
+
+    const handleClose = () => {
+        setIsOpen(false);
+    }
       
-      
+    const handleOpen = () => {
+        setIsOpen(true);
+    }
 
     return (
 
     <>
         <form onSubmit={handleSubmit} method="POST">
-            <label for="feedback-input">Feedback/Suggestions/Requests:</label>
-            <textarea type='text' name="feedback" value={formdata.feedback} onChange={handleChange} required></textarea>
-            <div className="feedback-box-last-row">
-                <div class="checkbox-container">
+          {isOpen ?
+          <>
+          <div className='feedback-container'>
+          <div className="cross" onClick={handleClose}>x</div>
+          <div className="feedback-label">
+            <label for="feedback-input">Help us improve!</label>
+          </div>
+          <p>Please leave any feedback or suggestions.</p>
+          <textarea type='text' name="feedback" value={formdata.feedback} onChange={handleChange} required></textarea>
+          <div className="feedback-box-last-row">
+              <div class="checkbox-container">
                 <input type="checkbox" id="queryfeedback" name="queryfeedback" value={true} onChange={handleChange} />
                 <label for="queryfeedback"> feedback related to "{ query }"?</label>
-                </div>
-                <button type="submit">Submit</button>
-            </div>
+              </div>
+              <button type="submit">Submit</button>
+          </div> 
+          </div>
+          </> : 
+          <>
+          <div className="feedback-button-container" onClick={handleOpen}>
+          </div>
+          </>}
         </form>
     </>
 

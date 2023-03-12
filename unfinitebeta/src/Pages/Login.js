@@ -9,6 +9,8 @@ import Navbar from "../Components/Navbar";
 import { Link } from "react-router-dom";
 import getCSRF from "../Functions/getCSRF";
 import { API_URL } from "../API_URL";
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-8YXPLS55QD');
 
 // a form that takes in email and password, stores it in a constant, and then sends it to the backend
 
@@ -45,6 +47,10 @@ function Login() {
 
     const navigate = useNavigate();
     const [userstatus, setUserstatus] = useState(false);
+
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname + window.location.search);
+      }, []);
 
     useEffect(() => {
         console.log("Login page loaded");
