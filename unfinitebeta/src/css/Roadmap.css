@@ -1,6 +1,6 @@
 body .bodyroadmap {
-  background-color: #f1f1f1;
-  height: 100vh;
+  background-color: #ffffff;
+  /* height: 100vh; */
 }
 
 /* Style for the overall container */
@@ -8,7 +8,7 @@ body .bodyroadmap {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: #f1f1f1;
+  /* background-color: #f1f1f1; */
   height: 100%;
   overflow: scroll;
   width: 100%;
@@ -17,26 +17,27 @@ body .bodyroadmap {
 /* Style for the left side containing the list */
 .onethird {
   width: 33.33%;
-  margin-left: 3em;
-  border-right-style: solid;
-  border-color: #c7c7c7;
+  padding-left: 3em;
   justify-items: center;
+  border: none;
+  background-color: white;
+  height: 100%;
 }
 
 .onethird .queryDisplay {
-  font-size: 1.0em;
+  font-size: 1.5em;
   text-align: left;
-  margin-left: 5px;
-  margin-top: 50px;
+  margin-left: 50px;
   color: #000000;
 }
 
 .twothird {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 66.66%;
-  margin-left: 3em;
-  /* border-right-style: solid; */
-  justify-items: center;
-}
+  background-color: #F9F9F9;
+  }
 
 .questions {
   width: 33.33%;
@@ -46,7 +47,16 @@ body .bodyroadmap {
 }
 
 /* Style for the title */
-h1 {
+.onethird .heading {
+  font-size: 1.2em;
+  text-align: left;
+  margin-left: 50px;
+  margin-top: 50px;
+  color: #666666;
+}
+
+/* Style for the title */
+.twothird .heading {
   font-size: 1.2em;
   text-align: left;
   margin-left: 50px;
@@ -83,16 +93,12 @@ li {
 .searchcard {
   display: flex;
   flex-direction: column;
-  /* margin-bottom: -10px; */
-  /* margin-top: -10px; */
-  margin-left: 40px;
-  /* padding: 10px; */
-  /* background-color: darkgray; */
-  width: 80%;
+  width: 100%;
   font-size: larger;
-  border: 1px solid #808080;
+  border: 1px solid #C7C7C7;
   margin: 15px;
   border-radius: 10px;
+  background-color: #FFFFFF;
 }
 
 .topics {
@@ -109,7 +115,7 @@ li {
   margin-left: 20px;
   margin-top: 5px;
   margin-bottom: 100px;
-  border-left: ;
+  width: 80%;
 }
 
 .topics a {
@@ -200,7 +206,8 @@ li {
   /* margin-left: 50px;
   margin-top: 50px; */
   color: #556D8F;
-  text-overflow: clip;
+  /* text-overflow: clip; */
+  margin: 0;
 }
 
 .searchcard .card-text {
@@ -212,7 +219,8 @@ li {
   white-space: nowrap; /* Prevents the text from wrapping */
   overflow: hidden; /* Hides the overflowing text */
   text-overflow: ellipsis; /* Adds the "..." at the end */
-  max-width: 250px;
+  max-width: 450px;
+  margin: 0;
 }
 
 .like-dislike-container {
@@ -229,7 +237,11 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin-left: 10px;
+  padding: 15px;
+  padding-top: 25px;
+  padding-bottom: 50px;
 }
 
 /* unselected state */
@@ -299,4 +311,23 @@ background-image: url('../../public/assets/Liked.png');
   background-image: url('../../public/assets/Disliked.png');
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.trackprogress {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10%;
+}
+
+.trackprogress .trackprogressbutton {
+  height: 40px;
+  padding: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 20px;
+  border: none;
+  background-color: #309565;
+  color: white;
 }

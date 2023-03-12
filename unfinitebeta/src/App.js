@@ -9,6 +9,7 @@ import SearchPage from './Pages/SearchPage';
 // import Test from './test';
 import Navbar from './Components/Navbar';
 import Roadmap from './Components/Roadmap';
+import TrackingPage from './Pages/TrackingPage';
 import './css/App.css';
 
 // import react-dom-router
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/search" element={<SearchPage />} />
             {/* <Route path="/test" element={<Test />} /> */}
             <Route path="/navbar" element={<Navbar />} />
+            <Route path="/tracking" element={<TrackingPage />} />
           </Routes>
         </div>
 

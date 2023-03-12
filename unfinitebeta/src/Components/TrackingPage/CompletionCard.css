@@ -1,0 +1,81 @@
+.completioncard {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: ; */
+    width: 80%;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); */
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    border: 1px solid #C7C7C7;
+}
+
+.completioncard h1 {
+    font-size: 1.2em;
+    text-align: left;
+    margin-left: 50px;
+    /* margin-top: 50px; */
+    color: #000000;
+}
+
+.completioncard .heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.completioncard .inprogressicon {
+    background-image: url(../../../public/assets/inprogressicon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
+.completioncard .completioncardbody {
+    display: flex;
+    flex-direction: row;
+    /* align-items: space-between; */
+    justify-content: space-between;
+    /* width: 100%; */
+    /* margin-left: 3em; */
+    margin-left: 50px;
+    margin-right: 50px;
+    /* background-color: #F9F9F9; */
+    }
+
+.completioncard .completioncardbody .completioncardbodyleft {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #556D8F;
+    font-size: larger;
+    /* justify-content: space-between; */
+    /* width: 100%; */
+    /* margin-left: 3em; */
+    /* margin-left: 50px; */
+    /* margin-right: 50px; */
+    /* background-color: #F9F9F9; */
+    }
+
+.completioncard .completioncardbody .completioncardbodyleft:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    }
+.completioncard .completioncardbody .completioncardbodyright {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* justify-content: space-between; */
+    /* width: 100%; */
+    /* margin-left: 3em; */
+    /* margin-left: 50px; */
+    /* margin-right: 50px; */
+    /* background-color: #F9F9F9; */
+    }

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../css/Navbar.css";
 import logout from "../Functions/userLogout";
 import { useNavigate } from "react-router-dom";
+import AccountPopup from "./AccountPopup";
 
 const Navbar = ({page}) => {
 
@@ -24,9 +25,18 @@ const Navbar = ({page}) => {
                 <span className="navbar-toggler-icon"></span>
             </button> */}
 
-            <Link className="nav-link" onClick={handleLogout} to="/signup">
-            Logout
-            </Link>
+            {/* <div className="navbar-profilecircle"></div> */}
+
+            {/* <AccountPopup /> */}
+
+            <div>
+                <Link className="nav-link" to="/tracking">
+                    Track your learning
+                </Link>
+                <Link className="nav-link" onClick={handleLogout} to="/signup">
+                    Logout
+                </Link>
+            </div> 
         </nav>
     );
     }

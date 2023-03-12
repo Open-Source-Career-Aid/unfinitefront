@@ -33,6 +33,7 @@ function Roadmap() {
     const [thumbs, setThumbs] = useState(null);
     const [completion, setCompletion] = useState([null]);
     const [loading, setLoading] = useState(false);
+    const [tracking, setTracking] = useState(false);
 
     useEffect(() => {
 
@@ -191,7 +192,9 @@ function Roadmap() {
       );
     });
 
-
+    const handleTrackingbutton = async () => {
+      setTracking(true);
+    }
     
     // const searchresultsrender = searchresults.map((str, index) => (
     //   <a key={str}> {str} </a>
@@ -206,7 +209,15 @@ function Roadmap() {
                 {/* <getRoadmap query={query}/> */}
 
                 <div className='onethird'>
-                  <h1>ROADMAP <i className='queryDisplay'>on "{query}"</i></h1>
+                  <h1 className='heading'>ROADMAP ON</h1>
+                  <div className='trackprogress'>
+                    <h1 className='queryDisplay'>{query}</h1>
+                    {!tracking ? 
+                    <button className='trackprogressbutton' onClick={handleTrackingbutton}>Track progress</button> :
+                    <p>tracking...</p>
+                    }
+                    
+                  </div>
 
                   <div class='topicscard'>
                     {roadmaprender}
@@ -222,7 +233,7 @@ function Roadmap() {
                 </div> */}
 
                 <div className='twothird'>
-                  <h1>LEARNING RESOURCES</h1>
+                  <h1 className='heading'>LEARNING RESOURCES</h1>
 
                   <div className='searchresults'>
                     {loading ? <Loading /> : null}

@@ -1,0 +1,34 @@
+.progress {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    /* background-color: #f2f2f2; */
+    /* border-radius: 5px; */
+    width: 400px;
+  }
+  
+  .progress-percent {
+    margin-left: 10px;
+    font-weight: bold;
+    width: 20%;
+    color: #32BCA3;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    display: flex;
+    width: 80%;
+  }
+  
+  .progress-complete {
+    height: 100%;
+    background-color: #32BCA3;
+    /* border-radius: 5px 0 0 5px; */
+  }
+  
+  .progress-incomplete {
+    height: 100%;
+    background-color: #E3E3E3;
+    /* border-radius: 0 5px 5px 0; */
+  }
+  

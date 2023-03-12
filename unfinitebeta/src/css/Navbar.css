@@ -30,21 +30,16 @@
   background-color: transparent;
 }
 
-.navbar-right {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+.navbar-profilecircle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
   margin-right: 60px;
-}
-  
-.navbar-right a {
-  margin-left: 20px;
-  color: #333;
-  text-decoration: none;
-}
-  
-.navbar-right a:hover {
-  text-decoration: underline;
+  background-image: url(../../public/assets/profilecircle.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .nav-link {
