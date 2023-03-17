@@ -8,12 +8,13 @@ async function trackCompletion(roadmapid) {
   await getCSRF();
   const csrftoken = getCookie("csrftoken");
 
-  const response = await fetch(`${API_URL}completion/track/?id=${roadmapid}`, {
-    method: "GET",
+  const response = await fetch(`${API_URL}completion/track/`, {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       "X-CSRFToken": csrftoken,
     },
+	body: JSON.stringify({id: roadmapid}),
     credentials: "include",
     crossDomain: true,
   });
