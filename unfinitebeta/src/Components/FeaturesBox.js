@@ -13,7 +13,7 @@ const FeaturesBox = () => {
                 <p className="feature-name">Customise your learning pathway</p>
                 <p className="feature-description">PERSONALISATION LEVEL 1 - On-demand course generation.</p>
                 <p className="feature-name">Relevant resources</p>
-                <p className="feature-description">No-more time wasted in meta-learning. Start-learning with search results opeimzed for online-education.</p>
+                <p className="feature-description">No-more time wasted in meta-learning. Start-learning with search results optimized for online-education.</p>
             </div>
             <div className="feature-box">
                 <h3>Upcoming Features</h3>
