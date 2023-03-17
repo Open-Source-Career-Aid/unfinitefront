@@ -9,7 +9,6 @@
     /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); */
     padding: 20px;
     margin: 20px;
-    text-align: center;
     border: 1px solid #C7C7C7;
 }
 
@@ -40,9 +39,9 @@
 
 .completioncard .completioncardbody {
     display: flex;
-    flex-direction: row;
-    /* align-items: space-between; */
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: align;
     /* width: 100%; */
     /* margin-left: 3em; */
     margin-left: 50px;
@@ -50,7 +49,17 @@
     /* background-color: #F9F9F9; */
     }
 
-.completioncard .completioncardbody .completioncardbodyleft {
+.completioncard .completioncardbody .completioncardbodyitem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    }
+
+.completioncard .completioncardbody .completioncardbodyitem .completioncardbodyleft {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -64,11 +73,11 @@
     /* background-color: #F9F9F9; */
     }
 
-.completioncard .completioncardbody .completioncardbodyleft:hover {
+.completioncard .completioncardbody .completioncardbodyitem .completioncardbodyleft:hover {
     cursor: pointer;
     text-decoration: underline;
     }
-.completioncard .completioncardbody .completioncardbodyright {
+.completioncard .completioncardbody .completioncardbodyitem .completioncardbodyright {
     display: flex;
     flex-direction: column;
     align-items: flex-end;

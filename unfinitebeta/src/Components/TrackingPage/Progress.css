@@ -1,6 +1,8 @@
 .progress {
     height: 20px;
     display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
     /* background-color: #f2f2f2; */
     /* border-radius: 5px; */
@@ -17,7 +19,7 @@
   .progress-bar {
     height: 100%;
     display: flex;
-    width: 80%;
+    width: 60%;
   }
   
   .progress-complete {

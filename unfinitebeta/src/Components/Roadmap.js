@@ -17,6 +17,7 @@ import updateTopicCompletion from '../Functions/updateTopicCompletion';
 import SearchRender from './SearchRender';
 import Loading from './Loading';
 import { API_URL } from '../API_URL';
+import trackCompletion from '../Functions/trackCompletion';
 
 
 function Roadmap() {
@@ -65,7 +66,9 @@ function Roadmap() {
         setRoadmapid(data[0]);
         setRoadmap(data[1]);
         setTopicid(null);
-        setCompletion(JSON.parse(completionresponse));
+        setCompletion(JSON.parse(completionresponse[1]));
+        setTracking(JSON.parse(completionresponse[0]));
+        // console.log('completion:', completionresponse);
       };
       getRoadmapData();
     }, [query]);
@@ -216,7 +219,12 @@ function Roadmap() {
     });
 
     const handleTrackingbutton = async () => {
-      setTracking(true);
+      const response = await trackCompletion(roadmapid);
+      console.log('response:', response);
+
+      if (response.status === 200) {
+        setTracking(true);
+      }
     }
     
     // const searchresultsrender = searchresults.map((str, index) => (

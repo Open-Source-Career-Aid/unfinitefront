@@ -19,7 +19,6 @@ body .bodytrackingpage {
     display: flex;
     flex-direction: column;
     height: 100%;
-    overflow: scroll;
     width: 100%;
   }
 

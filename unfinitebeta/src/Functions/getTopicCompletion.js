@@ -9,7 +9,7 @@ async function getTopicCompletion({ queryid }) {
 
     await getCSRF();
     const csrfToken = getCookie('csrftoken');
-    console.log(csrfToken);
+    // console.log(csrfToken);
 
     const response = await fetch(`${API_URL}completion/?id=${queryid}`, {
         method: 'GET',
@@ -22,9 +22,10 @@ async function getTopicCompletion({ queryid }) {
     });
 
     const data = await response.json();
-    console.log(data);
+    console.log(data.response);
 
-    return JSON.parse(data.completion);
+    // return (JSON.parse(data.completion), JSON.parse(data.track));
+    return [data.track, JSON.parse(data.completion)];
 
 }
 

@@ -27,11 +27,7 @@ function TrackingPage() {
 
             <div className='threefourth'>
             <h1 >LEARNING HISTORY</h1>
-              <CompletionCard  topic='sometuing' completion={[1, 1, 1, 0]}/>
-              <CompletionCard  topic='sometuing' completion={[1, 1, 1, 0, 0]}/>
-              <CompletionCard  topic='sometuing' completion={[1, 1, 1, 0, 0, 0, 1]}/>
-              <CompletionCard  topic='sometuing' completion={[1, 1, 1, 0, 0, 0, 0, 0, 0, 1]}/>
-              <CompletionCard  topic='sometuing' completion={[1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0]}/>
+              <CompletionCard />
             </div>
         </div>
     </div>
