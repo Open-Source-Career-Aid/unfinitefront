@@ -1,0 +1,51 @@
+.feature-updates {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.feature-updates .feature-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 28%;
+    max-width: 28%;
+    padding: 20px;
+    margin: 10px;
+    background-color: #00000075;
+    color: white;
+    border-radius: 10px;
+}
+
+.feature-updates .feature-box .feature-name {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    align-self: flex-start; /* change from "start" to "flex-start" */
+    text-align: left; /* new property to align the text to the left */
+    color: #FFFFFF;
+}
+
+.feature-updates .feature-box .feature-description {
+    margin: 0;
+    align-self: flex-start; /* change from "start" to "flex-start" */
+    text-align: left; /* new property to align the text to the left */
+    color: #FFFFFF80;
+    margin-bottom: 10px;
+}
+
+.feature-updates .feature-box h3 {
+    align-self: flex-start; /* change from "start" to "flex-start" */
+    text-align: left; /* new property to align the text to the left */
+    margin-bottom: 5px;
+}
+
+.feature-box .feature-date {
+    align-self: flex-start;
+    font-size: 0.8em;
+    color: #FFFFFF70;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 25px;
+}
