@@ -1,13 +1,23 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../css/AccountPopup.css";
+import logout from "../Functions/userLogout";
+import { useNavigate } from "react-router-dom";
 
-function AccountPopup() {
-  const [isOpen, setIsOpen] = useState(false);
+function AccountPopup({ toggleboolean }) {
+
+  const navigate = useNavigate();
 
   const accountPopupRef = useRef(null);
 
-  const toggleBox = () => {
-    setIsOpen(!isOpen);
+  const handleLogout = (event) => {
+    event.preventDefault();
+    logout();
+    navigate('/login');
+  };
+
+  const handleAccount = (event) => {
+    event.preventDefault();
+    navigate('/tracking');
   };
 
 //   useEffect(() => {
@@ -26,12 +36,11 @@ function AccountPopup() {
 
   return (
     <div className="account-popup">
-      <div className="account-icon" onClick={toggleBox}></div>
-      {isOpen && (
+      {toggleboolean && (
         <div className="account-popup-overlay">
           <div className="account-popup-box" ref={accountPopupRef}>
-            <button className="account-btn">Account</button>
-            <button className="logout-btn">Logout</button>
+            <button className="account-btn" onClick={handleAccount}>Account</button>
+            <button className="logout-btn" onClick={handleLogout}>Logout</button>
           </div>
         </div>
       )}

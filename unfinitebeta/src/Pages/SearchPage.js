@@ -61,11 +61,11 @@ function SearchBar(props) {
                         {/* <button type="submit"><Link to={{ pathname: '/results', search: `?query=${query}` }}>Search</Link></button> */}
                     </div>
                 </form>
-                <div className='example-searches'>
-                  <a className='example-search' href='/results?query=backend%20web-development%20with%20python'>backend web-development with python</a>
-                  <a className='example-search' href='/results?query=chaos%20theory'>chaos theory</a>
-                  <a className='example-search' href='/results?query=elements%20of%20an%20entrepreneurial%20ecosystem'>elements of an entrepreneurial ecosystem</a>
-                </div>
+              </div>
+              <div className='example-searches'>
+                <a className='example-search' href='/results?query=backend%20web-development%20with%20python'>backend web-development with python</a>
+                <a className='example-search' href='/results?query=chaos%20theory'>chaos theory</a>
+                <a className='example-search' href='/results?query=elements%20of%20an%20entrepreneurial%20ecosystem'>elements of an entrepreneurial ecosystem</a>
               </div>
             </div>
         </div>

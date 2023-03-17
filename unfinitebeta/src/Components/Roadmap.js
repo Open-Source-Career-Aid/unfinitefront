@@ -35,6 +35,7 @@ function Roadmap() {
     const [loading, setLoading] = useState(false);
     const [tracking, setTracking] = useState(false);
     const [twothirdHeight, setTwothirdHeight] = useState('100vh');
+    const [serpindex, setSerpindex] = useState(null);
 
     useEffect(() => {
 
@@ -105,23 +106,36 @@ function Roadmap() {
       console.log('topic', index, "roadmap", roadmapid);
     };
 
+    useEffect(() => {
+
+      if (serpindex!==null && thumbs!==null) {
+
+        const queryid = roadmapid;
+        const topicindex = topicid;
+        console.log('serpindex:', serpindex, 'thumbs:', thumbs);
+        const response = sendFeedbackSerp({queryid, topicindex, serpindex, thumbs});
+        console.log('response:', response);
+        setSerpindex(null);
+        setThumbs(null);
+
+      }
+
+    }, [serpindex, thumbs]);
+
+
     const handleLikeDislike = async (event, index) => {
       const value = event.target.value;
-      const queryid = roadmapid;
-      const topicindex = topicid;
-      const serpindex = index;
 
       if (value === 'like') {
         setThumbs(1);
+        setSerpindex(index);
         console.log('thumbs:', thumbs);
       } else {
         setThumbs(0);
+        setSerpindex(index);
         console.log('thumbs:', thumbs);
       }
 
-      console.log('outside the function:', queryid, topicindex, serpindex, thumbs);
-
-      const response = await sendFeedbackSerp({queryid, topicindex, serpindex, thumbs});
     };
 
     // const roadmaprender = roadmap.map((str, index) => (

@@ -1,3 +1,13 @@
+.account-popup {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: right;
+    /* position: relative; */
+    /* margin-right: 40px; */
+    width: 100%;
+  }
+
 .account-popup .account-icon {
     border-radius: 50%;
     width: 40px;
@@ -19,24 +29,48 @@
 .account-popup .account-popup-box {
     display: flex;
     flex-direction: column;
+    justify-content: right;
     right: 0;
     top: 50px;
     background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 5px;
+    padding: 20px;
     margin-right: 40px;
     font-size: 14px;
     z-index: 1;
+    width: 10%;
+  }
+
+  .account-popup .account-popup-box .account-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .account-popup .account-popup-box .logout-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .account-popup .account-popup-box button:hover {
+    text-decoration: underline;
   }
 
   .account-popup-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: flex-end;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    /* background-color: rgba(0, 0, 0, 0.5); */
     z-index: 1;
   }
   
