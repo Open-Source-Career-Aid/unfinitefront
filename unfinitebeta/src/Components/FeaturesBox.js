@@ -17,9 +17,9 @@ const FeaturesBox = () => {
             </div>
             <div className="feature-box">
                 <h3>Upcoming Features</h3>
-                <p className="feature-date">Updated: 17th March, 2023</p>
-                <p className="feature-name">Roadmap Customisation</p>
-                <p className="feature-description">Interact with your roadmaps, and learn only what you want to.</p>
+                <p className="feature-date">Updated: 18th March, 2023</p>
+                <p className="feature-name">Relevant Questions</p>
+                <p className="feature-description">Q/A based guided learning for you to learn effectively and in a guided manner.</p>
                 <p className="feature-name">AI summaries with citations</p>
                 <p className="feature-description">Know what to expect before you click on a search result.</p>
                 <p className="feature-name">Resource Filtering</p>
