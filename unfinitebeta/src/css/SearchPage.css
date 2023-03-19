@@ -44,7 +44,7 @@ body .bodysearchpage {
 .SearchPageContent .logocenter {
   margin: 0 auto;
   font-size: 4rem;
-  margin-bottom: 50px; 
+  margin-bottom: 15px; 
   text-align: center;
   color: white;
   font-family: "Montserrat";
@@ -109,6 +109,7 @@ body .bodysearchpage {
 }
 
 .SearchPageContent .example-searches {
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
 }

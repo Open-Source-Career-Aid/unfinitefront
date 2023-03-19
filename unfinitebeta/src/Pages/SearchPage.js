@@ -7,6 +7,7 @@ import getCSRF from "../Functions/getCSRF";
 import logout from '../Functions/userLogout';
 import Navbar from '../Components/Navbar';
 import { Link } from 'react-router-dom';
+import FeaturesBox from '../Components/FeaturesBox';
 import ReactGA from 'react-ga';
 ReactGA.initialize('G-8YXPLS55QD');
 
@@ -67,6 +68,7 @@ function SearchBar(props) {
                 <a className='example-search' href='/results?query=chaos%20theory'>chaos theory</a>
                 <a className='example-search' href='/results?query=elements%20of%20an%20entrepreneurial%20ecosystem'>elements of an entrepreneurial ecosystem</a>
               </div>
+              <FeaturesBox />
             </div>
         </div>
 
