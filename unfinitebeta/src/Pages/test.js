@@ -1,45 +1,48 @@
 import React from 'react';
-import getRoadmap from '../Functions/getRoadmap';
-import { API_URL } from '../API_URL';
+import { useState , useEffect } from 'react';
+import getQuestions from '../Functions/getQuestions';
+import getSummary from '../Functions/getSummary';
 
-async function Test() {
+const Test = () => {
 
-    const response = await getRoadmap('python for web development');
-    console.log(response);
+    const [questions, setQuestions] = useState([]);
+    const [summary, setSummary] = useState([]);
+
+    useEffect(() => {
+        console.log("thisone", questions);
+    }, [questions]);
+
+    useEffect(() => {
+        console.log("thisone", summary);
+    }, [summary]);
+
+    useEffect(() => {
+
+        const getQuestionsData = async () => {
+            const data = await getQuestions(1, 1);
+            setQuestions(data);
+        };
+
+        getQuestionsData();
+
+    }, []);
+
+    useEffect(() => {
+
+        const getSummaryData = async () => {
+            const data = await getSummary(1, 1, 1);
+            setQuestions(data);
+        };
+
+        getSummaryData();
+
+    }, []);
 
     return (
         <div>
-            <p>asdsad</p>
+            <h1>Test</h1>
         </div>
     );
-
 }
 
 export default Test;
-// function getCookieValue(name) {
-//     const cookies = document.cookie.split('; ');
-//     console.log(document.cookie);
-//     for (let i = 0; i < cookies.length; i++) {
-//       const cookie = cookies[i];
-//       const [cookieName, cookieValue] = cookie.split('=');
-//       if (cookieName === name) {
-//         console.log(`Found cookie ${name} with value ${cookieValue}`);
-//         return cookieValue;
-//       }
-//     }
-//     console.log(`Could not find cookie ${name}`);
-//     return '';
-//   }  
-
-// const Test = () => {
-
-//   getCookieValue("csrftoken");
-
-//   return (
-//     <div>
-//       <p>asdsad</p>
-//     </div>
-//   );
-// }
-
-// export default Test;
