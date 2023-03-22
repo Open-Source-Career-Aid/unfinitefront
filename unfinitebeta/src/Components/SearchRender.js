@@ -1,29 +1,11 @@
 import React from 'react';
+import SearchResultCard from './SearchResultsCard';
 
 const SearchRender = ({ searchResults, handleLikeDislike }) => {
   return (
     <div>
       {searchResults.map(([link, title], index) => (
-        <div className="searchcard" key={link}>
-          <a href={link} target="_blank" rel="noopener noreferrer">
-            <div className='search-card-content'>
-              <div className="card-body">
-                <h5 className="card-title">{title}</h5>
-                <p className="card-text">{link}</p>
-              </div>
-              <div className='like-dislike-container'>
-                <label className="like-icon">
-                  <input type="radio" name={`like-dislike-${index}`} value='like' onClick={(event) => handleLikeDislike(event, index)}/>
-                  {/* <span className="like-icon"></span> */}
-                </label>
-                <label className="dislike-icon">
-                  <input type="radio" name={`like-dislike-${index}`} value='dislike' onClick={(event) => handleLikeDislike(event, index)}/>
-                  {/* <span></span> */}
-                </label>
-              </div>
-            </div>
-          </a>
-        </div>
+        <SearchResultCard link={link} title={title} index={index} handleLikeDislike={handleLikeDislike} />
       ))}
     </div>
   );
