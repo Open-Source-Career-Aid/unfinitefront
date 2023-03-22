@@ -4,15 +4,18 @@ import getRoadmap from '../Functions/getRoadmap';
 import getTopicCompletion from '../Functions/getTopicCompletion';
 import trackCompletion from '../Functions/trackCompletion';
 import updateTopicCompletion from '../Functions/updateTopicCompletion';
+import Loading from './Loading';
 
 const RoadmapContainer = (props) => {
 
+    const [isLoading, setIsLoading] = useState(true);
     const { query , setQuery , roadmapid , setRoadmapid , roadmap , setRoadmap , topicid , setTopicid , completion ,
     setCompletion , tracking , setTracking} = props;
 
     useEffect(() => {
 
         const getRoadmapData = async () => {
+          setIsLoading(true);
           const data = await getRoadmap(query);
           const completionresponse = await getTopicCompletion({queryid: data[0]});
           setRoadmapid(data[0]);
@@ -20,6 +23,7 @@ const RoadmapContainer = (props) => {
           setTopicid(null);
           setCompletion(JSON.parse(completionresponse[1]));
           setTracking(JSON.parse(completionresponse[0]));
+          setIsLoading(false);
           // console.log('completion:', completionresponse);
         };
         getRoadmapData();
@@ -66,7 +70,7 @@ const RoadmapContainer = (props) => {
        );
      });
 
-        return (
+        return ( isLoading ? <Loading /> :
             <>
                 <div className='trackprogress'>
                     <h1 className='queryDisplay'>{query}</h1>
