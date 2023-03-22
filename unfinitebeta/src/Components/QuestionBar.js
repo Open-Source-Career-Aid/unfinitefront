@@ -13,7 +13,7 @@ const QuestionBar = ({ question, queryid, topicid, questionid }) => {
     const [summarycalled, setSummaryCalled] = useState(false);
     const [text, setText] = useState("");
     const [references, setReferences] = useState([]);
-    const [summaryurl , setSummaryUrl] = useState(null);
+    // const [summaryurl , setSummaryUrl] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -27,10 +27,11 @@ const QuestionBar = ({ question, queryid, topicid, questionid }) => {
         const getSummaryData = async () => {
             setIsLoading(true);
             const data = await getSummary(queryid, topicid, questionid);
+            console.log(data[0], data[1]);
             setSummary(data[0]);
             // console.log(data[1], Array.isArray(data[1]));
             setReferences(data[1]);
-            setSummaryUrl(data[2]);
+            // setSummaryUrl(data[2]);
             setIsLoading(false);
         }
         
@@ -59,7 +60,7 @@ const QuestionBar = ({ question, queryid, topicid, questionid }) => {
             </div>
             <div className="reference-container">
                 {references.map((reference, index) => (
-                    <ReferencePod key={index} link={reference} isSummaryurl={summaryurl === index} />
+                    <ReferencePod key={index} link={reference} isSummaryurl={false} />
                 ))}
             </div>
             </>
