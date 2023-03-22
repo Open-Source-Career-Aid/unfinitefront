@@ -3,7 +3,7 @@ import getCookie from "./getCookie";
 import getCSRF from "./getCSRF";
 import { API_URL } from "../API_URL";
 
-async function getSearchresults(id, topicid, questionid) {
+async function getSummary(id, topicid, questionid) {
 
     await getCSRF();
     const csrfToken = getCookie('csrftoken');
@@ -27,7 +27,7 @@ async function getSearchresults(id, topicid, questionid) {
     const data = await response.json();
     console.log(data);
   
-    return data;
+    return [data.summary, JSON.parse(data.urls), JSON.parse(data.urlidx)];
   }
   
-  export default getSearchresults;
+  export default getSummary;

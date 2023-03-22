@@ -24,9 +24,9 @@ async function getSearchresults(id, topicid) {
     });
   
     const data = await response.json();
-    console.log(data);
+    console.log(data.questions);
   
-    return data;
+    return JSON.parse(data.questions);
   }
   
   export default getSearchresults;
