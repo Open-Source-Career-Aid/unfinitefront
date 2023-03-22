@@ -4,6 +4,7 @@ import "../css/QuestionBar.css";
 import ReferencePod from "./ReferencePod";
 import TypingText from "./TypingText";
 import getSummary from "../Functions/getSummary";
+import Loading from "./Loading";
 
 const QuestionBar = ({ question, queryid, topicid, questionid }) => {
 
@@ -13,6 +14,7 @@ const QuestionBar = ({ question, queryid, topicid, questionid }) => {
     const [text, setText] = useState("");
     const [references, setReferences] = useState([]);
     const [summaryurl , setSummaryUrl] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
 
@@ -23,11 +25,13 @@ const QuestionBar = ({ question, queryid, topicid, questionid }) => {
     const toggle = () => {
 
         const getSummaryData = async () => {
+            setIsLoading(true);
             const data = await getSummary(queryid, topicid, questionid);
             setSummary(data[0]);
             // console.log(data[1], Array.isArray(data[1]));
             setReferences(data[1]);
             setSummaryUrl(data[2]);
+            setIsLoading(false);
         }
         
         if (!isopen && !summarycalled) {
@@ -46,6 +50,8 @@ const QuestionBar = ({ question, queryid, topicid, questionid }) => {
             
             {isopen && 
             <>
+            { isLoading ? <Loading /> :
+            <>
             <div className="answer-container">
                 <p className="answer">
                     <TypingText text={text} typingeffect={setSummaryCalled}/>
@@ -56,6 +62,8 @@ const QuestionBar = ({ question, queryid, topicid, questionid }) => {
                     <ReferencePod key={index} link={reference} isSummaryurl={summaryurl === index} />
                 ))}
             </div>
+            </>
+}
             </>}
             
         </div>
