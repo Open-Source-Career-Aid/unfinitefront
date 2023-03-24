@@ -1,7 +1,6 @@
 import React from "react";
 import { useState , useEffect } from "react";
 import getQuestions from "../Functions/getQuestions";
-import getSummary from "../Functions/getSummary";
 import QuestionBar from "../Components/QuestionBar";
 import "../css/QuestionBar.css";
 import Loading from "../Components/Loading";
@@ -14,6 +13,10 @@ const QuestionsContainer = ({ queryid , topicid }) => {
     useEffect(() => {
 
         const getQuestionsData = async () => {
+
+            if (topicid === null || queryid === null) {
+                return;
+            }
             setIsLoading(true);
             const data = await getQuestions(queryid, topicid);
             console.log(data);
@@ -25,7 +28,7 @@ const QuestionsContainer = ({ queryid , topicid }) => {
 
         getQuestionsData();
 
-    }, [topicid]);
+    }, [topicid, queryid]);
 
     return ( isLoading ? <Loading /> :
         <div className="questions-container">

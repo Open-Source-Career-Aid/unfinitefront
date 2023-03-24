@@ -59,9 +59,12 @@ const QuestionBar = ({ question, queryid, topicid, questionid }) => {
                 </p>
             </div>
             <div className="reference-container">
-                {references.map((reference, index) => (
-                    <ReferencePod key={index} link={reference} isSummaryurl={false} />
-                ))}
+                <h1 className="header">References</h1>
+                <div className="references">
+                    {references.map((reference, index) => (
+                        <ReferencePod key={index} link={reference} isSummaryurl={false} index={index}/>
+                    ))}
+                </div>
             </div>
             </>
 }

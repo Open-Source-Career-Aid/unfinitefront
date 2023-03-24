@@ -1,9 +1,10 @@
 .loading {
+  padding-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: left;
-    height: 50vh;
+    height: 50px;
   }
   
   .spinner {
