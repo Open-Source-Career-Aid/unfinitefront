@@ -28,7 +28,6 @@
 }
 
 .question-bar .question {
-    padding-left: 0.5rem;
     font-size: larger;
     font-weight: 800;
     color: #306D95;
@@ -83,4 +82,9 @@
 .reference-key {
     font-size: larger;
     padding-right: 10px;
+}
+
+.answer-container p {
+    width: 100%;
+    white-space: pre-wrap;
 }

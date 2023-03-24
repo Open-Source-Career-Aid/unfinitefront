@@ -10,10 +10,10 @@ const ReferencePod = ({ link , isSummaryurl , index}) => {
         <>
         {isSummaryurl ? 
         <div className='reference-pod-summaryurl'>
-            <p className='reference-url'><span className='reference-key'>{index}</span><a className='reference-pod-link' href={link} target='_blank'>{link}</a></p>
+            <p className='reference-url'><span className='reference-key'>{index+1}</span><a className='reference-pod-link' href={link} target='_blank'>{link}</a></p>
         </div>
         : <div className='reference-pod'>
-            <p className='reference-url'><span className='reference-key'>{index}</span><a className='reference-pod-link' href={link} target='_blank'>{link}</a></p>
+            <p className='reference-url'><span className='reference-key'>{index+1}</span><a className='reference-pod-link' href={link} target='_blank'>{link}</a></p>
         </div>}
         </>
     );
