@@ -1,8 +1,5 @@
 import React from 'react';
 import { useState , useEffect } from 'react';
-import getQuestions from '../Functions/getQuestions';
-import getSummary from '../Functions/getSummary';
-import QuestionsContainer from '../Components/QuestionsContainer';
 
 const Test = () => {
 
@@ -47,6 +44,12 @@ const Test = () => {
     //         <QuestionsContainer queryid={2} topicid={6}/>
     //     </div>
     // );
+
+    return (
+        <div>
+            <h1>Test</h1>
+        </div>
+    );
 }
 
 export default Test;

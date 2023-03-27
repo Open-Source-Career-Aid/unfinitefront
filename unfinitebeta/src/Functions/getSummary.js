@@ -3,7 +3,7 @@ import getCookie from "./getCookie";
 import getCSRF from "./getCSRF";
 import { API_URL } from "../API_URL";
 
-async function getSummary(id, topicid, questionid) {
+async function getSummary(id, topicid, questionid, answertype) {
 
     await getCSRF();
     const csrfToken = getCookie('csrftoken');
@@ -20,6 +20,7 @@ async function getSummary(id, topicid, questionid) {
       body: JSON.stringify({
         id: id,
         topic: topicid,
+        answertype: answertype,
         question: questionid,
       })
     });

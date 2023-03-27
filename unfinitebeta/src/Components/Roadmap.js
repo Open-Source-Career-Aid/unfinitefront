@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import FeedbackBox from './FeedbackBox';
 import QuestionsContainer from './QuestionsContainer';
 import RoadmapContainer from './RoadmapContainer';
+import Button from './Button';
 
 function Roadmap() {
 
@@ -17,25 +18,17 @@ function Roadmap() {
     const [completion, setCompletion] = useState([null]);
     const [tracking, setTracking] = useState(false);
     const [twothirdHeight, setTwothirdHeight] = useState('100vh');
+    const [answertype, setAnswertype] = useState(0);
 
-    // const questionsContainerRef = useRef(null);
+    useEffect(() => {
 
-    // // to set the height of the twothird div to 100vh if the questions container is smaller than the window height
-    // useEffect(() => {
-    //   console.log('questionsContainerRef.current: ', questionsContainerRef.current.offsetHeight);
-    //   if (questionsContainerRef.current) {
-    //     const containerHeight = questionsContainerRef.current.offsetHeight;
-    //     const windowHeight = window.innerHeight;
-    //     if (containerHeight > windowHeight) {
-    //       console.log('containerHeight: ', containerHeight);
-    //       setTwothirdHeight(`${containerHeight}px`);
-    //     }
-    //     else {
-    //       console.log('windowHeight: ', windowHeight);
-    //       setTwothirdHeight(`${windowHeight}px`);
-    //     }
-    //   }
-    // }, [questionsContainerRef]);
+      console.log('answertype:', answertype);
+
+    }, [answertype]);
+
+    const handleAnswertype = (e) => {
+      setAnswertype(e.target.value);
+    }
 
     return (
         <>
@@ -54,9 +47,28 @@ function Roadmap() {
                 <div className='twothird' style={{ height: twothirdHeight }}>
                   <h1 className='heading'>WE WILL COVER...</h1>
 
+                  <div className='summary'>
+                    <div className='summary-customisations'>
+                        <div className='summary-text'>
+                          <p>Answer type: </p>
+                        </div>
+                        <div>Quick
+                        <input type='radio' name='answertype' value={1} onClick={handleAnswertype} className='button-answertype'/>
+                        </div>
+                        <div>
+                        Simplified
+                        <input type='radio' name='answertype' value={2} onClick={handleAnswertype} className='button-answertype'/>
+                        </div>
+                        <div>
+                        Detailed
+                        <input type='radio' name='answertype' value={3} onClick={handleAnswertype} className='button-answertype'/>
+                        </div>
+                    </div>
+                  </div>
+
                   {topicid !== null ? (
                   <div style={{ width: '100%' }}>
-                    <QuestionsContainer queryid={roadmapid} topicid={topicid}/>
+                    <QuestionsContainer queryid={roadmapid} topicid={topicid} answertype={answertype}/>
                   </div>) : null}
                   
                 </div>

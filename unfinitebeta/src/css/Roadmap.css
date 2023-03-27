@@ -332,3 +332,25 @@ background-image: url('../../public/assets/Liked.png');
   background-color: #309565;
   color: white;
 }
+
+.summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-customisations {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10%;
+  width: 50%;
+  margin-top: 10px;
+}
+
+.summary-text p {
+  font-size: 1.0em;
+  text-align: left;
+  width: 100px;
+
+}

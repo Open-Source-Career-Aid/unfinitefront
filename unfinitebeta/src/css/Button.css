@@ -1,0 +1,35 @@
+.button-container .button-default {
+    background-color: #fff;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: 0 0.5rem;
+    width: 150px;
+    height: 30px;
+    padding: 5px;
+}
+
+.button-container .button-default:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.button-container .button-answertype {
+    background-color: #fff;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: 0 0.5rem;
+    width: 150px;
+    height: 30px;
+    padding: 5px;
+}
+
+.button-container .button-answertype:hover {
+    background-color: #000;
+    color: #fff;
+}

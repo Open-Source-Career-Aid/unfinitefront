@@ -6,7 +6,7 @@ import TypingText from "./TypingText";
 import getSummary from "../Functions/getSummary";
 import Loading from "./Loading";
 
-const QuestionBar = ({ question, queryid, topicid, questionid }) => {
+const QuestionBar = ({ question, queryid, topicid, questionid , answertype }) => {
 
     const [isopen, setIsOpen] = useState(false);
     const [summary, setSummary] = useState('');
@@ -26,7 +26,7 @@ const QuestionBar = ({ question, queryid, topicid, questionid }) => {
 
         const getSummaryData = async () => {
             setIsLoading(true);
-            const data = await getSummary(queryid, topicid, questionid);
+            const data = await getSummary(queryid, topicid, questionid, answertype);
             console.log(data[0], data[1]);
             setSummary(data[0]);
             // console.log(data[1], Array.isArray(data[1]));

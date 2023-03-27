@@ -10,7 +10,7 @@ const RoadmapContainer = (props) => {
 
     const [isLoading, setIsLoading] = useState(true);
     const { query , setQuery , roadmapid , setRoadmapid , roadmap , setRoadmap , topicid , setTopicid , completion ,
-    setCompletion , tracking , setTracking} = props;
+    setCompletion , tracking , setTracking } = props;
 
     useEffect(() => {
 

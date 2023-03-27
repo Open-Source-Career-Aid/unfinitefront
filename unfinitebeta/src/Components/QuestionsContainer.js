@@ -5,7 +5,7 @@ import QuestionBar from "../Components/QuestionBar";
 import "../css/QuestionBar.css";
 import Loading from "../Components/Loading";
 
-const QuestionsContainer = ({ queryid , topicid }) => {
+const QuestionsContainer = ({ queryid , topicid , answertype }) => {
 
     const [questions, setQuestions] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -33,7 +33,7 @@ const QuestionsContainer = ({ queryid , topicid }) => {
     return ( isLoading ? <Loading /> :
         <div className="questions-container">
             {questions.map((question, index) => (
-                <QuestionBar key={index} question={question} queryid={queryid} topicid={topicid} questionid={index} />
+                <QuestionBar key={index} question={question} queryid={queryid} topicid={topicid} questionid={index} answertype={answertype}/>
             ))}
         </div>
     );
