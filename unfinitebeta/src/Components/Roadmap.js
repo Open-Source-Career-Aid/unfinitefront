@@ -17,7 +17,7 @@ function Roadmap() {
     const [topicid, setTopicid] = useState(null);
     const [completion, setCompletion] = useState([null]);
     const [tracking, setTracking] = useState(false);
-    const [twothirdHeight, setTwothirdHeight] = useState('100vh');
+    // const [twothirdHeight, setTwothirdHeight] = useState('100vh');
     // const [answertype, setAnswertype] = useState(0);
 
     // useEffect(() => {
@@ -44,7 +44,7 @@ function Roadmap() {
                     <FeedbackBox query={query} queryid={roadmapid} initialfeedbackstate={true}/>
                 </div>
 
-                <div className='twothird' style={{ height: twothirdHeight }}>
+                <div className='twothird'>
                   <h1 className='heading'>WE WILL COVER...</h1>
 
                   {/* <div className='summary'>
@@ -70,6 +70,8 @@ function Roadmap() {
                   <div style={{ width: '100%' }}>
                     <QuestionsContainer queryid={roadmapid} topicid={topicid}/>
                   </div>) : null}
+
+                  <div className='footer'></div>
                   
                 </div>
 
