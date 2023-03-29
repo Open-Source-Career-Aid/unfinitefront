@@ -87,4 +87,6 @@
 .answer-container p {
     width: 100%;
     white-space: pre-wrap;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px; /* or any desired font size */
 }
