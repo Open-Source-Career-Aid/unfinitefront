@@ -1,0 +1,43 @@
+.answertypes {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 80%;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .answertypetext p {
+    font-size: 1.0em;
+    text-align: left;
+    width: 100px;
+  }
+
+    /* Style the label */
+    label.optionnames {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 5px 8px;
+    }
+    
+    /* Style the radio button */
+    input[type="radio"].button-answertype {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+    
+    /* Style the radio button when it's checked */
+    input[type="radio"].button-answertype:checked + label.optionnames {
+        background-color: #306D95;
+        color: #fff;
+        border-color: #306D95;
+        border-radius: 8px;
+    }
+  

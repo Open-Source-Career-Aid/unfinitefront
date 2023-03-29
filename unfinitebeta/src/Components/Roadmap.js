@@ -18,17 +18,17 @@ function Roadmap() {
     const [completion, setCompletion] = useState([null]);
     const [tracking, setTracking] = useState(false);
     const [twothirdHeight, setTwothirdHeight] = useState('100vh');
-    const [answertype, setAnswertype] = useState(0);
+    // const [answertype, setAnswertype] = useState(0);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-      console.log('answertype:', answertype);
+    //   console.log('answertype:', answertype);
 
-    }, [answertype]);
+    // }, [answertype]);
 
-    const handleAnswertype = (e) => {
-      setAnswertype(e.target.value);
-    }
+    // const handleAnswertype = (e) => {
+    //   setAnswertype(e.target.value);
+    // }
 
     return (
         <>
@@ -47,7 +47,7 @@ function Roadmap() {
                 <div className='twothird' style={{ height: twothirdHeight }}>
                   <h1 className='heading'>WE WILL COVER...</h1>
 
-                  <div className='summary'>
+                  {/* <div className='summary'>
                     <div className='summary-customisations'>
                         <div className='summary-text'>
                           <p>Answer type: </p>
@@ -56,19 +56,19 @@ function Roadmap() {
                         <input type='radio' name='answertype' value={1} onClick={handleAnswertype} className='button-answertype'/>
                         </div>
                         <div>
-                        Simplified
+                        Detailed
                         <input type='radio' name='answertype' value={2} onClick={handleAnswertype} className='button-answertype'/>
                         </div>
                         <div>
-                        Detailed
+                        Simplified
                         <input type='radio' name='answertype' value={3} onClick={handleAnswertype} className='button-answertype'/>
                         </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {topicid !== null ? (
                   <div style={{ width: '100%' }}>
-                    <QuestionsContainer queryid={roadmapid} topicid={topicid} answertype={answertype}/>
+                    <QuestionsContainer queryid={roadmapid} topicid={topicid}/>
                   </div>) : null}
                   
                 </div>
