@@ -21,8 +21,8 @@ const RoadmapContainer = (props) => {
           setRoadmapid(data[0]);
           setRoadmap(data[1]);
           setTopicid(null);
-          setCompletion(JSON.parse(completionresponse[1]));
-          setTracking(JSON.parse(completionresponse[0]));
+          setCompletion(completionresponse[1]);
+          setTracking(completionresponse[0]);
           setIsLoading(false);
           // console.log('completion:', completionresponse);
         };
