@@ -7,9 +7,9 @@ import getSummary from "../Functions/getSummary";
 import Loading from "./Loading";
 import AnswerTypeToggle from "./AnswerTypeToggle";
 
-const QuestionBar = ({ question, queryid, topicid, questionid }) => {
+const QuestionBar = ({ question, queryid, topicid, questionid , areOpen , setAreOpen }) => {
 
-    const [isopen, setIsOpen] = useState(false);
+    // const [isopen, setIsOpen] = useState(false);
     const [summary, setSummary] = useState('');
     // const [summarycalled, setSummaryCalled] = useState(false);
     const [text, setText] = useState("");
@@ -48,8 +48,8 @@ const QuestionBar = ({ question, queryid, topicid, questionid }) => {
             }
         }
 
-        console.log('isopen:', isopen);
-        if (isopen) {
+        console.log('isopen:', areOpen[questionid]);
+        if (areOpen[questionid]) {
             console.log('isopen is true');
             getSummaryData();
         }
@@ -58,14 +58,16 @@ const QuestionBar = ({ question, queryid, topicid, questionid }) => {
 
     const toggle = () => {
         
-        if (!isopen) {
+        if (!areOpen[questionid]) {
             // setSummaryCalled(true);
             if (answertype === null) {
                 setAnswertype(1);
         }
         }
 
-        setIsOpen(!isopen);
+        const updatedAreOpen = [...areOpen];
+        updatedAreOpen[questionid] = !updatedAreOpen[questionid];
+        setAreOpen(updatedAreOpen);
     };
 
     return (
@@ -74,7 +76,7 @@ const QuestionBar = ({ question, queryid, topicid, questionid }) => {
                 <h2 className="question">{question}</h2>
             </div>
             
-            {isopen && 
+            {areOpen[questionid] && 
             <>
             <AnswerTypeToggle setAnswertype={setAnswertype} questionid={questionid}/>
             { isLoading ? <>

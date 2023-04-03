@@ -9,6 +9,7 @@ const QuestionsContainer = ({ queryid , topicid }) => {
 
     const [questions, setQuestions] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [areOpen, setAreOpen] = useState([]);
 
     useEffect(() => {
 
@@ -19,6 +20,7 @@ const QuestionsContainer = ({ queryid , topicid }) => {
             }
             setIsLoading(true);
             const data = await getQuestions(queryid, topicid);
+            setAreOpen(Array(data.length).fill(false));
             console.log(data);
             setQuestions(data);
             setIsLoading(false);
@@ -33,7 +35,7 @@ const QuestionsContainer = ({ queryid , topicid }) => {
     return ( isLoading ? <Loading /> :
         <div className="questions-container">
             {questions.map((question, index) => (
-                <QuestionBar key={index} question={question} queryid={queryid} topicid={topicid} questionid={index} />
+                <QuestionBar key={index} question={question} queryid={queryid} topicid={topicid} questionid={index} areOpen={areOpen} setAreOpen={setAreOpen}/>
             ))}
         </div>
     );
