@@ -1,5 +1,6 @@
 body .bodyroadmap {
   background-color: #ffffff;
+  font-family: "Montserrat";
   /* height: 100vh; */
 }
 
@@ -324,13 +325,14 @@ background-image: url('../../public/assets/Liked.png');
 
 .trackprogress .trackprogressbutton {
   height: 40px;
-  padding: 10px;
+  padding: 4px;
   padding-left: 25px;
   padding-right: 25px;
   border-radius: 20px;
   border: none;
   background-color: #309565;
   color: white;
+  font-family: "Montserrat";
 }
 
 .twothird .footer {
