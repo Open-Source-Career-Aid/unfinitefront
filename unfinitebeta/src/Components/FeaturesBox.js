@@ -28,7 +28,7 @@ const FeaturesBox = () => {
             <div className="feature-box">
 
                 <h3>Upcoming Features</h3>
-                <p className="feature-date">Updated: 29th March, 2023</p>
+                <p className="feature-date">Updated: 03rd April, 2023</p>
 
                 {/* <p className="feature-name">AI summaries with citations</p>
                 <p className="feature-description">Know what to expect before you click on a search result.</p>
