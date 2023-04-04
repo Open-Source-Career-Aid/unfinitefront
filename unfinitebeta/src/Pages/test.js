@@ -1,8 +1,20 @@
 import React from 'react';
 import { useState , useEffect } from 'react';
+import getSummaryStream from '../Functions/getSummaryStream';
 
 const Test = () => {
 
+
+    useEffect(() => {
+
+        const getSummaryData = async () => {
+            const data = await getSummaryStream(1, 0, 3, 3);
+            console.log(data);
+        };
+
+        getSummaryData();
+
+    }, []);
     // const questions = ['something', 'something else', 'something else again'];
     
     // const [questions, setQuestions] = useState([]);

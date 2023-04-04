@@ -39,7 +39,7 @@ function AccountPopup({ toggleboolean }) {
       {toggleboolean && (
         <div className="account-popup-overlay">
           <div className="account-popup-box" ref={accountPopupRef}>
-            <button className="account-btn" onClick={handleAccount}>Account</button>
+            <button className="account-btn" onClick={handleAccount}>History</button>
             <button className="logout-btn" onClick={handleLogout}>Logout</button>
           </div>
         </div>
