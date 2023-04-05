@@ -4,11 +4,12 @@ import getSummaryStream from '../Functions/getSummaryStream';
 
 const Test = () => {
 
+    const [text, setText] = useState("");
 
     useEffect(() => {
 
         const getSummaryData = async () => {
-            const data = await getSummaryStream(1, 0, 3, 3);
+            const data = await getSummaryStream(1, 0, 3, 3, setText);
             console.log(data);
         };
 
@@ -59,7 +60,7 @@ const Test = () => {
 
     return (
         <div>
-            <h1>Test</h1>
+            <h1>{text}</h1>
         </div>
     );
 }
