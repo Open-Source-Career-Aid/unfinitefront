@@ -72,6 +72,7 @@ const QuestionBar = ({ question, queryid, topicid, questionid , areOpen , setAre
 
     return (
         <div className="content-container">
+            
             <div className="question-bar" onClick={toggle}>
                 <h2 className="question">{question}</h2>
             </div>
