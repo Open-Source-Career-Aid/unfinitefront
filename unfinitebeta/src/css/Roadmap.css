@@ -1,6 +1,6 @@
 body .bodyroadmap {
   background-color: #ffffff;
-  font-family: "Montserrat";
+  font-family: "Montserrat"; 
   /* height: 100vh; */
 }
 
@@ -17,7 +17,7 @@ body .bodyroadmap {
 
 /* Style for the left side containing the list */
 .onethird {
-  width: 33.33%;
+  width: 25%;
   padding-left: 3em;
   justify-items: center;
   border: none;
@@ -36,8 +36,8 @@ body .bodyroadmap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 66.66%;
-  background-color: #F9F9F9;
+  width: 75%;
+  /* background-color: #F9F9F9; */
   height: 100%;
   }
 
@@ -89,7 +89,8 @@ li {
   padding: 10px;
   /* background-color: darkgray; */
   width: 80%;
-  font-size: larger;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .searchcard {

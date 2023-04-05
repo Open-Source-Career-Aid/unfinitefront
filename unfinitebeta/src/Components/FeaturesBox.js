@@ -28,7 +28,7 @@ const FeaturesBox = () => {
             <div className="feature-box">
 
                 <h3>Upcoming Features</h3>
-                <p className="feature-date">Updated: 03rd April, 2023</p>
+                <p className="feature-date">Updated: 05rd April, 2023</p>
 
                 {/* <p className="feature-name">AI summaries with citations</p>
                 <p className="feature-description">Know what to expect before you click on a search result.</p>
@@ -41,6 +41,9 @@ const FeaturesBox = () => {
                 
                 {/* <p className="feature-name"></p>
                 <p className="feature-description">Choose your own resources, because you are a unique learner.</p> */}
+
+                <p className="feature-name">Up-to-date topics</p>
+                <p className="feature-description">Learn what the industry has to offer, e.g. prompt engineering, python 4.0, etc.</p>
 
                 <p className="feature-name">Resource Filtering</p>
                 <p className="feature-description">Choose your own resources, because you are a unique learner.</p>
