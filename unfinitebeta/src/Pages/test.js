@@ -1,16 +1,14 @@
 import React from 'react';
 import { useState , useEffect } from 'react';
 import getSummaryStream from '../Functions/getSummaryStream';
-import getReferences from '../Functions/getReferences';
 
 const Test = () => {
 
-    const [text, setText] = useState("");
 
     useEffect(() => {
 
         const getSummaryData = async () => {
-            const data = await getReferences(7, 0, 1, 3);
+            const data = await getSummaryStream(1, 0, 3, 3);
             console.log(data);
         };
 
