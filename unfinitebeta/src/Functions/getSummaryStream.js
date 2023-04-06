@@ -6,7 +6,7 @@ async function getSummaryStream(id, topicid, questionid, answertype, setText, se
 
     await getCSRF();
     const csrfToken = getCookie('csrftoken');
-    let text = '';
+    // let text = '';
   
     const response = await fetch(`${API_URL}summary_stream/`, {
       method: 'POST',
@@ -25,58 +25,49 @@ async function getSummaryStream(id, topicid, questionid, answertype, setText, se
     });
   
     const reader = response.body.getReader();
-    let decoder = new TextDecoder();
-    let data = '';
-  
+    const decoder = new TextDecoder();
+    let text = '';
     let prefix = '';
+
     const readStream = async () => {
+      let incompleteMessage = '';
+      while (true) {
         const { done, value } = await reader.read();
         if (done) {
           console.log('Stream complete');
-          if (data === '') {
+          if (text === '') {
             console.log('No data received');
             setSummaryLoading(false);
             return null; // or throw an error or do something else
           } else {
-            console.log('Final message:', data);
+            console.log('Final message:', text);
             setSummaryLoading(false);
-            return JSON.parse(data);
+            return JSON.parse(text);
           }
         }
-        data += decoder.decode(value);
-        // console.log(data);
-        // Split the received data by newline character
-        let messages = data.split('\n');
-        console.log(messages);
-        // Process each message
-        // let prefix = '';
-        for (let message of messages) {
-            if (message.trim()) {
-                if (prefix !== '') {
-                    message = prefix + message;
-                    prefix = '';
-                }
-                if (message.endsWith('}')) {
-                    console.log('Received message:', message);
-                    console.log(message.endsWith('}'), message);
-                    message = JSON.parse(message);
-                    console.log('Parsed message:', message);
-                    text = text + message.choices[0].delta.content;
-                    setText(text);
-                }
-                else {
-                    prefix = message;
-                    continue;
-                }
+        const chunk = decoder.decode(value, { stream: true });
+        const messages = (incompleteMessage + chunk).split('\n');
+        incompleteMessage = messages.pop(); // last message may be incomplete
+        for (let i = 0; i < messages.length; i++) {
+          const message = messages[i];
+          if (message.trim()) {
+            try {
+              if (message.endsWith('}')) {
                 // console.log('Received message:', message);
-                // process the received message as needed
+                const json = JSON.parse(message);
+                // console.log('Parsed message:', json);
+                text += json.choices[0].delta.content;
+                setText(text);
+              } else {
+                incompleteMessage += message + '\n';
+              }
+            } catch (err) {
+              console.log('Error parsing message:', err);
             }
+          }
         }
-        // Clear the data buffer
-        data = '';
-        // Continue reading the stream
-        return readStream();
-    }
+      }
+    };
   
     return readStream();
 }
