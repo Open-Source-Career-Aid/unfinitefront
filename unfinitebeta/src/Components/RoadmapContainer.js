@@ -9,6 +9,7 @@ import Loading from './Loading';
 const RoadmapContainer = (props) => {
 
     const [isLoading, setIsLoading] = useState(true);
+    const [isSelectedTopic, setIsSelectedTopic] = useState([0]*props.roadmap.length);
     const { query , setQuery , roadmapid , setRoadmapid , roadmap , setRoadmap , topicid , setTopicid , completion ,
     setCompletion , tracking , setTracking } = props;
 
@@ -20,7 +21,7 @@ const RoadmapContainer = (props) => {
           const completionresponse = await getTopicCompletion({queryid: data[0]});
           setRoadmapid(data[0]);
           setRoadmap(data[1]);
-          setTopicid(null);
+          setTopicid(0);
           setCompletion(completionresponse[1]);
           setTracking(completionresponse[0]);
           setIsLoading(false);

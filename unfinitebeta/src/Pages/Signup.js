@@ -9,7 +9,7 @@ import { API_URL } from "../API_URL";
 import ReactGA from 'react-ga';
 ReactGA.initialize('G-8YXPLS55QD');
 
-async function postRegister(email, password, cfmPassword, firstName, lastName, betaKey) {
+async function postRegister(email, password, cfmPassword, firstName, lastName) {
 	
 	await getCSRF();
     const csrfToken = getCookie('csrftoken');
@@ -26,8 +26,7 @@ async function postRegister(email, password, cfmPassword, firstName, lastName, b
         password: password,
         cfm_Password: cfmPassword,
         first_name: firstName,
-        last_name: lastName,
-        beta_key: betaKey,
+        last_name: lastName
       })
     });
     //.then(response => { return response.json()})
@@ -67,7 +66,6 @@ function Signup() {
         email: "",
         password: "",
         passwordConfirmation: "",
-        betaKey: ""
     });
 
     const handleChange = (event) => {
@@ -88,8 +86,7 @@ function Signup() {
           formdata.password.toString() === '' ||
           formdata.passwordConfirmation.toString() === '' ||
           formdata.firstName.toString() === '' ||
-          formdata.lastName.toString() === '' ||
-          formdata.betaKey.toString() === ''
+          formdata.lastName.toString() === ''
         ) {
           alert("Please fill out all fields");
         } else {
@@ -98,8 +95,7 @@ function Signup() {
             formdata.password,
             formdata.passwordConfirmation,
             formdata.firstName,
-            formdata.lastName,
-            formdata.betaKey
+            formdata.lastName
           );
           
           // console.log(response.status)
@@ -137,7 +133,7 @@ function Signup() {
                 {/* <label htmlFor="passwordConfirmation">Password Confirmation</label> */}
                 <input type="password" name="passwordConfirmation" placeholder="Confirm Password" value={formdata.passwordConfirmation} onChange={handleChange} required />
                 {/* <label htmlFor="betaKey">Beta Key</label> */}
-                <input type="text" name="betaKey" placeholder="Private Beta Key" value={formdata.betaKey} onChange={handleChange} required />
+                {/* <input type="text" name="betaKey" placeholder="Private Beta Key" value={formdata.betaKey} onChange={handleChange} required /> */}
                 <button type="submit" className="submit" onClick={handleSubmit}>Submit</button>
             </form>
             <p className='authtext'>Already have an account? <Link className="aauth" to='/login'>Login</Link> or <Link className="aauth" to='/'>Home</Link></p>

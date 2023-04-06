@@ -16,16 +16,17 @@ body .bodyroadmap {
 
 /* Style for the left side containing the list */
 .onethird {
-  width: 33.33%;
+  width: 25%;
   padding-left: 3em;
   justify-items: center;
   border: none;
   background-color: white;
   height: 100%;
+  font-size: 18px;
 }
 
 .onethird .queryDisplay {
-  font-size: 1.5em;
+  font-size: 1em;
   text-align: left;
   margin-left: 50px;
   color: #000000;
@@ -35,9 +36,10 @@ body .bodyroadmap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 66.66%;
-  background-color: #F9F9F9;
+  width: 75%;
+  /* background-color: #F9F9F9; */
   height: 100%;
+  font-size: 18px;
   }
 
 .questions {
@@ -49,7 +51,7 @@ body .bodyroadmap {
 
 /* Style for the title */
 .onethird .heading {
-  font-size: 1.2em;
+  font-size: 1em;
   text-align: left;
   margin-left: 50px;
   margin-top: 50px;
@@ -58,7 +60,7 @@ body .bodyroadmap {
 
 /* Style for the title */
 .twothird .heading {
-  font-size: 1.2em;
+  font-size: 1em;
   text-align: left;
   margin-left: 50px;
   margin-top: 50px;
@@ -88,7 +90,8 @@ li {
   padding: 10px;
   /* background-color: darkgray; */
   width: 80%;
-  font-size: larger;
+  font-size: 1em;
+  font-weight: 500;
 }
 
 .searchcard {
@@ -108,6 +111,7 @@ li {
   padding: 10px;
   margin-left: 20px;
   margin-top: 5px;
+  font-size: 1.2em;
 }
 
 .searchresults {
@@ -126,6 +130,7 @@ li {
   margin-left: 20px;
   vertical-align: middle;
   margin-top: 10px;
+  font-size: 0.7em;
 }
 
 .topics a:hover {
@@ -320,6 +325,7 @@ background-image: url('../../public/assets/Liked.png');
   justify-content: space-between;
   align-items: center;
   padding-right: 10%;
+  font-size: 1em;
 }
 
 .trackprogress .trackprogressbutton {
@@ -331,6 +337,7 @@ background-image: url('../../public/assets/Liked.png');
   border: none;
   background-color: #309565;
   color: white;
+  font-size: 0.6em;
 }
 
 .twothird .footer {
