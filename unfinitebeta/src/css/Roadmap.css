@@ -1,6 +1,5 @@
 body .bodyroadmap {
   background-color: #ffffff;
-  font-family: "Montserrat";
   /* height: 100vh; */
 }
 
@@ -332,7 +331,6 @@ background-image: url('../../public/assets/Liked.png');
   border: none;
   background-color: #309565;
   color: white;
-  font-family: "Montserrat";
 }
 
 .twothird .footer {

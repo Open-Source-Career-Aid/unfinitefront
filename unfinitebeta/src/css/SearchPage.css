@@ -47,7 +47,6 @@ body .bodysearchpage {
   margin-bottom: 15px; 
   text-align: center;
   color: white;
-  font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
 }
@@ -68,7 +67,6 @@ body .bodysearchpage {
   border: none;
   padding: 0 20px;
   font-size: 1.5rem;
-  font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
   color: rgb(0, 0, 0);
@@ -102,7 +100,6 @@ body .bodysearchpage {
   margin-left: 10px;
   cursor: pointer;
   font-size: 1.5rem;
-  font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
   color: rgb(0, 0, 0); */
@@ -116,7 +113,6 @@ body .bodysearchpage {
 
 .SearchPageContent .example-searches .example-search {
   font-size: 0.8rem;
-  font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
   height: 20px;
