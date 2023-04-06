@@ -6,8 +6,6 @@ import TypingText from "./TypingText";
 import getSummary from "../Functions/getSummary";
 import Loading from "./Loading";
 import AnswerTypeToggle from "./AnswerTypeToggle";
-import getSummaryStream from "../Functions/getSummaryStream";
-import getReferences from "../Functions/getReferences";
 
 const QuestionBar = ({ question, queryid, topicid, questionid , areOpen , setAreOpen }) => {
 
@@ -19,33 +17,32 @@ const QuestionBar = ({ question, queryid, topicid, questionid , areOpen , setAre
     // const [summaryurl , setSummaryUrl] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [answertype, setAnswertype] = useState(null);
-    const [summaryloading, setSummaryLoading] = useState(null);
-    // const [typingeffect, setTypingeffect] = useState([true, true, true]);
+    const [typingeffect, setTypingeffect] = useState([true, true, true]);
 
-    // useEffect(() => {
-    //     setText(summary);
-    // }, [summary]);
+    useEffect(() => {
+
+        setText(summary);
+
+    }, [summary]);
 
     useEffect(() => {
 
         console.log('answertype:', answertype);
-        setText('');
 
         const getSummaryData = async () => {
             setIsLoading(true);
             if (answertype !== null) {
                 console.log('Inside the conditional');
-                setSummaryLoading(true);
-                const data = await getSummaryStream(queryid, topicid, questionid, answertype, setText, setSummaryLoading);
-                // if (typingeffect[answertype - 1] === true) {
-                //     const updatedTypingeffect = [...typingeffect];
-                //     updatedTypingeffect[answertype - 1] = false;
-                //     setTypingeffect(updatedTypingeffect);
-                // }
-                // console.log(data[0], data[1]);
-                // setSummary(data[0]);
+                const data = await getSummary(queryid, topicid, questionid, answertype);
+                if (typingeffect[answertype - 1] === true) {
+                    const updatedTypingeffect = [...typingeffect];
+                    updatedTypingeffect[answertype - 1] = false;
+                    setTypingeffect(updatedTypingeffect);
+                }
+                console.log(data[0], data[1]);
+                setSummary(data[0]);
                 // console.log(data[1], Array.isArray(data[1]));
-                // setReferences(data[1]);
+                setReferences(data[1]);
                 // setSummaryUrl(data[2]);
                 setIsLoading(false);
             }
@@ -58,20 +55,6 @@ const QuestionBar = ({ question, queryid, topicid, questionid , areOpen , setAre
         }
   
       }, [answertype]);
-
-    useEffect(() => {
-
-        if (summaryloading === false) {
-            console.log('summaryloading is false');
-            const getReferencesData = async () => {
-                const data = await getReferences(queryid, topicid, questionid, answertype);
-                console.log(data);
-                setReferences(data);
-            }
-            getReferencesData();
-        }
-
-    }, [summaryloading]);
 
     const toggle = () => {
         
@@ -97,15 +80,14 @@ const QuestionBar = ({ question, queryid, topicid, questionid , areOpen , setAre
             {areOpen[questionid] && 
             <>
             <AnswerTypeToggle setAnswertype={setAnswertype} questionid={questionid}/>
-            { text=='' ? <>
+            { isLoading ? <>
                 <Loading />
             
             </> :
             <>
             <div className="answer-container">
                 <p className="answer">
-                    {/* <TypingText text={text} typingeffect={typingeffect[answertype-1]}/> */}
-                    {text}
+                    <TypingText text={text} typingeffect={typingeffect[answertype-1]}/>
                 </p>
             </div>
             <div className="reference-container">
