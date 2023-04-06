@@ -7,7 +7,6 @@ import getSummary from "../Functions/getSummary";
 import Loading from "./Loading";
 import AnswerTypeToggle from "./AnswerTypeToggle";
 import getSummaryStream from "../Functions/getSummaryStream";
-import getReferences from "../Functions/getReferences";
 
 const QuestionBar = ({ question, queryid, topicid, questionid , areOpen , setAreOpen }) => {
 
@@ -19,12 +18,13 @@ const QuestionBar = ({ question, queryid, topicid, questionid , areOpen , setAre
     // const [summaryurl , setSummaryUrl] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [answertype, setAnswertype] = useState(null);
-    const [summaryloading, setSummaryLoading] = useState(null);
     // const [typingeffect, setTypingeffect] = useState([true, true, true]);
 
-    // useEffect(() => {
-    //     setText(summary);
-    // }, [summary]);
+    useEffect(() => {
+
+        setText(summary);
+
+    }, [summary]);
 
     useEffect(() => {
 
@@ -35,8 +35,7 @@ const QuestionBar = ({ question, queryid, topicid, questionid , areOpen , setAre
             setIsLoading(true);
             if (answertype !== null) {
                 console.log('Inside the conditional');
-                setSummaryLoading(true);
-                const data = await getSummaryStream(queryid, topicid, questionid, answertype, setText, setSummaryLoading);
+                const data = await getSummaryStream(queryid, topicid, questionid, answertype, setText);
                 // if (typingeffect[answertype - 1] === true) {
                 //     const updatedTypingeffect = [...typingeffect];
                 //     updatedTypingeffect[answertype - 1] = false;
@@ -58,20 +57,6 @@ const QuestionBar = ({ question, queryid, topicid, questionid , areOpen , setAre
         }
   
       }, [answertype]);
-
-    useEffect(() => {
-
-        if (summaryloading === false) {
-            console.log('summaryloading is false');
-            const getReferencesData = async () => {
-                const data = await getReferences(queryid, topicid, questionid, answertype);
-                console.log(data);
-                setReferences(data);
-            }
-            getReferencesData();
-        }
-
-    }, [summaryloading]);
 
     const toggle = () => {
         

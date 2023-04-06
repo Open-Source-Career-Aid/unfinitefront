@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState , useEffect } from 'react';
 import getSummaryStream from '../Functions/getSummaryStream';
-import getReferences from '../Functions/getReferences';
 
 const Test = () => {
 
@@ -10,7 +9,7 @@ const Test = () => {
     useEffect(() => {
 
         const getSummaryData = async () => {
-            const data = await getReferences(7, 0, 1, 3);
+            const data = await getSummaryStream(1, 0, 3, 3, setText);
             console.log(data);
         };
 
@@ -61,7 +60,7 @@ const Test = () => {
 
     return (
         <div>
-            <h1>Test</h1>
+            <h1>{text}</h1>
         </div>
     );
 }

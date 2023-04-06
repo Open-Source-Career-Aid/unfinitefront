@@ -2,7 +2,7 @@ import getCookie from "./getCookie";
 import getCSRF from "./getCSRF";
 import { API_URL } from "../API_URL";
 
-async function getSummaryStream(id, topicid, questionid, answertype, setText, setSummaryLoading) {
+async function getSummaryStream(id, topicid, questionid, answertype, setText) {
 
     await getCSRF();
     const csrfToken = getCookie('csrftoken');
@@ -32,22 +32,12 @@ async function getSummaryStream(id, topicid, questionid, answertype, setText, se
     const readStream = async () => {
         const { done, value } = await reader.read();
         if (done) {
-          console.log('Stream complete');
-          if (data === '') {
-            console.log('No data received');
-            setSummaryLoading(false);
-            return null; // or throw an error or do something else
-          } else {
-            console.log('Final message:', data);
-            setSummaryLoading(false);
             return JSON.parse(data);
-          }
         }
         data += decoder.decode(value);
         // console.log(data);
         // Split the received data by newline character
         let messages = data.split('\n');
-        console.log(messages);
         // Process each message
         // let prefix = '';
         for (let message of messages) {
@@ -57,11 +47,9 @@ async function getSummaryStream(id, topicid, questionid, answertype, setText, se
                     prefix = '';
                 }
                 if (message.endsWith('}')) {
-                    console.log('Received message:', message);
-                    console.log(message.endsWith('}'), message);
-                    message = JSON.parse(message);
-                    console.log('Parsed message:', message);
-                    text = text + message.choices[0].delta.content;
+                    console.log('Received message:', JSON.parse(message).choices[0].delta.content);
+                    data = JSON.parse(message);
+                    text = text + data.choices[0].delta.content;
                     setText(text);
                 }
                 else {
