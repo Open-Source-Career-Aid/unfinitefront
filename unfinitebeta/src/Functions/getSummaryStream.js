@@ -42,7 +42,7 @@ async function getSummaryStream(id, topicid, questionid, answertype, setText, se
           } else {
             console.log('Final message:', text);
             setSummaryLoading(false);
-            return JSON.parse(text);
+            return text;
           }
         }
         const chunk = decoder.decode(value, { stream: true });
