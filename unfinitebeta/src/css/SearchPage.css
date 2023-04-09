@@ -5,8 +5,7 @@
 
 body .bodysearchpage {
   overflow: hidden;
-  background-image: url(../../public/assets/bgimage.webp);
-  background-image: url(../../public/assets/bgimage.png), url(../../public/assets/bgimage.webp);
+  background-image: url(../../public/assets/bgimage.webp), url(../../public/assets/bgimage.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
