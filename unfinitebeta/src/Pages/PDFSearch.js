@@ -3,6 +3,7 @@ import '../css/PDFSearch.css';
 import isAuthenticated from '../Functions/isAuthenticated';
 import { useNavigate } from "react-router-dom";
 import ProcessURL from '../Components/PDFSearch/ProcessURL';
+import DisplayAnswer from '../Components/PDFSearch/DisplayAnswer';
 // import ReactGA from 'react-ga';
 // ReactGA.initialize('G-8YXPLS55QD');
 
@@ -10,8 +11,10 @@ function PDFSearch() {
 
     // const [userstatus , setUserstatus] = useState(null);
     const navigate = useNavigate();
+    const [url , setUrl] = useState(null);
     const [dataloaded , setDataloaded] = useState(false);
     const [docid , setDocid] = useState(null);
+    const answer = 'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
     // useEffect(() => {
     //     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -30,16 +33,30 @@ function PDFSearch() {
     //     checkUserStatus();
     // }, [userstatus]);
 
+    useEffect(() => {
+
+        if (dataloaded && docid !== null) {
+            // do something here
+        }
+
+    }, [dataloaded]);
+
     return (
-        <div className='pdfsearchpage'>
-            <div className='header'>
-                <h1 className='logo'>unfinite</h1>
+        <div className='pdfsearch'>
+            <div className='headerpdfsearch'>
+                <h1 className='logopdfsearch'>unfinite</h1>
+                <div>{dataloaded ? <p>load another pdf</p> : null}</div>
             </div>
             <div className='body'>
                 <div className='pdfurlcontainer'>
-                    <ProcessURL dataloaded={dataloaded} setDataloaded={setDataloaded} setDocid={setDocid}/>
+                    {dataloaded ? <>PDF was loaded. Answering based on {url}</>: <ProcessURL dataloaded={dataloaded} setDataloaded={setDataloaded} setDocid={setDocid} url={url} setUrl={setUrl}/>}
                 </div>
                 <div className='chatcontainer'>
+                    <div className='askcontainer'>
+                    </div>
+                    <div className='answercontainer'>
+                        {dataloaded ? <DisplayAnswer answer={answer}/> : null}
+                    </div>
                 </div>
             </div>
             <div className='footer'>
