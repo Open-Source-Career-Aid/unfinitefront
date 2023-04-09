@@ -11,6 +11,7 @@ import Navbar from './Components/Navbar';
 import Roadmap from './Components/Roadmap';
 import TrackingPage from './Pages/TrackingPage';
 import './css/App.css';
+import PDFSearch from './Pages/PDFSearch';
 
 // import react-dom-router
 import { Route, Routes } from "react-router-dom";
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/test" element={<Test />} />
             <Route path="/navbar" element={<Navbar />} />
             <Route path="/tracking" element={<TrackingPage />} />
+            <Route path="/pdfsearch" element={<PDFSearch />} />
           </Routes>
         </div>
 
