@@ -70,13 +70,13 @@ const FeedbackBox = ( { query , queryid , initialfeedbackstate} ) => {
           <div className="feedback-label">
             <label for="feedback-input">Help us improve!</label>
           </div>
-          <p>Please leave any feedback or suggestions.</p>
+          <p>Request features and leave feedback.</p>
           <textarea type='text' name="feedback" value={formdata.feedback} onChange={handleChange} required></textarea>
           <div className="feedback-box-last-row">
-              <div class="checkbox-container">
+              {/* <div class="checkbox-container">
                 <input type="checkbox" id="queryfeedback" name="queryfeedback" value={true} onChange={handleChange} />
                 <label for="queryfeedback"> feedback related to "{ query }"?</label>
-              </div>
+              </div> */}
               <button type="submit">Submit</button>
           </div> 
           </div>

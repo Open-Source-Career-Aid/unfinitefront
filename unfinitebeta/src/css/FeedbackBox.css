@@ -79,6 +79,21 @@
   width: 90%;
 }
 
+.feedback-container .feedback-box-last-row button {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  background-color: #000000;
+  color: #fff;
+}
+
+.feedback-container .feedback-box-last-row button:hover {
+  cursor: pointer;
+}
+
 .feedback-button-container {
   position: fixed;
   bottom: 0;

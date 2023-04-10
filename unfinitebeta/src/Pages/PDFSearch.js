@@ -6,6 +6,7 @@ import ProcessURL from "../Components/PDFSearch/ProcessURL";
 import DisplayAnswer from "../Components/PDFSearch/DisplayAnswer";
 import ReactGA from "react-ga";
 import PDFQuestionsContainer from "../Components/PDFSearch/PDFQuestionsContainer";
+import FeedbackBox from "../Components/FeedbackBox";
 ReactGA.initialize("G-8YXPLS55QD");
 
 function PDFSearch() {
@@ -109,6 +110,9 @@ function PDFSearch() {
             </div>
           </div>
         ) : null}
+      </div>
+      <div className="feedbackcontainer">
+        <FeedbackBox />
       </div>
       <div className="footer">
         <p>LIMITED EXCESS TO BROWN UNIVERSITY © 2023 unfinite</p>
