@@ -16,8 +16,8 @@ function PDFSearch() {
   const [dataloaded, setDataloaded] = useState(false);
   const [docid, setDocid] = useState(null);
   const [answer, setAnswer] = useState("");
-//   const answer =
-//     "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  //   const answer =
+  //     "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum.";
   const [QnA, setQnA] = useState(new Map());
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -58,37 +58,46 @@ function PDFSearch() {
     setUrl(null);
     navigate("/");
   };
-  
-    const handleOldapp = () => {
-        navigate("/oldapp");
-    };
+
+  const handleOldapp = () => {
+    navigate("/oldapp");
+  };
 
   return (
     <div className="pdfsearch">
       <div className="headerpdfsearch">
         <div className="logocontainer">
-            <h1 className="logopdfsearch">unfinite</h1>
-            <div>
+          <h1 className="logopdfsearch">unfinite</h1>
+          <div>
             {dataloaded ? (
-                <button className="headerbutton" onClick={handleClick}>
+              <button className="headerbutton" onClick={handleClick}>
                 load another pdf
-                </button>
+              </button>
             ) : null}
-            </div>
+          </div>
         </div>
         <div>
-            {/* <button className="headerbutton" style={{backgroundColor: "#ffd500", color: "#000000"}} onClick={()=>navigate('/premium')}>
+          {/* <button className="headerbutton" style={{backgroundColor: "#ffd500", color: "#000000"}} onClick={()=>navigate('/premium')}>
                 Premium
             </button> */}
-            <button className="headerbutton" onClick={handleOldapp} style={{backgroundColor: "#979797"}}>
-                Old App
-            </button>
+          <button
+            className="headerbutton"
+            onClick={handleOldapp}
+            style={{ backgroundColor: "#979797" }}
+          >
+            Old App
+          </button>
         </div>
       </div>
       <div className="body">
         <div className="pdfurlcontainer">
           {dataloaded ? (
-            <>PDF was loaded. Answering based on {url} <a href="https://forms.gle/6JU7uBvXHe4WMRhK7" target="_blank" >ARE YOU A RESEARCHER?</a></>
+            <>
+              PDF was loaded. Answering based on {url}{" "}
+              <a href="https://forms.gle/6JU7uBvXHe4WMRhK7" target="_blank">
+                ARE YOU A RESEARCHER?
+              </a>
+            </>
           ) : (
             <ProcessURL
               dataloaded={dataloaded}
@@ -102,8 +111,14 @@ function PDFSearch() {
         {dataloaded ? (
           <div className="chatcontainer">
             <div className="askcontainer">
-                <h3>Thread</h3>
-              <PDFQuestionsContainer QnA={QnA} setQnA={setQnA} docid={docid} setAnswer={setAnswer} answer={answer}/>
+              <h3>Thread</h3>
+              <PDFQuestionsContainer
+                QnA={QnA}
+                setQnA={setQnA}
+                docid={docid}
+                setAnswer={setAnswer}
+                answer={answer}
+              />
             </div>
             <div className="answercontainer">
               {dataloaded ? <DisplayAnswer answer={answer} /> : null}
