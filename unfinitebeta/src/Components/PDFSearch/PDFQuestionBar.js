@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import DisplayAnswer from "./DisplayAnswer";
 import answerQuestion from "../../Functions/PDFSearch/answerQuestion";
 
-function PDFQuestionBar({ index, docid, QnA, setQnA, question }) {
-  const [answer, setAnswer] = useState("");
+function PDFQuestionBar({ index , docid , QnA , setQnA , question , setAnswer , answer }) {
+
   const handleQuestionClick = (event) => {
     if (QnA.has(question)) {
-      return <DisplayAnswer answer={QnA.get(question)} />;
+      console.log("Question in map. No API query needed");
+      setAnswer(QnA.get(question));
     } else {
       setAnswer(answerQuestion(question, [docid]));
       setQnA((map) => new Map(map.set(question, answer)));
@@ -15,7 +16,7 @@ function PDFQuestionBar({ index, docid, QnA, setQnA, question }) {
   };
 
   return (
-    <div key={index} onClick={handleQuestionClick}>
+    <div key={index} onClick={handleQuestionClick} className="qinlist">
       <p>{question}</p>
     </div>
   );

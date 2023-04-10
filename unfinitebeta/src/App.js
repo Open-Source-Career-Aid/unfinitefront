@@ -21,15 +21,15 @@ const App = () => {
   return (
         <div className="App">
           <Routes>
-            <Route path="/" element={<LandingPage />} />
+            <Route path="/landing" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/results" element={<Roadmap />} />
-            <Route path="/search" element={<SearchPage />} />
+            <Route path="/oldapp" element={<SearchPage />} />
             <Route path="/test" element={<Test />} />
             <Route path="/navbar" element={<Navbar />} />
             <Route path="/tracking" element={<TrackingPage />} />
-            <Route path="/pdfsearch" element={<PDFSearch />} />
+            <Route path="/" element={<PDFSearch />} />
           </Routes>
         </div>
 

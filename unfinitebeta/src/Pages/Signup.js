@@ -51,7 +51,7 @@ function Signup() {
         setUserstatus(status);
     
         if (userstatus) {
-          navigate('/search');
+          navigate('/');
         } else {
           getCSRF();
         }
@@ -136,7 +136,7 @@ function Signup() {
                 {/* <input type="text" name="betaKey" placeholder="Private Beta Key" value={formdata.betaKey} onChange={handleChange} required /> */}
                 <button type="submit" className="submit" onClick={handleSubmit}>Submit</button>
             </form>
-            <p className='authtext'>Already have an account? <Link className="aauth" to='/login'>Login</Link> or <Link className="aauth" to='/'>Home</Link></p>
+            <p className='authtext'>Already have an account? <Link className="aauth" to='/login'>Login</Link> or <Link className="aauth" to='/Landing'>Home</Link></p>
         </div>
         </div>
         </>

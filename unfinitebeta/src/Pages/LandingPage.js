@@ -21,10 +21,10 @@ function LandingPage() {
         setUserstatus(status);
 
         if (userstatus) {
-            navigate('/search');
+            navigate('/');
         }
         else {
-            navigate('/');
+            navigate('/landing');
         }
 
     }, []);
@@ -32,8 +32,8 @@ function LandingPage() {
     return (
         <div className='bodylandingpage'>
             <div className="LandingPage">
-                <h1 className="logocenter">UNFINITE <span className="beta-symbol">&beta;</span></h1>
-                <p>The new way to learn something.</p>
+                <h1 className="logocenter">UNFINITE</h1>
+                <p>Exclusive Access to Selected Universities.</p>
                 <Link className='signupbutton' to='/signup'>Sign Up</Link>
                 <Link className='loginbutton' to='/login'>Log in</Link>
             </div>
