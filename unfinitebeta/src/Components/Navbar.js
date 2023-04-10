@@ -17,7 +17,7 @@ const Navbar = ({page}) => {
     return (
         <>
             <nav className={page}>
-                <Link className="navbar-brand" to="/search">
+                <Link className="navbar-brand" to="/oldapp">
                     UNFINITE<span className="beta-symbol"> &beta;</span>
                 </Link>
 

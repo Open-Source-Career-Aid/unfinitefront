@@ -1,10 +1,13 @@
 /* Global styles */
   body .bodylandingpage {
+    background-color: #ffffff;
+    /*
     background-image: url(../../public/assets/bgimage.webp), url(../../public/assets/bgimage.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    */
   }
   
   /* Landing page styles */
@@ -21,9 +24,8 @@
   .LandingPage .logocenter {
     margin: 0 auto;
     font-size: 3rem;
-    margin-bottom: 10px; 
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
     font-style: normal;
     font-weight: 400;
   }
@@ -32,7 +34,7 @@
     font-size: 1.4rem;
     margin-bottom: 10px;
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
     font-style: normal;
     font-weight: 300;
   }
@@ -85,11 +87,11 @@
   }
   
   .LandingPage .signupbutton:hover {
-    background-color: #005fa3;
+    cursor: pointer;
   }
 
   .LandingPage .loginbutton:hover {
-    background-color: #005fa3;
+    cursor: pointer;
   }
 
   .LandingPage a {
@@ -105,9 +107,8 @@
   
     .LandingPage .logocenter {
       font-size: 4rem;
-      margin-bottom: 10px; 
       text-align: center;
-      color: white;
+      color: rgb(0, 0, 0);
       font-style: normal;
       font-weight: 400;
     }

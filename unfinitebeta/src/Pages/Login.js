@@ -66,7 +66,7 @@ function Login() {
                 navigate('/login');
             } else {
                 console.log("User is already logged in");
-                navigate('/search');
+                navigate('/');
             }
         }
     
@@ -108,7 +108,7 @@ function Login() {
     
             if (status) {
               console.log('User is logged in');
-              navigate('/search');
+              navigate('/');
             }
           } else {
             alert('Login failed. Please try again.');
@@ -130,7 +130,7 @@ function Login() {
                     <input type="password" name="password" placeholder="Password" value={formdata.password} onChange={handleChange} required/>
                     <button className='submit' onClick={handleSubmit}>Submit</button>
                     </form>
-                    <p className='authtext'>Don't have an account yet? <Link className="aauth" to='/signup'>Signup</Link> or <Link className="aauth" to='/'>Home</Link></p>
+                    <p className='authtext'>Don't have an account yet? <Link className="aauth" to='/signup'>Signup</Link> or <Link className="aauth" to='/Landing'>Home</Link></p>
                 </div>
             </div>
         </>

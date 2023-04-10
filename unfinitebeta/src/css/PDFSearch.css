@@ -1,0 +1,202 @@
+.pdfsearch {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 5%;
+}
+  .bodypdfsearch {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+  }
+
+.pdfsearch .headerpdfsearch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logopdfsearch {
+    margin: 10px 0;
+    margin-right: 10px;
+  }
+
+.urlsubmit {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+input[type="text"][name="url"] {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
+  }
+  input[type="text"][name="url"]:focus {
+    border-color: #000000;
+  }
+  ::placeholder {
+    color: #aaa;
+  }  
+
+  button[type="submit"] {
+    background-color: #40b600;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 10%;
+  }
+  button[type="submit"]:hover {
+    background-color: #177e00;
+  }
+
+.logocontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+  .headerbutton {
+    background-color: #979797;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  .headerbutton:hover {
+    background-color: rgb(62, 62, 62);
+  }
+  
+  .displayanswer {
+    height: 100%;
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+
+  .askcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 30%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .answercontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 50px;
+    width: 70%;
+    height: 80%;
+  }
+    .answer {
+        width: 90%;
+        white-space: pre-wrap;
+        font-size: 1em; /* or any desired font size */
+        padding: 10px;
+        padding-left: 20px;
+    }
+
+  .chatcontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 100%;
+  }
+
+.qcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.qinlist {
+  padding-left: 10px;
+}
+
+.qinlist p {
+  font-size: 1em;
+  text-shadow: none; /* Set the initial shadow to none */
+  transition: text-shadow 0.5s ease; /* Add a transition effect for a smoother animation */
+}
+
+.qinlist p:hover {
+  cursor: pointer;
+  text-shadow: 1px 1px 5px #6f6f6f; /* Set the shadow effect on hover */
+}
+
+.ask input[type="text"] {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 10px;
+  width: 70%;
+  margin-right: 10px;
+}
+.ask input[type="text"]:focus {
+  border-color: #000000;
+}
+.ask ::placeholder {
+  color: #aaa;
+}  
+
+.ask button[type="submit"] {
+  background-color: #40b600;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 20%;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #000000;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+}
