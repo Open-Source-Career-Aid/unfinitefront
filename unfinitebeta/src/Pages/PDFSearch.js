@@ -55,7 +55,7 @@ function PDFSearch() {
     setDataloaded(false);
     setDocid(null);
     setUrl(null);
-    navigate("/pdfsearch");
+    navigate("/");
   };
   
     const handleOldapp = () => {
@@ -76,9 +76,9 @@ function PDFSearch() {
             </div>
         </div>
         <div>
-            <button className="headerbutton" style={{backgroundColor: "#ffd500", color: "#000000"}}>
+            {/* <button className="headerbutton" style={{backgroundColor: "#ffd500", color: "#000000"}} onClick={()=>navigate('/premium')}>
                 Premium
-            </button>
+            </button> */}
             <button className="headerbutton" onClick={handleOldapp} style={{backgroundColor: "#979797"}}>
                 Old App
             </button>
@@ -87,7 +87,7 @@ function PDFSearch() {
       <div className="body">
         <div className="pdfurlcontainer">
           {dataloaded ? (
-            <>PDF was loaded. Answering based on {url}</>
+            <>PDF was loaded. Answering based on {url} <a href="https://forms.gle/6JU7uBvXHe4WMRhK7" target="_blank" >ARE YOU A RESEARCHER?</a></>
           ) : (
             <ProcessURL
               dataloaded={dataloaded}
