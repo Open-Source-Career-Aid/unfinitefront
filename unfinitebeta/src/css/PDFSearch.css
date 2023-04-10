@@ -64,6 +64,19 @@ input[type="text"][name="url"] {
   button[type="submit"]:hover {
     background-color: #177e00;
   }
+
+  .headerbutton {
+    background-color: #40b600;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  .headerbutton:hover {
+    background-color: #177e00;
+  }
   
   .displayanswer {
     height: 100%;

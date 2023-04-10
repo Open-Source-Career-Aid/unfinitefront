@@ -4,34 +4,34 @@ import isAuthenticated from '../Functions/isAuthenticated';
 import { useNavigate } from "react-router-dom";
 import ProcessURL from '../Components/PDFSearch/ProcessURL';
 import DisplayAnswer from '../Components/PDFSearch/DisplayAnswer';
-// import ReactGA from 'react-ga';
-// ReactGA.initialize('G-8YXPLS55QD');
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-8YXPLS55QD');
 
 function PDFSearch() {
 
-    // const [userstatus , setUserstatus] = useState(null);
+    const [userstatus , setUserstatus] = useState(null);
     const navigate = useNavigate();
     const [url , setUrl] = useState(null);
     const [dataloaded , setDataloaded] = useState(false);
     const [docid , setDocid] = useState(null);
     const answer = 'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
-    // useEffect(() => {
-    //     ReactGA.pageview(window.location.pathname + window.location.search);
-    //   }
-    //     , []);
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname + window.location.search);
+      }
+        , []);
 
-    // useEffect(() => {
-    //     console.log("PDFSearch page loaded");
-    //     const checkUserStatus = async () => {
-    //         const authenticated = await isAuthenticated();
-    //         setUserstatus(authenticated);
-    //         if (!authenticated) {
-    //             navigate('/login');
-    //         }
-    //     }
-    //     checkUserStatus();
-    // }, [userstatus]);
+    useEffect(() => {
+        console.log("PDFSearch page loaded");
+        const checkUserStatus = async () => {
+            const authenticated = await isAuthenticated();
+            setUserstatus(authenticated);
+            if (!authenticated) {
+                navigate('/login');
+            }
+        }
+        checkUserStatus();
+    }, [userstatus]);
 
     useEffect(() => {
 
@@ -41,11 +41,18 @@ function PDFSearch() {
 
     }, [dataloaded]);
 
+    const handleClick = () => {
+        setDataloaded(false);
+        setDocid(null);
+        setUrl(null);
+        navigate('/pdfsearch');
+    }
+
     return (
         <div className='pdfsearch'>
             <div className='headerpdfsearch'>
                 <h1 className='logopdfsearch'>unfinite</h1>
-                <div>{dataloaded ? <p>load another pdf</p> : null}</div>
+                <div>{dataloaded ? <button className='headerbutton' onClick={handleClick}>load another pdf</button> : null}</div>
             </div>
             <div className='body'>
                 <div className='pdfurlcontainer'>

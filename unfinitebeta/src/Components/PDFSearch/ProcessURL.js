@@ -1,4 +1,5 @@
 import React, { useState , useEffect } from "react";
+import ProcessPDF from "../../Functions/PDFSearch/ProcessPDF";
 
 function ProcessURL({ dataloaded, setDataloaded, setDocid , url , setUrl }) {
 
@@ -19,8 +20,12 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid , url , setUrl }) {
             console.log('send pdf')
             setAlert('Please wait while we process your PDF...it might take a while');
             setProcessing(true);
-            setDataloaded(true);
-            setDocid(1);
+            const getPDFdata = async () => {
+                const data = await ProcessPDF({ url });
+                setDataloaded(true);
+                setDocid(data);
+            }
+            getPDFdata();
         }
         else if (url !== null && url.slice(-4) !== '.pdf') {
             setAlert('Please enter a valid PDF URL');
