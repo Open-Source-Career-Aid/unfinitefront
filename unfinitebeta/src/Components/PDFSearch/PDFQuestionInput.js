@@ -19,7 +19,12 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer }) {
         setHandlingSubmit(true);
         setAnswer("Loading...");
         const response = await answerQuestion(question, [docid]);
+        if (response==="") {
+          setAnswer("Seems like the team has more work to do. Please use the feedback box on the bottom left to leave a note, and we will have it fixed in no time.");
+        }
+        else {
         setAnswer(response);
+        }
         setQnA((map) => new Map(map.set(question, response)));
         console.log("query complete ✅");
         setHandlingSubmit(false);
