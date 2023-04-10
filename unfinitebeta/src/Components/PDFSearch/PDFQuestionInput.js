@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import answerQuestion from "../../Functions/PDFSearch/answerQuestion";
+import DisplayAnswer from "./DisplayAnswer";
 
-function PDFQuestionInput({ QnA, setQnA }) {
+function PDFQuestionInput({ QnA, setQnA, docid }) {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const handleInputChange = (event) => {
@@ -11,7 +13,7 @@ function PDFQuestionInput({ QnA, setQnA }) {
     event.preventDefault();
     // make API call with the question for the url
     // setAnswer(<returned string text>)
-    setAnswer(""); // CHANGE
+    setAnswer(answerQuestion(question, [docid]));
     setQnA((map) => new Map(map.set(question, answer)));
     console.log("query complete ✅");
   };
@@ -30,6 +32,7 @@ function PDFQuestionInput({ QnA, setQnA }) {
           onChange={handleInputChange}
         />
       </form>
+      <DisplayAnswer answer={answer} />
     </div>
   );
 }
