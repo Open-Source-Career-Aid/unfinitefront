@@ -105,7 +105,7 @@ function Signup() {
     
             if (status) {
               console.log('User is logged in');
-              navigate('/search');
+              navigate('/');
             }
           } else {
             alert('Sign up failed. Please try again.');
