@@ -1,6 +1,13 @@
 /* Global styles */
   body .bodylandingpage {
     background-color: #ffffff;
+    /*
+    background-image: url(../../public/assets/bgimage.webp), url(../../public/assets/bgimage.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    */
   }
   
   /* Landing page styles */

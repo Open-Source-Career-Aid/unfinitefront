@@ -3,6 +3,7 @@ import '../css/LandingPage.css';
 import { Link } from "react-router-dom";
 import isAuthenticated from '../Functions/isAuthenticated';
 import { useNavigate } from "react-router-dom";
+import MobileCheck from "../Functions/MobileCheck";
 import ReactGA from 'react-ga';
 ReactGA.initialize('G-8YXPLS55QD');
 

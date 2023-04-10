@@ -9,6 +9,7 @@ import Navbar from '../Components/Navbar';
 import { Link } from 'react-router-dom';
 import FeaturesBox from '../Components/FeaturesBox';
 import ReactGA from 'react-ga';
+import MobileCheck from "../Functions/MobileCheck";
 ReactGA.initialize('G-8YXPLS55QD');
 
 function SearchBar(props) {
@@ -54,6 +55,7 @@ function SearchBar(props) {
             <Navbar page={'navbarsearchpage'}/>
             <div className='SearchPageContent'>
               <h1 className='logocenter'>UNFINITE <span className="beta-symbol">&beta;</span></h1>
+           
               <div className='topsearchcontainer'>
                 <form onSubmit={handleSubmit}>
                     <div className='searchbarcontainer'>
@@ -69,6 +71,7 @@ function SearchBar(props) {
                 <a className='example-search' href='/results?query=elements%20of%20an%20entrepreneurial%20ecosystem'>elements of an entrepreneurial ecosystem</a>
               </div>
               <FeaturesBox />
+              <MobileCheck />
             </div>
         </div>
 
