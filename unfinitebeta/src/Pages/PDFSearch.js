@@ -130,7 +130,7 @@ function PDFSearch() {
         <FeedbackBox />
       </div>
       <div className="footer">
-        <p>LIMITED ACCESS TO BROWN UNIVERSITY © 2023 unfinite</p>
+        <p>LIMITED EXCESS © 2023 unfinite</p>
       </div>
     </div>
   );
