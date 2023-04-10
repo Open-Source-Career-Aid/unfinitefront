@@ -72,14 +72,15 @@ function PDFSearch() {
             />
           )}
         </div>
-        <div className="chatcontainer">
+        { dataloaded ? <div className="chatcontainer">
           <div className="askcontainer">
             <PDFQuestionsContainer QnA={QnA} setQnA={setQnA} />
           </div>
           <div className="answercontainer">
             {dataloaded ? <DisplayAnswer answer={answer} /> : null}
           </div>
-        </div>
+        </div> : null}
+        
       </div>
       <div className="footer"></div>
     </div>
