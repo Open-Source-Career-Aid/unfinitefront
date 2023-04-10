@@ -34,7 +34,7 @@ function LandingPage() {
         <div className='bodylandingpage'>
             <div className="LandingPage">
                 <h1 className="logocenter">UNFINITE</h1>
-                <p>Exclusive Access to Selected Universities.</p>
+                <p>Limited Access.</p>
                 <Link className='signupbutton' to='/signup'>Sign Up</Link>
                 <Link className='loginbutton' to='/login'>Log in</Link>
             </div>
