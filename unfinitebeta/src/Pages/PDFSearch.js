@@ -7,6 +7,7 @@ import DisplayAnswer from "../Components/PDFSearch/DisplayAnswer";
 import ReactGA from "react-ga";
 import PDFQuestionsContainer from "../Components/PDFSearch/PDFQuestionsContainer";
 import FeedbackBox from "../Components/FeedbackBox";
+import { useLocation } from "react-router-dom";
 ReactGA.initialize("G-8YXPLS55QD");
 
 function PDFSearch() {
@@ -16,6 +17,7 @@ function PDFSearch() {
   const [dataloaded, setDataloaded] = useState(false);
   const [docid, setDocid] = useState(null);
   const [answer, setAnswer] = useState("");
+  const [threadid, setThreadid] = useState(null);
   //   const answer =
   //     "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum.";
   const [QnA, setQnA] = useState(new Map());
@@ -44,11 +46,10 @@ function PDFSearch() {
     checkUserStatus();
   }, [userstatus]);
 
-  useEffect(() => {
-    if (dataloaded && docid !== null) {
-      // do something here
-    }
-  }, [dataloaded]);
+  // useEffect(() => {
+  //   if (dataloaded && docid !== null) {
+  //   }
+  // }, [dataloaded]);
 
   const handleClick = () => {
     setQnA(new Map());
@@ -56,6 +57,7 @@ function PDFSearch() {
     setDataloaded(false);
     setDocid(null);
     setUrl(null);
+    setThreadid(null);
     navigate("/");
   };
 
@@ -77,9 +79,6 @@ function PDFSearch() {
           </div>
         </div>
         <div>
-          {/* <button className="headerbutton" style={{backgroundColor: "#ffd500", color: "#000000"}} onClick={()=>navigate('/premium')}>
-                Premium
-            </button> */}
           <button
             className="headerbutton"
             onClick={handleOldapp}
@@ -105,6 +104,8 @@ function PDFSearch() {
               setDocid={setDocid}
               url={url}
               setUrl={setUrl}
+              threadid={threadid}
+              setThreadid={setThreadid}
             />
           )}
         </div>
@@ -118,6 +119,7 @@ function PDFSearch() {
                 docid={docid}
                 setAnswer={setAnswer}
                 answer={answer}
+                threadid={threadid}
               />
             </div>
             <div className="answercontainer">

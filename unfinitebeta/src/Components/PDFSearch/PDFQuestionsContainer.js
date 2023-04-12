@@ -3,7 +3,7 @@ import PDFQuestionBar from "./PDFQuestionBar";
 import PDFQuestionInput from "./PDFQuestionInput";
 
 // Questions and input box container on the left
-function PDFQuestionsContainer({ QnA , setQnA , docid , setAnswer , answer }) {
+function PDFQuestionsContainer({ QnA , setQnA , docid , setAnswer , answer , threadid }) {
   return (
     <div className="qcontainer">
       {/* a search bar that takes in a url and a button */}
@@ -20,7 +20,7 @@ function PDFQuestionsContainer({ QnA , setQnA , docid , setAnswer , answer }) {
           answer={answer}
         />
       ))}
-      <PDFQuestionInput docid={docid} QnA={QnA} setQnA={setQnA} setAnswer={setAnswer} />
+      <PDFQuestionInput docid={docid} QnA={QnA} setQnA={setQnA} setAnswer={setAnswer} threadid={threadid}/>
     </div>
   );
 }

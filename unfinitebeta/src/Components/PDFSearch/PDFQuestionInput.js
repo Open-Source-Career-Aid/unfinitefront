@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import answerQuestion from "../../Functions/PDFSearch/answerQuestion";
 import DisplayAnswer from "./DisplayAnswer";
 
-function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer }) {
+function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid }) {
 
   const [question, setQuestion] = useState("");
   const [handlingSubmit, setHandlingSubmit] = useState(false);
@@ -18,7 +18,7 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer }) {
       if (!handlingSubmit) {
         setHandlingSubmit(true);
         setAnswer("Loading...");
-        const response = await answerQuestion(question, [docid]);
+        const response = await answerQuestion(question, [docid], threadid);
         if (response==="") {
           setAnswer("Seems like the team has more work to do. Please use the feedback box on the bottom left to leave a note, and we will have it fixed in no time.");
         }

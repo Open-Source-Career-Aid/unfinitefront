@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ProcessPDF from "../../Functions/PDFSearch/ProcessPDF";
+import { useNavigate } from "react-router-dom";
 
-function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl }) {
+function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadid , setThreadid }) {
   const [loadalert, setloadAlert] = useState(null);
   const [processing, setProcessing] = useState(false);
+
+  // navigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -15,6 +19,13 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl }) {
   };
 
   useEffect(() => {
+    if (threadid !== null) {
+      setDataloaded(true);
+      navigate(`/?t=${threadid}`);
+    }
+  }, [threadid]);
+
+  useEffect(() => {
     if (url !== null && url.slice(-4) === ".pdf") {
       console.log("send pdf");
       setloadAlert(
@@ -23,8 +34,17 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl }) {
       setProcessing(true);
       const getPDFdata = async () => {
         const data = await ProcessPDF({ url });
-        setDataloaded(true);
-        setDocid(data);
+        if (data === null) {
+          alert("Please enter a valid PDF URL ending with .pdf");
+          setDataloaded(false);
+          setDocid(null);
+          setUrl(null);
+          setProcessing(false);
+          return;
+        }
+        console.log("data", data);
+        setDocid(data[0]);
+        setThreadid(data[1]);
       };
       getPDFdata();
     } else if (url !== null && !url.includes(".pdf")) {
