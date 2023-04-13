@@ -25,10 +25,18 @@ async function ProcessPDF({ url }) {
     });
 
     const data = await response.json();
-    console.log(data.document_id);
+    // check if response is ok
+    if (!response.ok) {
+        console.log('error', data);
+        return null;
+    }
+    else {
+        console.log('success', data);
+        // console.log(data.document_id);
 
-    // return (JSON.parse(data.completion), JSON.parse(data.track));
-    return data.document_id;
+        // return (JSON.parse(data.completion), JSON.parse(data.track));
+        return [data.document_id, data.thread_id];
+    }
 
 }
 

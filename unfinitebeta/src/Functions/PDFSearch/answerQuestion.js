@@ -3,7 +3,7 @@ import getCSRF from "../getCSRF";
 import { API_URL } from "../../API_URL";
 import getCookie from "../getCookie";
 
-async function answerQuestion(question, docids) {
+async function answerQuestion(question, docids, threadid) {
   getCSRF();
   const csrfToken = getCookie("csrftoken");
 
@@ -18,6 +18,7 @@ async function answerQuestion(question, docids) {
     body: JSON.stringify({
       'question': question,
       'docids': JSON.stringify(docids),
+      'threadid': threadid,
     }),
   }).then(response => response.json()).catch(error => console.log(error));
 
