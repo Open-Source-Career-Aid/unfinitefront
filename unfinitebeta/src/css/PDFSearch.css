@@ -200,3 +200,7 @@ input[type="text"][name="url"] {
   align-items: center;
   box-sizing: border-box;
 }
+
+.highlight {
+  background-color: #ffff00;
+}
