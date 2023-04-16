@@ -18,20 +18,20 @@ function PDFSearch() {
   const [docid, setDocid] = useState(null);
   const [answer, setAnswer] = useState("");
   const [threadid, setThreadid] = useState(null);
-  //   const answer =
-  //     "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum.";
   const [QnA, setQnA] = useState(new Map());
+
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
 
   useEffect(() => {
-    console.log("PDFSearch page loaded");
+    // console.log("PDFSearch page loaded");
     setQnA(new Map());
     setAnswer("");
     setUrl(null);
     setDataloaded(false);
     setDocid(null);
+    setThreadid(null);
   }, []);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ function PDFSearch() {
   //   }
   // }, [dataloaded]);
 
-  const handleClick = () => {
+  const handlenewPDF = () => {
     setQnA(new Map());
     setAnswer("");
     setDataloaded(false);
@@ -72,20 +72,13 @@ function PDFSearch() {
           <h1 className="logopdfsearch">unfinite</h1>
           <div>
             {dataloaded ? (
-              <button className="headerbutton" onClick={handleClick}>
+              <button className="headerbutton" onClick={handlenewPDF}>
                 load another pdf
               </button>
             ) : null}
           </div>
         </div>
         <div>
-          <button
-            className="headerbutton"
-            onClick={handleOldapp}
-            style={{ backgroundColor: "#979797" }}
-          >
-            Old App
-          </button>
         </div>
       </div>
       <div className="body">

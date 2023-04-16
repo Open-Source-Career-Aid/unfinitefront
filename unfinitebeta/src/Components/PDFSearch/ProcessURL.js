@@ -59,7 +59,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
       {/* a search bar that takes in a url and a button */}
       <div className="searchbar">
         {processing ? (
-          <div className="loader">{alert}</div>
+          <div className="loader">{loadalert}</div>
         ) : (
           <form onSubmit={handleSubmit} className="urlsubmit">
             <input

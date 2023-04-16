@@ -1,7 +1,7 @@
 import React from "react";
-import getCookie from "./getCookie";
-import getCSRF from "./getCSRF";
-import { API_URL } from "../API_URL";
+import getCookie from "../getCookie";
+import getCSRF from "../getCSRF";
+import { API_URL } from "../../API_URL";
 
 async function getSearchresults(id, topicid) {
 
