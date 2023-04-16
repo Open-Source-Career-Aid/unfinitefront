@@ -7,6 +7,7 @@ import DisplayAnswer from "../Components/PDFSearch/DisplayAnswer";
 import ReactGA from "react-ga";
 import PDFQuestionsContainer from "../Components/PDFSearch/PDFQuestionsContainer";
 import FeedbackBox from "../Components/FeedbackBox";
+import userLogout from "../Functions/userLogout";
 import { useLocation } from "react-router-dom";
 ReactGA.initialize("G-8YXPLS55QD");
 
@@ -19,6 +20,8 @@ function PDFSearch() {
   const [answer, setAnswer] = useState("");
   const [threadid, setThreadid] = useState(null);
   const [QnA, setQnA] = useState(new Map());
+  const [qids, setQids] = useState([]);
+  const [selectedqid, setSelectedqid] = useState(null);
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -61,6 +64,11 @@ function PDFSearch() {
     navigate("/");
   };
 
+  const handleLogout = () => {
+    userLogout();
+    navigate("/login");
+  };
+
   const handleOldapp = () => {
     navigate("/oldapp");
   };
@@ -79,6 +87,9 @@ function PDFSearch() {
           </div>
         </div>
         <div>
+          <button className="headerbutton" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       </div>
       <div className="body">
@@ -113,6 +124,10 @@ function PDFSearch() {
                 setAnswer={setAnswer}
                 answer={answer}
                 threadid={threadid}
+                qids={qids}
+                setQids={setQids}
+                selectedqid={selectedqid}
+                setSelectedqid={setSelectedqid}
               />
             </div>
             <div className="answercontainer">

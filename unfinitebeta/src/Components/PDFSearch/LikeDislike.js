@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import likeDislikeAnswer from "../../Functions/PDFSearch/likeDislikeAnswer";
 import "../../css/Archiv/likeDislike.css";
 
-function LikeDislike({ answer }) {
+function LikeDislike({ setThumbs }) {
+
+  // thumbs is 0 if not liked and not disliked, 1 if liked, 2 if disliked
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
   const [likeButtonClass, setLikeButtonClass] = useState("like-btn");
@@ -19,13 +21,31 @@ function LikeDislike({ answer }) {
     setDisliked(!disliked);
   };
   useEffect(() => {
-    liked ? console.log("Liked!") : console.log("Unliked");
+    // liked ? console.log("Liked!") : console.log("Unliked");
     setLikeButtonClass(liked ? "liked" : "like-btn");
+
+    if (liked) {
+      setThumbs(1);
+    } else if (disliked) {
+      setThumbs(2);
+    } else {
+      setThumbs(0);
+    }
+
   }, [liked]);
 
   useEffect(() => {
-    disliked ? console.log("Disliked!") : console.log("Removed dislike");
+    // disliked ? console.log("Disliked!") : console.log("Removed dislike");
     setDislikeButtonClass(disliked ? "disliked" : "dislike-btn");
+
+    if (liked) {
+      setThumbs(1);
+    } else if (disliked) {
+      setThumbs(2);
+    } else {
+      setThumbs(0);
+    }
+
   }, [disliked]);
 
   return (
