@@ -1,0 +1,39 @@
+button.like-btn {
+  background-image: url("../../img/icons8-thumbs-up-24.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+button.dislike-btn {
+  background-image: url("../../img/icons8-thumbs-down-24.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+button.liked {
+  background-image: url("../../img/icons8-thumbs-up-24\ \(1\).png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+button.disliked {
+  background-image: url("../../img/icons8-thumbs-down-24\ \(1\).png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+}
