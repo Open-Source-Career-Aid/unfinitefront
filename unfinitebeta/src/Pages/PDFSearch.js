@@ -7,6 +7,8 @@ import DisplayAnswer from "../Components/PDFSearch/DisplayAnswer";
 import ReactGA from "react-ga";
 import PDFQuestionsContainer from "../Components/PDFSearch/PDFQuestionsContainer";
 import FeedbackBox from "../Components/FeedbackBox";
+import userLogout from "../Functions/userLogout";
+import ExamplesBox from "../Components/PDFSearch/ExamplesBox";
 import { useLocation } from "react-router-dom";
 ReactGA.initialize("G-8YXPLS55QD");
 
@@ -18,20 +20,22 @@ function PDFSearch() {
   const [docid, setDocid] = useState(null);
   const [answer, setAnswer] = useState("");
   const [threadid, setThreadid] = useState(null);
-  //   const answer =
-  //     "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum.";
   const [QnA, setQnA] = useState(new Map());
+  const [qids, setQids] = useState([]);
+  const [selectedqid, setSelectedqid] = useState(null);
+
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
 
   useEffect(() => {
-    console.log("PDFSearch page loaded");
+    // console.log("PDFSearch page loaded");
     setQnA(new Map());
     setAnswer("");
     setUrl(null);
     setDataloaded(false);
     setDocid(null);
+    setThreadid(null);
   }, []);
 
   useEffect(() => {
@@ -51,7 +55,7 @@ function PDFSearch() {
   //   }
   // }, [dataloaded]);
 
-  const handleClick = () => {
+  const handlenewPDF = () => {
     setQnA(new Map());
     setAnswer("");
     setDataloaded(false);
@@ -59,6 +63,11 @@ function PDFSearch() {
     setUrl(null);
     setThreadid(null);
     navigate("/");
+  };
+
+  const handleLogout = () => {
+    userLogout();
+    navigate("/login");
   };
 
   const handleOldapp = () => {
@@ -72,19 +81,15 @@ function PDFSearch() {
           <h1 className="logopdfsearch">unfinite</h1>
           <div>
             {dataloaded ? (
-              <button className="headerbutton" onClick={handleClick}>
+              <button className="headerbutton" onClick={handlenewPDF}>
                 load another pdf
               </button>
             ) : null}
           </div>
         </div>
         <div>
-          <button
-            className="headerbutton"
-            onClick={handleOldapp}
-            style={{ backgroundColor: "#979797" }}
-          >
-            Old App
+          <button className="headerbutton" onClick={handleLogout}>
+            Logout
           </button>
         </div>
       </div>
@@ -98,6 +103,7 @@ function PDFSearch() {
               </a>
             </>
           ) : (
+            <>
             <ProcessURL
               dataloaded={dataloaded}
               setDataloaded={setDataloaded}
@@ -107,6 +113,8 @@ function PDFSearch() {
               threadid={threadid}
               setThreadid={setThreadid}
             />
+            <ExamplesBox setUrl={setUrl} />
+            </>
           )}
         </div>
         {dataloaded ? (
@@ -120,6 +128,10 @@ function PDFSearch() {
                 setAnswer={setAnswer}
                 answer={answer}
                 threadid={threadid}
+                qids={qids}
+                setQids={setQids}
+                selectedqid={selectedqid}
+                setSelectedqid={setSelectedqid}
               />
             </div>
             <div className="answercontainer">

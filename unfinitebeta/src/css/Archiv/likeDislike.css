@@ -1,0 +1,43 @@
+button.like-btn {
+  background-image: url("../../../public/assets/like.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+}
+
+button.dislike-btn {
+  background-image: url("../../../public/assets/dislike.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button.liked {
+  background-image: url("../../../public/assets/liked.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button.disliked {
+  background-image: url("../../../public/assets/disliked.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}

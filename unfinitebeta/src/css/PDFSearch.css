@@ -200,3 +200,15 @@ input[type="text"][name="url"] {
   align-items: center;
   box-sizing: border-box;
 }
+
+.highlight {
+  background-color: #ffff00;
+}
+
+.like-dislike {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
+}

@@ -5,7 +5,6 @@ import isAuthenticated from '../Functions/isAuthenticated';
 // import getCSRF from "./getCSRF";
 import { useNavigate } from "react-router-dom";
 import getCookie from "../Functions/getCookie";
-import Navbar from "../Components/Navbar";
 import { Link } from "react-router-dom";
 import getCSRF from "../Functions/getCSRF";
 import { API_URL } from "../API_URL";
