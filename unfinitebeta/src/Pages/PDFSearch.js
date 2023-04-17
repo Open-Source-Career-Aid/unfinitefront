@@ -8,6 +8,7 @@ import ReactGA from "react-ga";
 import PDFQuestionsContainer from "../Components/PDFSearch/PDFQuestionsContainer";
 import FeedbackBox from "../Components/FeedbackBox";
 import userLogout from "../Functions/userLogout";
+import ExamplesBox from "../Components/PDFSearch/ExamplesBox";
 import { useLocation } from "react-router-dom";
 ReactGA.initialize("G-8YXPLS55QD");
 
@@ -102,6 +103,7 @@ function PDFSearch() {
               </a>
             </>
           ) : (
+            <>
             <ProcessURL
               dataloaded={dataloaded}
               setDataloaded={setDataloaded}
@@ -111,6 +113,8 @@ function PDFSearch() {
               threadid={threadid}
               setThreadid={setThreadid}
             />
+            <ExamplesBox setUrl={setUrl} />
+            </>
           )}
         </div>
         {dataloaded ? (
