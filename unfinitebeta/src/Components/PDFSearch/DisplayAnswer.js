@@ -34,7 +34,7 @@ function DisplayAnswer({ qid , answer }) {
       <div className="displayanswer">
         {/* <p className="answer">{highlight}</p> */}
         <p className="answer">{highlighted}</p>
-        { answer ? <LikeDislike setThumbs={setThumbs} ></LikeDislike> : null}
+        {/* { answer ? <LikeDislike setThumbs={setThumbs} ></LikeDislike> : null} */}
       </div>
     </>
   );

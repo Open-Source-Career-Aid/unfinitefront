@@ -67,7 +67,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
               placeholder="Enter a URL that ends with .pdf. PLEASE ONLY LOAD PUBLICLY AVAILABLE PDFs."
               name="url"
             />
-            <button type="submit">Analyze</button>
+            <button type="submit">Load Document</button>
           </form>
         )}
       </div>
