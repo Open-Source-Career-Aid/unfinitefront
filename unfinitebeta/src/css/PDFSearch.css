@@ -84,7 +84,7 @@ input[type="text"][name="url"] {
   
   .displayanswer {
     height: 100%;
-    width: 80%;
+    width: 90%;
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
@@ -95,36 +95,36 @@ input[type="text"][name="url"] {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 30%;
+    width: 25%;
     margin-top: 10px;
     margin-bottom: 10px;
   }
 
-  .answercontainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-top: 50px;
-    width: 70%;
-    height: 80%;
-  }
-    .answer {
-        width: 90%;
-        white-space: pre-wrap;
-        font-size: 1em; /* or any desired font size */
-        padding: 10px;
-        padding-left: 20px;
-    }
+.answercontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 50px;
+  width: 60%;
+  height: 80%;
+}
+.answer {
+    width: 90%;
+    white-space: pre-wrap;
+    font-size: 1em; /* or any desired font size */
+    padding: 10px;
+    padding-left: 20px;
+}
 
-  .chatcontainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 100%;
-  }
+.chatcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 100%;
+}
 
 .qcontainer {
   display: flex;
@@ -211,4 +211,68 @@ input[type="text"][name="url"] {
   justify-content: flex-start;
   align-items: center;
   margin: 10px;
+}
+
+.suggested {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 10px;
+  width: 25%;
+}
+
+.suggested-box-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-items: center;
+  padding: 20px 20px;
+  margin: 20px;
+  border: solid 1px #d4d4d4;
+  border-radius: 10px;
+  height: 10%;
+}
+
+.loadsearchresult {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #979797;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 5px 5px;
+  cursor: pointer;
+  width: 20%;
+  text-decoration: none;
+}
+
+.scholarinput {
+  align-items: center;
+  margin: 10px;
+  width: 70%;
+}
+
+.suggested-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
+  width: 70%;
+  height: 20%;
+}
+
+.suggested-input .scholarbutton {
+  background-color: #979797;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 10px;
+  cursor: pointer;
+  width: 30%;
 }
