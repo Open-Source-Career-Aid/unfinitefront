@@ -1,5 +1,5 @@
 button.like-btn {
-  background-image: url("../../../public/assets/Like.png");
+  /* background-image: url("../../../public/assets/Like.png"); */
   background-size: contain;
   background-repeat: no-repeat;
   width: 25px;
@@ -10,7 +10,7 @@ button.like-btn {
 }
 
 button.dislike-btn {
-  background-image: url("../../../public/assets/Dislike.png");
+  /* background-image: url("../../../public/assets/Dislike.png"); */
   background-size: contain;
   background-repeat: no-repeat;
   width: 25px;
@@ -21,7 +21,7 @@ button.dislike-btn {
 }
 
 button.liked {
-  background-image: url("../../../public/assets/Liked.png");
+  /* background-image: url("../../../public/assets/Liked.png"); */
   background-size: contain;
   background-repeat: no-repeat;
   width: 25px;
@@ -32,7 +32,7 @@ button.liked {
 }
 
 button.disliked {
-  background-image: url("../../../public/assets/Disliked.png");
+  /* background-image: url("../../../public/assets/Disliked.png"); */
   background-size: contain;
   background-repeat: no-repeat;
   width: 25px;

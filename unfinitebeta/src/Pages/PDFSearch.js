@@ -9,6 +9,7 @@ import PDFQuestionsContainer from "../Components/PDFSearch/PDFQuestionsContainer
 import FeedbackBox from "../Components/FeedbackBox";
 import userLogout from "../Functions/userLogout";
 import ExamplesBox from "../Components/PDFSearch/ExamplesBox";
+import Suggestions from "../Components/PDFSearch/Suggestions";
 import { useLocation } from "react-router-dom";
 ReactGA.initialize("G-8YXPLS55QD");
 
@@ -30,6 +31,7 @@ function PDFSearch() {
 
   useEffect(() => {
     // console.log("PDFSearch page loaded");
+    console.log("This runs");
     setQnA(new Map());
     setAnswer("");
     setUrl(null);
@@ -137,6 +139,14 @@ function PDFSearch() {
             <div className="answercontainer">
               {dataloaded ? <DisplayAnswer answer={answer} /> : null}
             </div>
+            <Suggestions 
+            setUrl={setUrl}
+            setAnswer={setAnswer}
+            setQnA={setQnA}
+            setDataloaded={setDataloaded}
+            setDocid={setDocid}
+            setThreadid={setThreadid}
+            />
           </div>
         ) : null}
       </div>

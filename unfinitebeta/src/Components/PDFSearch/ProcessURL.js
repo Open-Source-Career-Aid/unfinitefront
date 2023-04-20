@@ -26,6 +26,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
   }, [threadid]);
 
   useEffect(() => {
+    console.log("url", url);
     if (url !== null && url.slice(-4) === ".pdf") {
       console.log("send pdf");
       setloadAlert(
