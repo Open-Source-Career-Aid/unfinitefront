@@ -116,6 +116,15 @@ function PDFSearch() {
               setThreadid={setThreadid}
             />
             <ExamplesBox setUrl={setUrl} />
+            <Suggestions 
+            setUrl={setUrl}
+            setAnswer={setAnswer}
+            setQnA={setQnA}
+            setDataloaded={setDataloaded}
+            setDocid={setDocid}
+            setThreadid={setThreadid}
+            isRow={true}
+            />
             </>
           )}
         </div>
@@ -146,6 +155,7 @@ function PDFSearch() {
             setDataloaded={setDataloaded}
             setDocid={setDocid}
             setThreadid={setThreadid}
+            isRow={false}
             />
           </div>
         ) : null}
