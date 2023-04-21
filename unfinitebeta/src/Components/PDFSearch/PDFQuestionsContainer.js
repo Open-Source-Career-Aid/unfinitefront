@@ -7,6 +7,17 @@ function PDFQuestionsContainer({ QnA , setQnA , docid , setAnswer , answer , thr
   return (
     <div className="qcontainer">
       {/* a search bar that takes in a url and a button */}
+      <PDFQuestionInput 
+      docid={docid} 
+      QnA={QnA} 
+      setQnA={setQnA} 
+      setAnswer={setAnswer} 
+      threadid={threadid} 
+      qids={qids} 
+      setQids={setQids}
+      selectedqid={selectedqid}
+      setSelectedqid={setSelectedqid}
+       />
       {Array.from(QnA.keys()).map((qn, index) => (
         // {console.log(index);}
         <PDFQuestionBar
@@ -23,20 +34,7 @@ function PDFQuestionsContainer({ QnA , setQnA , docid , setAnswer , answer , thr
           selectedqid={selectedqid}
           setSelectedqid={setSelectedqid}
         />
-      ))}
-      <PDFQuestionInput 
-      docid={docid} 
-      QnA={QnA} 
-      setQnA={setQnA} 
-      setAnswer={setAnswer} 
-      threadid={threadid} 
-      qids={qids} 
-      setQids={setQids}
-      selectedqid={selectedqid}
-      setSelectedqid={setSelectedqid}
-       />
-
-      
+      ))}      
     </div>
   );
 }
