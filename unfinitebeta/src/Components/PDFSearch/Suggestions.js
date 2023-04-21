@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import gscholarresults from "../../Functions/PDFSearch/gscholarresults";
+import arxivresults from "../../Functions/PDFSearch/arxivresults";
+import unfiniteresults from "../../Functions/PDFSearch/unfiniteresults";
 import { useNavigate } from "react-router-dom";
 
-const SuggestedBox = ({ suggested , setUrl , setAnswer , setQnA, setDataloaded , setDocid , setThreadid }) => {
+const SuggestedBox = ({ suggested , setUrl , setAnswer , setQnA, setDataloaded , setDocid , setThreadid , isRow }) => {
 
     const navigate = useNavigate();
 
@@ -22,42 +24,102 @@ const SuggestedBox = ({ suggested , setUrl , setAnswer , setQnA, setDataloaded ,
 
     return (
         <div className="suggested-box">
-        <div className="suggested-box-body">
+            {isRow ?  
+            <div className="suggested-box-body" style={{'flex-direction':'row'}}>
             {suggested.map((s) => (
             <div className="suggested-box-item" key={s}>
                 <p>{s[0]}</p>
                 <a href={s[1]} className="loadsearchresult" onClick={handleResultClick}>Load</a>
             </div>
             ))}
-        </div>
+        </div> : <div className="suggested-box-body">
+            {suggested.map((s) => (
+            <div className="suggested-box-item" key={s}>
+                <p>{s[0]}</p>
+                <a href={s[1]} className="loadsearchresult" onClick={handleResultClick}>Load</a>
+            </div>
+            ))}
+        </div>}
+        
         </div>
     );
     }
 
-function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , setDocid , setThreadid}) {
+function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , setDocid , setThreadid , isRow }) {
 
     const [suggested, setSuggested] = useState([]);
+    const [engine, setEngine] = useState("gscholar");
+    const [query, setQuery] = useState(null);
+
+    useEffect(() => {
+        console.log('query', query);
+        if (query === null) {
+            return;
+        }
+        async function getResults() {
+            if (engine === "gscholar") {
+                const results = await gscholarresults(query);
+                console.log('results', results);
+                setSuggested(results);
+            }
+            else if (engine === "arxiv") {
+                const results = await arxivresults(query);
+                console.log('results', results);
+                setSuggested(results);
+            }
+            else if (engine === "unfinite") {
+                const results = await unfiniteresults(query);
+                console.log('results', results);
+                setSuggested(results);
+            }
+        }
+        if (query) {
+            getResults();
+        }
+    }, [query]);
 
     const handleSubmit = (e) => {
+
+        setQuery(null);
         e.preventDefault();
-        const query = e.target[0].value;
-        async function getResults() {
-            const results = await gscholarresults(query);
-            console.log('results', results);
-            setSuggested(results);
-            console.log('suggested', suggested);
-        }
-        getResults();
-        // make the input box empty
-        e.target[0].value = "";
+        // get query from input type text
+        const query = e.target[3].value;
+        setQuery(query);
+        console.log('query::', query);
+        
     };
+
+    useEffect(() => {
+        console.log('engine', engine);
+    }, [engine]);
+
+    const handleEngineradio = (e) => {
+        setEngine(e.target.value);
+        setQuery(null);
+    }
 
     return (
         <div className="suggested">
-            <h3>Search google scholar</h3>
+            <h3>Search articles</h3>
             <form className="suggested-input" onSubmit={handleSubmit}>
-                <input className='scholarinput' type="text" placeholder="Search" />
-                <button className="scholarbutton" type="submit">Search</button>
+                <div className="radio-group">
+                    <div className="radio-item">
+                    <label htmlFor="gscholar">Google Scholar</label>
+                    <input type="radio" id="gscholar" name="engine" value="gscholar" onClick={handleEngineradio} defaultChecked />
+                    </div>
+                    <div className="radio-item">
+                    <label htmlFor="arxiv">arXiv</label>
+                    <input type="radio" id="arxiv" name="engine" value="arxiv" onClick={handleEngineradio} />
+                    </div>
+                    <div className="radio-item">
+                    <label htmlFor="unfinite">Unfinite</label>
+                    <input type="radio" id="unfinite" name="engine" value="unfinite" onClick={handleEngineradio} />
+                    </div>
+                </div>
+                <div className="input-group">
+                    <input className='scholarinput' type="text" placeholder="Search" />
+                    <button className="scholarbutton" type="submit">Search</button>
+                </div>
             </form>
             <SuggestedBox
             suggested={suggested}
@@ -67,6 +129,7 @@ function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , setDocid , s
             setDataloaded={setDataloaded}
             setDocid={setDocid}
             setThreadid={setThreadid}
+            isRow={isRow}
             />
         </div>
     );

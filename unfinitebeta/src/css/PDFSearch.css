@@ -259,7 +259,7 @@ input[type="text"][name="url"] {
 
 .suggested-input {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   margin: 10px;
@@ -275,4 +275,48 @@ input[type="text"][name="url"] {
   font-size: 10px;
   cursor: pointer;
   width: 30%;
+}
+
+.inputcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 10px;
+  width: 100%;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
+  width: 100%;
+}
+
+.radio-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 10px;
+  width: 100%;
+}
+
+.qs {
+  /* cursor: pointer; */
+  /* bold */
+  /* font-weight: bold; */
+  /* italic */
+  font-style: italic;
 }

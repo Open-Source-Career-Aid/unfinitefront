@@ -7,6 +7,24 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid }
   const [question, setQuestion] = useState("");
   const [handlingSubmit, setHandlingSubmit] = useState(false);
 
+  // if len of QnA is 0, then make the question == 'Introduction' and get the answer for that, otherwise nothing
+  useEffect(() => {
+    if (QnA.size === 0) {
+      setQuestion("Introduction");
+      console.log("querying for introduction");
+      async function getAnswer() {
+        // add the question to the QnA map with the answer as Loading...
+        setAnswer("Loading...");
+        setQnA((map) => new Map(map.set("Introduction", "Loading...")));
+        const response = await answerQuestion("Introduction", [docid], threadid);
+        setAnswer(response);
+        setQnA((map) => new Map(map.set("Introduction", response)));
+        console.log("query complete ✅");
+      }
+      getAnswer();
+    }
+  }, []);
+
   const handleInputChange = (event) => {
     setQuestion(event.target.value);
   };
