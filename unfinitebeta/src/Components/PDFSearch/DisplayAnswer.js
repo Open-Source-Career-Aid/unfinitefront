@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AnswerComplexity from "./AnswerComplexity";
 import LikeDislike from "./LikeDislike";
 
 // function findQs(text) {
@@ -49,7 +50,10 @@ function DisplayAnswer({ qid , answer }) {
         });
 
         // strip the displayanswer of unnecessary spaces
-        displayanswer = displayanswer.replace(/\s+/g, " ").trim();
+        // displayanswer = displayanswer.replace(/\s+/g, " ").trim();
+
+        // strip the unnecessary spaces from the start and end of the displayanswer
+        displayanswer = displayanswer.trim();
 
         return displayanswer;
     };
@@ -65,6 +69,7 @@ function DisplayAnswer({ qid , answer }) {
   return (
     <>
       <div className="displayanswer">
+        {/* <AnswerComplexity /> */}
         {/* <p className="answer">{highlight}</p> */}
         {/* <p className="answer">{answer}</p> */}
         {/* {findQs(answer).map((qid) => {

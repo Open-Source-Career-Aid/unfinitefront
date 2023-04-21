@@ -112,7 +112,7 @@ function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , setDocid , s
                     <input type="radio" id="arxiv" name="engine" value="arxiv" onClick={handleEngineradio} />
                     </div>
                     <div className="radio-item">
-                    <label htmlFor="unfinite">Unfinite</label>
+                    <label htmlFor="unfinite">Unfinite (Semantic Search)</label>
                     <input type="radio" id="unfinite" name="engine" value="unfinite" onClick={handleEngineradio} />
                     </div>
                 </div>
