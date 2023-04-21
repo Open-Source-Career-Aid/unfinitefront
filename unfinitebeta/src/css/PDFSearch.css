@@ -312,3 +312,11 @@ input[type="text"][name="url"] {
   margin: 10px;
   width: 100%;
 }
+
+.qs {
+  /* cursor: pointer; */
+  /* bold */
+  /* font-weight: bold; */
+  /* italic */
+  font-style: italic;
+}
