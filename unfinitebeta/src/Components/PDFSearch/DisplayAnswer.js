@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AnswerComplexity from "./AnswerComplexity";
+// import AnswerComplexity from "./AnswerComplexity";
 import LikeDislike from "./LikeDislike";
 
 // function findQs(text) {
