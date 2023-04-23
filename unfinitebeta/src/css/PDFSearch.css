@@ -219,7 +219,7 @@ input[type="text"][name="url"] {
   justify-content: flex-start;
   align-items: flex-start;
   margin: 10px;
-  width: 25%;
+  width: 100%;
 }
 
 .suggested-box-body-row {
