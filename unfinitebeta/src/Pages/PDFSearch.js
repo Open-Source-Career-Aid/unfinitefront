@@ -20,10 +20,12 @@ function PDFSearch() {
   const [dataloaded, setDataloaded] = useState(false);
   const [docid, setDocid] = useState(null);
   const [answer, setAnswer] = useState("");
+  const [currentquestion, setCurrentquestion] = useState('');
   const [threadid, setThreadid] = useState(null);
   const [QnA, setQnA] = useState(new Map());
   const [qids, setQids] = useState([]);
   const [selectedqid, setSelectedqid] = useState(null);
+  const [nextquestion, setNextquestion] = useState(null);
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -116,15 +118,21 @@ function PDFSearch() {
               setThreadid={setThreadid}
             />
             <ExamplesBox setUrl={setUrl} />
-            <Suggestions 
-            setUrl={setUrl}
-            setAnswer={setAnswer}
-            setQnA={setQnA}
-            setDataloaded={setDataloaded}
-            setDocid={setDocid}
-            setThreadid={setThreadid}
-            isRow={true}
-            />
+            <div style={
+              {
+                'width': "50%"
+              }
+            }>
+              <Suggestions 
+              setUrl={setUrl}
+              setAnswer={setAnswer}
+              setQnA={setQnA}
+              setDataloaded={setDataloaded}
+              setDocid={setDocid}
+              setThreadid={setThreadid}
+              isRow={true}
+              />
+              </div>
             </>
           )}
         </div>
@@ -143,11 +151,23 @@ function PDFSearch() {
                 setQids={setQids}
                 selectedqid={selectedqid}
                 setSelectedqid={setSelectedqid}
+                nextquestion={nextquestion}
+                setNextquestion={setNextquestion}
+                setCurrentquestion={setCurrentquestion}
               />
             </div>
             <div className="answercontainer">
-              {dataloaded ? <DisplayAnswer answer={answer} /> : null}
+              {dataloaded ? <DisplayAnswer answer={answer}
+              nextquestion={nextquestion}
+              setNextquestion={setNextquestion}
+              currentquestion={currentquestion}
+              /> : null}
             </div>
+            <div style={
+              {
+                'width': "25%"
+              }
+            }>
             <Suggestions 
             setUrl={setUrl}
             setAnswer={setAnswer}
@@ -157,6 +177,7 @@ function PDFSearch() {
             setThreadid={setThreadid}
             isRow={false}
             />
+            </div>
           </div>
         ) : null}
       </div>
@@ -164,7 +185,10 @@ function PDFSearch() {
         <FeedbackBox />
       </div>
       <div className="footer">
-        <p>LIMITED ACCESS © 2023 unfinite</p>
+        <a href="https://forms.gle/6JU7uBvXHe4WMRhK7" target="_blank">
+          ARE YOU A RESEARCHER?
+        </a>
+        <p className="limitedaccess">LIMITED ACCESS © 2023 unfinite</p>
       </div>
     </div>
   );

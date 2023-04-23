@@ -2,36 +2,91 @@ import React, { useState, useEffect } from "react";
 import answerQuestion from "../../Functions/PDFSearch/answerQuestion";
 import DisplayAnswer from "./DisplayAnswer";
 
-function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid }) {
+function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid , nextquestion , setNextquestion , setCurrentquestion }) {
 
   const [question, setQuestion] = useState("");
   const [handlingSubmit, setHandlingSubmit] = useState(false);
+  const [middleQuestion, setMiddleQuestion] = useState('');
 
   // if len of QnA is 0, then make the question == 'Introduction' and get the answer for that, otherwise nothing
   useEffect(() => {
     if (QnA.size === 0) {
-      setQuestion("Introduction");
-      console.log("querying for introduction");
-      async function getAnswer() {
-        // add the question to the QnA map with the answer as Loading...
-        setAnswer("Loading...");
-        setQnA((map) => new Map(map.set("Introduction", "Loading...")));
-        const response = await answerQuestion("Introduction", [docid], threadid);
-        setAnswer(response);
-        setQnA((map) => new Map(map.set("Introduction", response)));
-        console.log("query complete ✅");
+      // setQuestion("Introduction");
+      // console.log("querying for introduction");
+      // async function getAnswer() {
+      //   // add the question to the QnA map with the answer as Loading...
+      //   setAnswer("Loading...");
+      //   setQnA((map) => new Map(map.set("Introduction", "Loading...")));
+      //   const response = await answerQuestion("Introduction", [docid], threadid);
+      //   setAnswer(response);
+      //   setQnA((map) => new Map(map.set("Introduction", response)));
+      //   console.log("query complete ✅");
+      setNextquestion("Introduction");
       }
-      getAnswer();
-    }
   }, []);
 
   const handleInputChange = (event) => {
-    setQuestion(event.target.value);
+    // setQuestion(event.target.value);
+    setMiddleQuestion(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     // make API call with the question for the url
+    // async function getAnswer() {
+    //   if (!handlingSubmit) {
+    //     setHandlingSubmit(true);
+    //     setAnswer("Loading...");
+    //     const response = await answerQuestion(question, [docid], threadid);
+    //     if (response==="") {
+    //       setAnswer("Seems like the team has more work to do. Please use the feedback box on the bottom left to leave a note, and we will have it fixed in no time.");
+    //     }
+    //     else {
+    //     setAnswer(response);
+    //     }
+    //     setQnA((map) => new Map(map.set(question, response)));
+    //     console.log("query complete ✅");
+    //     setHandlingSubmit(false);
+    //   }
+    // }
+    // getAnswer();
+    
+    // setNextquestion(question);
+    setQuestion(middleQuestion);
+  };
+
+  useEffect(() => {
+
+    console.log("querying thingy")
+    // async function getAnswer() {
+    //   if (!handlingSubmit) {
+    //     setHandlingSubmit(true);
+    //     setAnswer("Loading...");
+    //     const response = await answerQuestion(question, [docid], threadid);
+    //     if (response==="") {
+    //       setAnswer("Seems like the team has more work to do. Please use the feedback box on the bottom left to leave a note, and we will have it fixed in no time.");
+    //     }
+    //     else {
+    //     setAnswer(response);
+    //     }
+    //     setQnA((map) => new Map(map.set(question, response)));
+    //     console.log("query complete ✅");
+    //     setHandlingSubmit(false);
+    //   }
+    // }
+
+    // if (nextquestion) {
+    //   console.log("querying for " + nextquestion);
+    //   getAnswer();
+    // }
+    setQuestion(nextquestion);
+    setMiddleQuestion(nextquestion);
+    setCurrentquestion(nextquestion);
+
+  }, [nextquestion]);
+
+  useEffect(() => {
+
     async function getAnswer() {
       if (!handlingSubmit) {
         setHandlingSubmit(true);
@@ -48,8 +103,14 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid }
         setHandlingSubmit(false);
       }
     }
-    getAnswer();
-  };
+
+    if (question) {
+      getAnswer();
+    }
+
+    setMiddleQuestion('')
+
+  }, [question]);
 
   // async handleSubmit = (event) => {
   //   event.preventDefault();
@@ -71,7 +132,7 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid }
         <input
           type="text"
           placeholder="Ask something."
-          value={question}
+          value={middleQuestion}
           onChange={handleInputChange}
         />
         <button type="submit">Ask</button>

@@ -25,7 +25,7 @@ const SuggestedBox = ({ suggested , setUrl , setAnswer , setQnA, setDataloaded ,
     return (
         <div className="suggested-box">
             {isRow ?  
-            <div className="suggested-box-body" style={{'flex-direction':'row'}}>
+            <div className="suggested-box-body-row">
             {suggested.map((s) => (
             <div className="suggested-box-item" key={s}>
                 <p>{s[0]}</p>
@@ -104,21 +104,25 @@ function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , setDocid , s
             <form className="suggested-input" onSubmit={handleSubmit}>
                 <div className="radio-group">
                     <div className="radio-item">
-                    <label htmlFor="gscholar">Google Scholar</label>
-                    <input type="radio" id="gscholar" name="engine" value="gscholar" onClick={handleEngineradio} defaultChecked />
+                        { engine==='gscholar' ? <label htmlFor="gscholar" className="labelselected">Google Scholar</label> : 
+                        <label htmlFor="gscholar">Google Scholar</label>}
+                        <input type="radio" id="gscholar" name="engine" value="gscholar" onClick={handleEngineradio} defaultChecked />
                     </div>
                     <div className="radio-item">
-                    <label htmlFor="arxiv">arXiv</label>
-                    <input type="radio" id="arxiv" name="engine" value="arxiv" onClick={handleEngineradio} />
+                    { engine==='arxiv' ? <label htmlFor="arxiv" className="labelselected">ArXiv</label> : 
+                        <label htmlFor="arxiv">ArXiv</label>}
+                        <input type="radio" id="arxiv" name="engine" value="arxiv" onClick={handleEngineradio} />
                     </div>
                     <div className="radio-item">
-                    <label htmlFor="unfinite">Unfinite (Semantic Search)</label>
-                    <input type="radio" id="unfinite" name="engine" value="unfinite" onClick={handleEngineradio} />
+                    { engine==='unfinite' ? <label htmlFor="unfinite" className="labelselected">Unfinite (Semantic Search)</label> : 
+                        <label htmlFor="unfinite">Unfinite (Semantic Search)</label>}
+                        <input type="radio" id="unfinite" name="engine" value="unfinite" onClick={handleEngineradio} />
                     </div>
                 </div>
                 <div className="input-group">
                     <input className='scholarinput' type="text" placeholder="Search" />
                     <button className="scholarbutton" type="submit">Search</button>
+                    {/* <p>*semantic search is limited</p> */}
                 </div>
             </form>
             <SuggestedBox

@@ -219,7 +219,18 @@ input[type="text"][name="url"] {
   justify-content: flex-start;
   align-items: flex-start;
   margin: 10px;
-  width: 25%;
+  width: 100%;
+}
+
+.suggested-box-body-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.suggested-box-body {
+  margin: 0;
 }
 
 .suggested-box-item {
@@ -228,11 +239,13 @@ input[type="text"][name="url"] {
   justify-content: flex-start;
   align-items: flex-start;
   align-items: center;
-  padding: 20px 20px;
-  margin: 20px;
+  padding: 10px 10px;
+  margin: 5px;
   border: solid 1px #d4d4d4;
-  border-radius: 10px;
-  height: 10%;
+  min-width: 40%;
+  font-size: 14px;
+  /* border-radius: 10px; */
+  /* height: 10%; */
 }
 
 .loadsearchresult {
@@ -249,6 +262,7 @@ input[type="text"][name="url"] {
   cursor: pointer;
   width: 20%;
   text-decoration: none;
+  min-width: 50px;
 }
 
 .scholarinput {
@@ -262,7 +276,7 @@ input[type="text"][name="url"] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin: 10px;
+  /* margin: 10px; */
   width: 70%;
   height: 20%;
 }
@@ -291,8 +305,9 @@ input[type="text"][name="url"] {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin: 10px;
   width: 100%;
+  /* if the items in the row overflow put it intto a new row, wrap it */
+  flex-wrap: wrap;
 }
 
 .radio-item {
@@ -300,8 +315,35 @@ input[type="text"][name="url"] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin: 10px;
+  max-width: 100%;
+  border: 1px solid #979797;
+  white-space: nowrap;
+  padding: 0 5px;
+  cursor: pointer;
+  font-size: 14px;
+} 
+
+.radio-item:hover {
+  cursor: pointer;
+}
+.radio-item input {
+  display: none;
+}
+
+.radio-item label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  cursor: pointer;
+}
+
+.radio-item .labelselected {
+  background-color: #979797;
+  color: #fff;
+  width: 100%;
+  padding: 0 5px;
 }
 
 .input-group {
@@ -314,9 +356,13 @@ input[type="text"][name="url"] {
 }
 
 .qs {
-  /* cursor: pointer; */
+  cursor: pointer;
   /* bold */
   /* font-weight: bold; */
   /* italic */
   font-style: italic;
+}
+
+.limitedaccess {
+  margin-left: 10px;
 }

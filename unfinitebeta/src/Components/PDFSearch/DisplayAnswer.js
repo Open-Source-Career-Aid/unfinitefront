@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import AnswerComplexity from "./AnswerComplexity";
+import AnswerComplexity from "./AnswerComplexity";
 import LikeDislike from "./LikeDislike";
 
 // function findQs(text) {
@@ -16,9 +16,10 @@ import LikeDislike from "./LikeDislike";
 // }
 
 
-function DisplayAnswer({ qid , answer }) {
+function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , currentquestion }) {
 
     const [thumbs, setThumbs] = useState(0);
+    const [specialresponse, setSpecialresponse] = useState(null);
     let displayanswer = null;
 
     // find questions in the answer that are encapsulated by curly braces and return an array of the text not in curly braces and the text in curly braces
@@ -55,6 +56,9 @@ function DisplayAnswer({ qid , answer }) {
         // strip the unnecessary spaces from the start and end of the displayanswer
         displayanswer = displayanswer.trim();
 
+        // replace a space if len of the space is greater than 1 with a single space
+        // displayanswer = displayanswer.replace(/\s{2,}/g, " ");
+
         return displayanswer;
     };
 
@@ -64,12 +68,34 @@ function DisplayAnswer({ qid , answer }) {
 
     const handleQuestionclick = (event) => {
         console.log(event.target.innerText);
+        setNextquestion(event.target.innerText);
     };
+
+    useEffect(() => {
+
+      if (specialresponse !== null) {
+        // use selectedid to get the question from the QnA object which is a map of questions and answers
+
+        // console.log(currentquestion, specialresponse);
+        const specialQuestion = currentquestion.split('sr:')[0] + " sr:" + specialresponse;
+        // setNextquestion(specialresponse);
+        // console.log(specialQuestion);
+        setNextquestion(specialQuestion);
+
+      }
+
+    }, [specialresponse]);
+
+    useEffect(() => {
+
+      setSpecialresponse(null);
+
+    }, [currentquestion]);
 
   return (
     <>
       <div className="displayanswer">
-        {/* <AnswerComplexity /> */}
+        <AnswerComplexity setSpecialresponse={setSpecialresponse} />
         {/* <p className="answer">{highlight}</p> */}
         {/* <p className="answer">{answer}</p> */}
         {/* {findQs(answer).map((qid) => {
