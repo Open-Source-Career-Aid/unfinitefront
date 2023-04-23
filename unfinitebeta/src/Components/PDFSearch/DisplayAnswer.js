@@ -86,6 +86,12 @@ function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , current
 
     }, [specialresponse]);
 
+    useEffect(() => {
+
+      setSpecialresponse(null);
+
+    }, [currentquestion]);
+
   return (
     <>
       <div className="displayanswer">
