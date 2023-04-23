@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProcessPDF from "../../Functions/PDFSearch/ProcessPDF";
 import { useNavigate } from "react-router-dom";
-import PdfUpload from "../PDFSearch/PDFupload";
+import UploadPDFForm from "../PDFSearch/PDFupload";
 
 function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadid , setThreadid }) {
   const [loadalert, setloadAlert] = useState(null);
@@ -72,6 +72,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
             <button type="submit">Load Document</button>
           </form>
         )}
+        <UploadPDFForm />
       </div>
     </div>
   );
