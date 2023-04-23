@@ -55,6 +55,9 @@ function DisplayAnswer({ qid , answer }) {
         // strip the unnecessary spaces from the start and end of the displayanswer
         displayanswer = displayanswer.trim();
 
+        // replace a space if len of the space is greater than 1 with a single space
+        displayanswer = displayanswer.replace(/\s{2,}/g, " ");
+
         return displayanswer;
     };
 
