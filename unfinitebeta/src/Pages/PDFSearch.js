@@ -20,10 +20,12 @@ function PDFSearch() {
   const [dataloaded, setDataloaded] = useState(false);
   const [docid, setDocid] = useState(null);
   const [answer, setAnswer] = useState("");
+  const [currentquestion, setCurrentquestion] = useState('');
   const [threadid, setThreadid] = useState(null);
   const [QnA, setQnA] = useState(new Map());
   const [qids, setQids] = useState([]);
   const [selectedqid, setSelectedqid] = useState(null);
+  const [nextquestion, setNextquestion] = useState(null);
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -149,10 +151,17 @@ function PDFSearch() {
                 setQids={setQids}
                 selectedqid={selectedqid}
                 setSelectedqid={setSelectedqid}
+                nextquestion={nextquestion}
+                setNextquestion={setNextquestion}
+                setCurrentquestion={setCurrentquestion}
               />
             </div>
             <div className="answercontainer">
-              {dataloaded ? <DisplayAnswer answer={answer} /> : null}
+              {dataloaded ? <DisplayAnswer answer={answer}
+              nextquestion={nextquestion}
+              setNextquestion={setNextquestion}
+              currentquestion={currentquestion}
+              /> : null}
             </div>
             <div style={
               {
