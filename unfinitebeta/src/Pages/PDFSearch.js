@@ -164,7 +164,10 @@ function PDFSearch() {
         <FeedbackBox />
       </div>
       <div className="footer">
-        <p>LIMITED ACCESS © 2023 unfinite</p>
+        <a href="https://forms.gle/6JU7uBvXHe4WMRhK7" target="_blank">
+          ARE YOU A RESEARCHER?
+        </a>
+        <p className="limitedaccess">LIMITED ACCESS © 2023 unfinite</p>
       </div>
     </div>
   );
