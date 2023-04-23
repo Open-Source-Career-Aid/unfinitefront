@@ -122,6 +122,7 @@ function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , setDocid , s
                 <div className="input-group">
                     <input className='scholarinput' type="text" placeholder="Search" />
                     <button className="scholarbutton" type="submit">Search</button>
+                    {/* <p>*semantic search is limited</p> */}
                 </div>
             </form>
             <SuggestedBox
