@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ProcessPDF from "../../Functions/PDFSearch/ProcessPDF";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
 import UploadPDFForm from "../PDFSearch/PDFupload";
-=======
-import PdfUpload from "../PDFSearch/PDFupload";
 import { event } from "react-ga";
->>>>>>> bfc0c8b07b730830eec61b05d6cdb29ba8b6c4c7
 
 function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadid , setThreadid }) {
   const [loadalert, setloadAlert] = useState(null);

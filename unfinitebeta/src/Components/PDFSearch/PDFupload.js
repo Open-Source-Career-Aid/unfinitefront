@@ -47,16 +47,28 @@ function UploadPDFForm() {
   };
 
   const handleSubmit = async (event) => {
+
   
     try {
       event.preventDefault();
       const formData = new FormData();
-      formData.append('pdf', file);
-      formData.append('fileName', file.name);
-      console.log(formData.getAll('pdf')[0]);
-      await getCSRF();
-      const csrfToken = getCookie('csrftoken');
-      const response = await fetch(`${API_URL}index_document/`, {    
+      // if file is not null do the getCSRF and fetch else alert user to upload a file
+      if (file === null) {
+        alert("Please select a file to upload");
+        return;
+      }
+       // file is larger than 16MB
+      else if (file.size > 16777216){
+        alert("File is too large. Please upload a file smaller than 16MB.");
+        return;
+      }
+      else {
+        formData.append('pdf', file);
+        formData.append('fileName', file.name);
+        console.log(formData.getAll('pdf')[0]);
+        await getCSRF();
+        const csrfToken = getCookie('csrftoken');
+        const response = await fetch(`${API_URL}index_document/`, {    
         method: 'POST',
         headers: {
           'X-CSRFToken': csrfToken,
@@ -75,6 +87,7 @@ function UploadPDFForm() {
         console.log(response.status);
         return null;
       }
+    }
     } catch (error) {
       alert('Failed to upload PDF file: ' + error.message);
     }
