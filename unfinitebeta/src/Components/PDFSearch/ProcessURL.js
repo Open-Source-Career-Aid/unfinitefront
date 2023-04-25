@@ -51,7 +51,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
         setThreadid(data[1]);
       };
       getPDFdata();
-      
+
     } else if (url !== null && !url.includes(".pdf")) {
       alert("Please enter a valid PDF URL ending with .pdf");
       setDataloaded(false);
@@ -65,17 +65,19 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
       <div className="searchbar">
         {processing ? (
           <div className="loader">{loadalert}</div>
-        ) : (
+        ) : ( 
+          <>
           <form onSubmit={handleSubmit} className="urlsubmit">
-            <input
-              type="text"
-              placeholder="Enter a URL that ends with .pdf. PLEASE ONLY LOAD PUBLICLY AVAILABLE PDFs."
-              name="url"
-            />
-            <button type="submit">Load Document</button>
-          </form>
+              <input
+                type="text"
+                placeholder="Enter a URL that ends with .pdf. PLEASE ONLY LOAD PUBLICLY AVAILABLE PDFs."
+                name="url" />
+              <button type="submit">Load Document</button>
+            </form>
+            <UploadPDFForm />
+          </>
         )}
-        <UploadPDFForm />
+        
       </div>
     </div>
   );

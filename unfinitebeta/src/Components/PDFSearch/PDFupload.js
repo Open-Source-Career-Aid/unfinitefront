@@ -88,7 +88,7 @@ function UploadPDFForm() {
         // invoke the form for processing url
         searchForm.requestSubmit();
         // searchForm.dispatchEvent(new Event('submit'));
-        
+
         // Just in case the user wants to upload the same file again
         return [data.document_id, data.thread_id];
       } else {
