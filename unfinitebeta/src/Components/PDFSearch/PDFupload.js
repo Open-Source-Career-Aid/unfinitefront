@@ -81,6 +81,12 @@ function UploadPDFForm() {
     const data = await response.json();
       if (response.ok) {
         alert('PDF file uploaded successfully!');
+        const searchForm = document.querySelector('.urlsubmit');
+        const inputBox = document.querySelector('.urlinput[type="text"][name="url"]');
+        searchForm.reset();
+        inputBox.value = file.name;
+        searchForm.dispatchEvent(new Event('submit'));
+        // just in case the user wants to upload the same file again
         return [data.document_id, data.thread_id];
       } else {
         alert('Failed to upload PDF file.');

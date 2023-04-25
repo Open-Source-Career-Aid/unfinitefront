@@ -51,6 +51,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
         setThreadid(data[1]);
       };
       getPDFdata();
+      
     } else if (url !== null && !url.includes(".pdf")) {
       alert("Please enter a valid PDF URL ending with .pdf");
       setDataloaded(false);
