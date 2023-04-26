@@ -361,8 +361,26 @@ input[type="text"][name="url"] {
   /* font-weight: bold; */
   /* italic */
   font-style: italic;
+  padding-bottom: 5px;
 }
 
 .limitedaccess {
   margin-left: 10px;
+}
+
+.kp {
+  /* underline */
+  text-decoration: underline;
+  /* underline color */
+  text-decoration-color: #979797;
+  /* underline style */
+  text-decoration-style: dashed;
+  /* underline offset from text */
+  text-underline-offset: 3px;
+}
+
+.kp:hover {
+  cursor: pointer;
+  /* bg color */
+  background-color: #d4ffc6;
 }
