@@ -90,6 +90,7 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid ,
     async function getAnswer() {
       if (!handlingSubmit) {
         setHandlingSubmit(true);
+        setCurrentquestion(question);
         setAnswer("Loading...");
         const response = await answerQuestion(question, [docid], threadid);
         if (response==="") {
