@@ -134,6 +134,9 @@ function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , current
   return (
     <>
       <div className="displayanswer">
+        <p className="question">
+          {currentquestion}
+        </p>
         <AnswerComplexity setSpecialresponse={setSpecialresponse} />
         {/* <p className="answer"> */}
           {/* {highlight(answer)} */}

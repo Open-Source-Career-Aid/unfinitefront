@@ -88,14 +88,14 @@ input[type="text"][name="url"] {
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border-left: 1px solid #ccc;
   }
 
   .askcontainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 25%;
+    width: 30%;
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -136,10 +136,11 @@ input[type="text"][name="url"] {
 
 .qinlist {
   padding-left: 10px;
+  padding-right: 20px;
 }
 
 .qinlist p {
-  font-size: 1em;
+  font-size: 0.9em;
   text-shadow: none; /* Set the initial shadow to none */
   transition: text-shadow 0.5s ease; /* Add a transition effect for a smoother animation */
 }
@@ -383,4 +384,13 @@ input[type="text"][name="url"] {
   cursor: pointer;
   /* bg color */
   background-color: #d4ffc6;
+}
+
+.question {
+  width: 90%;
+  padding-left: 20px;
+  font-size: 1.2em;
+  /* bold */
+  font-weight: bold;
+  margin: 0;
 }
