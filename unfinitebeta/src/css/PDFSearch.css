@@ -267,9 +267,20 @@ input[type="text"][name="url"] {
 }
 
 .scholarinput {
-  align-items: center;
-  margin: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 25px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 10px;
+  outline: none;
+  margin-bottom: 10px;
   width: 70%;
+  margin-right: 10px;
+}
+.scholarinput:focus {
+  border-color: #000000;
 }
 
 .suggested-input {
@@ -283,13 +294,18 @@ input[type="text"][name="url"] {
 }
 
 .suggested-input .scholarbutton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #979797;
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 100vh;
   font-size: 10px;
   cursor: pointer;
   width: 30%;
+  height: 25px;
 }
 
 .inputcontainer {
@@ -318,10 +334,12 @@ input[type="text"][name="url"] {
   align-items: center;
   max-width: 100%;
   border: 1px solid #979797;
+  border-radius: 100vh;
   white-space: nowrap;
   padding: 0 5px;
   cursor: pointer;
   font-size: 14px;
+  margin: 5px;
 } 
 
 .radio-item:hover {
@@ -336,12 +354,14 @@ input[type="text"][name="url"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
   cursor: pointer;
+  padding: 0 5px;
 }
 
 .radio-item .labelselected {
   background-color: #979797;
+  border-radius: 100vh;
   color: #fff;
   width: 100%;
   padding: 0 5px;
@@ -353,6 +373,7 @@ input[type="text"][name="url"] {
   justify-content: flex-start;
   align-items: flex-start;
   margin: 10px;
+  margin-left: 20px;
   width: 100%;
 }
 
