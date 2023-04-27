@@ -147,12 +147,12 @@ input[type="text"][name="url"] {
 .qinlist p {
   font-size: 0.9em;
   text-shadow: none; /* Set the initial shadow to none */
-  transition: text-shadow 0.5s ease; /* Add a transition effect for a smoother animation */
+  transition: color 0.5s ease; /* Add a transition effect for a smoother animation */
 }
 
 .qinlist p:hover {
   cursor: pointer;
-  text-shadow: 1px 1px 5px #6f6f6f; /* Set the shadow effect on hover */
+  color: #306D94;
 }
 
 .ask input[type="text"] {
@@ -404,12 +404,14 @@ input[type="text"][name="url"] {
   text-decoration-style: dashed;
   /* underline offset from text */
   text-underline-offset: 3px;
+  /* transition */
+  transition: color 0.5s ease;
 }
 
 .kp:hover {
   cursor: pointer;
   /* bg color */
-  background-color: #d4ffc6;
+  color: #306D94;
 }
 
 .question {
