@@ -1,0 +1,11 @@
+.examples-box-body-example {
+    margin: 5px 0;
+}
+
+.examples-box-body-example a {
+    text-decoration: none;
+    color: #000;
+    background-color: bisque;
+    border-radius: 100vh;
+    padding: 0 10px;
+}
