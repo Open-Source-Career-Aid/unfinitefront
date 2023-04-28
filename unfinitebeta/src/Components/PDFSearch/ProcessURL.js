@@ -67,12 +67,12 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
           <div className="loader">{loadalert}</div>
         ) : ( 
           <>
-          <form onSubmit={handleSubmit} className="urlsubmit">
+          <form onSubmit={handleSubmit} className="urlsubmit" style={{ display: 'inline' }}>
               <input
                 type="text"
                 placeholder="Enter a URL that ends with .pdf. PLEASE ONLY LOAD PUBLICLY AVAILABLE PDFs."
-                name="url" />
-              <button type="submit">Load Document</button>
+                name="url" style={{ display: 'block' , width: '100%'}}/>
+              <button type="submit" style={{ display: 'inline' }}>Load Document</button>
             </form>
             <UploadPDFForm />
           </>
