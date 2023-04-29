@@ -39,6 +39,8 @@ function UploadPDFForm() {
        // file is larger than 16MB
       else if (file.size > 4194304){
         alert("File is too large. Please upload a file smaller than 4MB.");
+        setFile(null);
+        event.target.value = null;
         return;
       }
       else {
@@ -89,13 +91,20 @@ function UploadPDFForm() {
   const handleFileButton = (event) => {
     if (event.target.files[0]){
             // we need to click the submit button for the form to submit
-            console.log(event.target.parentNode.nextElementSibling);
-            event.target.parentNode.nextElementSibling.click();
-            alert("Your document is being uploaded. Please wait for the confirmation message.")
-            setloadAlert(
-              "Please wait while we upload your PDF...it might take a while to upload."
-            );
-            setProcessing(true);
+            if(event.target.files[0].files < 4194304){
+              console.log(event.target.parentNode.nextElementSibling);
+              event.target.parentNode.nextElementSibling.click();
+              alert("Your document is being uploaded. Please wait for the confirmation message.")
+              setloadAlert(
+                "Please wait while we upload your PDF...it might take a while to upload."
+              );
+              setProcessing(true);
+            }
+            else{
+              alert("File is too large. Please upload a file smaller than 4MB.");
+              setFile(null);
+              event.target.value = null;
+            }
     }
   }
   function hideSearchBar() {
