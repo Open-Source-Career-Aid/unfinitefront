@@ -19,10 +19,10 @@ async function answerQuestion( question, docids, threadid ) {
   if (special_text==='Simplify') {
     special_id = 1;
   }
-  else if (special_text==='Dumbsplain') {
-    special_id = 2;
+  else if (special_text==='Analogify') {
+    special_id = 4;
   }
-  else if (special_text==='Talk to me like you would talk to an academic') {
+  else if (special_text==='Comprehensify') {
     special_id = 3;
   }
 

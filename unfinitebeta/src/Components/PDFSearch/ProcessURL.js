@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import PdfUpload from "../PDFSearch/PDFupload";
 import { event } from "react-ga";
 
-function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadid , setThreadid }) {
+function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadid , setThreadid , setTitle }) {
   const [loadalert, setloadAlert] = useState(null);
   const [processing, setProcessing] = useState(false);
 
@@ -49,6 +49,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
         console.log("data", data);
         setDocid(data[0]);
         setThreadid(data[1]);
+        setTitle(data[2]);
       };
       getPDFdata();
     } else if (url !== null && !url.includes(".pdf")) {

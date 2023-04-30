@@ -21,7 +21,7 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid ,
       //   setAnswer(response);
       //   setQnA((map) => new Map(map.set("Introduction", response)));
       //   console.log("query complete ✅");
-      setNextquestion("Introduction");
+      setNextquestion("Overview");
       }
   }, []);
 
@@ -129,14 +129,14 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid ,
 
   return (
     <div className="ask">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="askinputcontainer">
         <input
           type="text"
-          placeholder="Ask something."
+          placeholder="Follow your curiosity."
           value={middleQuestion}
           onChange={handleInputChange}
         />
-        <button type="submit">Ask</button>
+        <button type="submit" className="askbutton"><span className="signaturebutton"></span></button>
       </form>
     </div>
   );

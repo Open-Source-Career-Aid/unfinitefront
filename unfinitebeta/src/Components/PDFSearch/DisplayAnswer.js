@@ -15,7 +15,7 @@ import LikeDislike from "./LikeDislike";
 //   return qids;
 // }
 
-function renderTextWithKPsandQs( { answer , handleQuestionclick } ) {
+function renderTextWithKPsandQs( { answer , handleQuestionclick , setQuestions } ) {
 
   let parts = [];
   let subparts = [];
@@ -46,7 +46,8 @@ function renderTextWithKPsandQs( { answer , handleQuestionclick } ) {
     if (part.startsWith("<kp>") && part.endsWith("</kp>")) {
       return <span key={index} className="kp" onClick={handleQuestionclick}>{part.slice(4, -5)}</span>;
     } else if (part.startsWith("{") && part.endsWith("}")) {
-      return <span key={index} className="qs" onClick={handleQuestionclick}>Q. {part.slice(1, -1)}</span>;
+      // setQuestions((questions) => [...questions, part.slice(1, -1)]);
+      return <div key={index} className="qs" onClick={handleQuestionclick}>Q. {part.slice(1, -1)}</div>;
     } else {
       return part;
     }
@@ -58,8 +59,8 @@ function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , current
 
     const [thumbs, setThumbs] = useState(0);
     const [specialresponse, setSpecialresponse] = useState(null);
+    const [questions , setQuestions] = useState([]);
     let displayanswer = null;
-    
 
     // find questions in the answer that are encapsulated by curly braces and return an array of the text not in curly braces and the text in curly braces
     // const findQs = (text) => {
@@ -134,6 +135,7 @@ function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , current
   return (
     <>
       <div className="displayanswer">
+        {/* <p className="title">{title}</p> */}
         <p className="question">
           {currentquestion}
         </p>
@@ -142,7 +144,7 @@ function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , current
           {/* {highlight(answer)} */}
           <p className="answer">
           {/* {answer} */}
-          {renderTextWithKPsandQs({ answer , handleQuestionclick })}
+          {renderTextWithKPsandQs({ answer , handleQuestionclick , setQuestions })}
           </p>
           {/* </p> */}
         {/* {findQs(answer).map((qid) => {

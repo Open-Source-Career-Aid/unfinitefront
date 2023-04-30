@@ -1,5 +1,5 @@
 ::selection {
-  background: #306D94;
+  background: #1E90FF;
   color: #fff;
 }
 
@@ -19,13 +19,14 @@
 .pdfsearch .headerpdfsearch {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 .logopdfsearch {
     margin: 10px 0;
     margin-right: 10px;
+    cursor: pointer;
   }
 
 .urlsubmit {
@@ -109,7 +110,7 @@ input[type="text"][name="url"] {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   width: 60%;
   height: 80%;
 }
@@ -152,38 +153,44 @@ input[type="text"][name="url"] {
 
 .qinlist p:hover {
   cursor: pointer;
-  color: #306D94;
+  color: #1E90FF;
 }
 
 .ask input[type="text"] {
   box-sizing: border-box;
-  width: 100%;
   height: 40px;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  /* border: 1px solid #ccc; */
+  border-radius: 100vh;
   font-size: 16px;
   outline: none;
-  margin-bottom: 10px;
-  width: 70%;
-  margin-right: 10px;
+  /* margin-bottom: 10px; */
+  width: 90%;
+  /* remove all borders */
+  border: none;
 }
-.ask input[type="text"]:focus {
+/* .ask input[type="text"]:focus {
   border-color: #000000;
-}
+} */
 .ask ::placeholder {
   color: #aaa;
 }  
 
 .ask button[type="submit"] {
-  background-color: #40b600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #1E90FF; */
+  background-color: transparent;
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 25vh;
   font-size: 16px;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
+  width: 10%;
   cursor: pointer;
-  width: 20%;
+  /* width: 20%; */
 }
 
 .steps {
@@ -244,14 +251,34 @@ input[type="text"][name="url"] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  align-items: center;
-  padding: 10px 10px;
-  margin: 5px;
-  border: solid 1px #d4d4d4;
+  /* align-items: center; */
+  padding: 0 10px;
+  margin: 15px 0;
+  border-left: solid 3px #d4d4d4;
   min-width: 40%;
   font-size: 14px;
+  min-height: 20%;
+  max-height: 20%;
+  height: 20%;
+  margin-top: 0;
   /* border-radius: 10px; */
   /* height: 10%; */
+  /* add a 0.5 sec transition */
+  transition: border-left 0.5s ease;
+}
+.suggested-box-item:hover {
+  cursor: pointer;
+  border-left: solid 3px #1E90FF;
+}
+
+.suggestions-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  /* italic */
+  font-style: italic;
 }
 
 .loadsearchresult {
@@ -388,7 +415,11 @@ input[type="text"][name="url"] {
   /* font-weight: bold; */
   /* italic */
   font-style: italic;
-  padding-bottom: 5px;
+  /* font-size: 0.9em; */
+  /* background-color: #cdecff; */
+  /* border-bottom: 1px solid #979797;
+  margin: 0;
+  padding: 0; */
 }
 
 .limitedaccess {
@@ -411,14 +442,196 @@ input[type="text"][name="url"] {
 .kp:hover {
   cursor: pointer;
   /* bg color */
-  color: #306D94;
+  color: #1E90FF;
 }
 
 .question {
   width: 90%;
   padding-left: 20px;
-  font-size: 1.2em;
+  font-size: 1.4em;
   /* bold */
   font-weight: bold;
   margin: 0;
+  color: #000000;
+  /* decreast the space b/w lines */
+  line-height: 1.4em;
+}
+
+.title {
+  /* width: 80%; */
+  /* bold */
+  font-weight: bold;
+  /* italic */
+  font-style: italic;
+  color: #1E90FF;
+  /* decreast the space b/w lines */
+  line-height: 1.4em;
+  margin: 0 10px;
+  max-width: 30%;
+  /* overflow: ellipsis; */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.docinfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  width: 100%;
+}
+
+.closedoc {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2px;
+  border-radius: 5px;
+  height: 20px;
+  width: 20px;
+  border: 1px solid #979797;
+  color: #979797;
+  background-color: transparent;
+}
+.closedoc:hover {
+  cursor: pointer;
+  color: #ff0000;
+  border: 1px solid #ff0000;
+}
+
+.askcontainer h4 {
+  /* margin: 0; */
+  margin-bottom: 10px;
+  /* not bold */
+  font-weight: normal;
+}
+
+.suggested h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.getrecom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 10px;
+  /* remove all default button deco */
+  border: 3px solid #1E90FF;
+  border-radius: 100vh;
+  background: none;
+  padding: 0;
+  color: #1E90FF;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 5px;
+  text-decoration: underline;
+  
+  /* bold */
+  font-weight: bold;
+}
+
+.signaturebutton {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  /* remove all default button deco */
+  border: 3px solid #1E90FF;
+  border-radius: 100vh;
+  background: none;
+  color: #1E90FF;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 5px;
+  /* margin-right: 5px; */
+  text-decoration: underline;
+  
+  /* bold */
+  font-weight: bold;
+}
+/* 
+.askbutton {
+  display: flex;
+  flex-direction: row;
+} */
+
+.askinputcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  border: 1px solid #979797;
+  border-radius: 100vh;
+}
+
+.suggestion-author-names {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  /* wrap if flex overflows */
+  flex-wrap: wrap;
+  color: #979797;
+  background-color: transparent;
+  margin: 0;
+}
+
+.author {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  /* margin-left: 10px; */
+  border-radius: 5px;
+  height: 20px;
+  margin-top: 0;
+  /* border: 1px solid #979797; */
+  color: #979797;
+  background-color: transparent;
+  /* padding: 0 5px; */
+  text-decoration: underline;
+  /* make underline thinner */
+  text-decoration-thickness: 1px;
+  /* underline color */
+  text-decoration-color: #979797;
+  /* underline offset */
+  text-underline-offset: 2px;
+  margin-right: 8px;
+  font-size: 0.8em;
+}
+
+.suggestion-other-metadata {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #979797;
+  background-color: transparent;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.suggestion-year {
+  font-size: 0.8em;
+}
+
+.suggestion-publisher {
+  font-size: 0.8em;
+  background-color: #ccc;
+  color: #000000;
+  border-radius: 50vh;
+  padding: 0 5px;
+}
+
+.filter-title {
+  margin: 0;
+  margin-left: 20px;
+  font-size: 0.8em;
 }
