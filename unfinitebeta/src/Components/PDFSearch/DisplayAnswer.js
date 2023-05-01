@@ -15,7 +15,49 @@ import LikeDislike from "./LikeDislike";
 //   return qids;
 // }
 
-function renderTextWithKPsandQs( { answer , handleQuestionclick , setQuestions } ) {
+// function renderTextWithKPs( { answer , handleQuestionclick , setQuestions } ) {
+
+//   let parts = [];
+//   let subparts = [];
+
+//   if (!answer) {
+//     return null; // or return an empty array or default value
+//   }
+
+//   const partslayerone = answer.split(/({.*?})/);
+
+//   partslayerone.forEach((part, index) => {
+
+//     subparts = part.split(/(<kp>.*?<\/kp>)/);
+
+//     subparts.forEach((subpart, index) => {
+
+//       console.log(subpart);
+
+//       parts.push(subpart);
+
+//     });
+
+//   });
+
+
+//   return(
+//     parts.map((part, index) => {
+//     console.log(part);
+//     if (part.startsWith("<kp>") && part.endsWith("</kp>")) {
+//       return <span key={index} className="kp" onClick={handleQuestionclick}>{part.slice(4, -5)}</span>;
+//     } else if (part.startsWith("{") && part.endsWith("}")) {
+//       // pass this part
+//       return
+//     } else {
+//       return part;
+//     }
+//   }
+  
+//   ));
+// }
+
+function renderTextWithKPs( { answer , handleQuestionclick , setQuestions } ) {
 
   let parts = [];
   let subparts = [];
@@ -40,26 +82,76 @@ function renderTextWithKPsandQs( { answer , handleQuestionclick , setQuestions }
 
   });
 
-
-  return parts.map((part, index) => {
-    console.log(part);
-    if (part.startsWith("<kp>") && part.endsWith("</kp>")) {
-      return <span key={index} className="kp" onClick={handleQuestionclick}>{part.slice(4, -5)}</span>;
-    } else if (part.startsWith("{") && part.endsWith("}")) {
-      // setQuestions((questions) => [...questions, part.slice(1, -1)]);
-      return <div key={index} className="qs" onClick={handleQuestionclick}>Q. {part.slice(1, -1)}</div>;
-    } else {
-      return part;
-    }
-  });
+  return (
+    parts.map((part, index) => {
+      console.log(part);
+      if (part.startsWith("<kp>") && part.endsWith("</kp>")) {
+        return <span key={index} className="kp" onClick={handleQuestionclick}>{part.slice(4, -5)}</span>;
+      } else if (part.startsWith("{") && part.endsWith("}")) {
+        // pass this part
+        return null;
+      } else {
+        return part;
+      }
+    }).filter(part => part !== null) // filter out empty strings
+  );
 }
 
+
+function renderTextWithQs( { answer , handleQuestionclick , setQuestions , relevantqs , setRelevantqs } ) {
+
+  let parts = [];
+  let subparts = [];
+
+  if (!answer) {
+    return null; // or return an empty array or default value
+  }
+
+  const partslayerone = answer.split(/({.*?})/);
+
+  partslayerone.forEach((part, index) => {
+
+    subparts = part.split(/(<q>.*?<\/q>)/);
+
+    subparts.forEach((subpart, index) => {
+
+      console.log(subpart);
+
+      parts.push(subpart);
+
+    });
+
+  });
+
+
+  return(
+    parts.map((part, index) => {
+    console.log(part);
+    if (part.startsWith("<kp>") && part.endsWith("</kp>")) {
+      // return <span key={index} className="q" onClick={handleQuestionclick}>{part.slice(3, -4)}</span>;
+      return
+    } else if (part.startsWith("{") && part.endsWith("}")) {
+      if (relevantqs===false) {
+        setRelevantqs(true);
+      }
+      // setQuestions((questions) => [...questions, part.slice(1, -1)]);
+      return <div className="relevant-questions-container">Q. <span key={index} className="qs" onClick={handleQuestionclick}>{part.slice(1, -1)}</span></div>;
+    } else {
+      // return part;
+      return
+    }
+  }
+  
+  ));
+
+}
 
 function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , currentquestion }) {
 
     const [thumbs, setThumbs] = useState(0);
     const [specialresponse, setSpecialresponse] = useState(null);
     const [questions , setQuestions] = useState([]);
+    const [relevantqs , setRelevantqs] = useState(false);
     let displayanswer = null;
 
     // find questions in the answer that are encapsulated by curly braces and return an array of the text not in curly braces and the text in curly braces
@@ -108,6 +200,7 @@ function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , current
 
     const handleQuestionclick = (event) => {
         console.log(event.target.innerText);
+        setRelevantqs(false);
         setNextquestion(event.target.innerText);
     };
 
@@ -120,6 +213,7 @@ function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , current
         const specialQuestion = currentquestion.split('sr:')[0] + " sr:" + specialresponse;
         // setNextquestion(specialresponse);
         // console.log(specialQuestion);
+        setRelevantqs(false);
         setNextquestion(specialQuestion);
 
       }
@@ -144,8 +238,12 @@ function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , current
           {/* {highlight(answer)} */}
           <p className="answer">
           {/* {answer} */}
-          {renderTextWithKPsandQs({ answer , handleQuestionclick , setQuestions })}
+          {renderTextWithKPs({ answer , handleQuestionclick , setQuestions })}
           </p>
+          <div className="relevant-questions">
+          {relevantqs ? <> <p className="relevant-questions-title">Relevant questions</p> </> : null}
+          {renderTextWithQs({ answer , handleQuestionclick , setQuestions , relevantqs , setRelevantqs })}
+          </div>
           {/* </p> */}
         {/* {findQs(answer).map((qid) => {
           return <p className="answer">{"Q. "}<span className="qs" onClick={handleQuestionclick}>{qid}</span></p>;
