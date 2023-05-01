@@ -706,6 +706,8 @@
   border-left: 3px solid #1E90FF;
   padding-left: 20px;
   margin-bottom: 20px;
+  /* make not selectable */
+  user-select: none;
 }
 
 .instruction {
