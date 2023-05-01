@@ -18,9 +18,6 @@ function ExamplesBox( { setUrl } ) {
             </div>
             <div className="examples-box-body">
                 <div className="examples-box-body-example">
-                    Access a Patent - <a href="https://patentimages.storage.googleapis.com/e7/07/72/15d7078f24c7c2/US11417091.pdf" target="_blank" onClick={handleExampleClick}>Use of co-ordinated local user devices during a shared augmented reality session</a>
-                </div>
-                <div className="examples-box-body-example">
                     Access a Research Paper - <a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" onClick={handleExampleClick}>Attention is all you need</a>
                 </div>
                 <div className="examples-box-body-example">

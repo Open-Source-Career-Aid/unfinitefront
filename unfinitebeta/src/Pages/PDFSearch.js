@@ -126,7 +126,9 @@ function PDFSearch() {
               setThreadid={setThreadid}
               setTitle={setTitle}
             />
-            <ExamplesBox setUrl={setUrl} />
+            <div className="examples-container">
+              {/* <ExamplesBox setUrl={setUrl} /> */}
+            </div>
             <div style={
               {
                 "width": "50%"
@@ -199,7 +201,7 @@ function PDFSearch() {
         <FeedbackBox />
       </div>
       <div className="footer">
-        <a href="https://forms.gle/6JU7uBvXHe4WMRhK7" target="_blank">
+        <a href="https://forms.gle/6JU7uBvXHe4WMRhK7" target="_blank" className="uaresearcher">
           ARE YOU A RESEARCHER?
         </a>
         <p className="limitedaccess">LIMITED ACCESS © 2023 unfinite</p>

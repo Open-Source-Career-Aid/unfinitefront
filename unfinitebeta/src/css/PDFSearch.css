@@ -23,6 +23,29 @@
   align-items: center;
 }
 
+.searchbar {
+  /* fix it to the center of the screen */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* make it vertically center */
+  height: 50vh;
+}
+
+.urlsubmit .input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  border: 1px solid #979797;
+  border-radius: 100vh;
+}
+
 .logopdfsearch {
     margin: 10px 0;
     margin-right: 10px;
@@ -32,39 +55,39 @@
 .urlsubmit {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
-input[type="text"][name="url"] {
-    box-sizing: border-box;
-    height: 40px;
+.urlinput {
+    height: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 50vh;
     font-size: 16px;
-    outline: none;
-    margin-bottom: 10px;
+    width: 95%;
+    border: none;
   }
-  input[type="text"][name="url"]:focus {
-    border-color: #000000;
+.urlinput:focus {
+  border: none;
+  outline: none;
   }
   ::placeholder {
     color: #aaa;
   }  
 
   button[type="submit"] {
-    background-color: #40b600;
-    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: transparent;
+    width: 5%;
+    /* color: #fff; */
     border: none;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     font-size: 16px;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     cursor: pointer;
-    width: 10%;
-  }
-  button[type="submit"]:hover {
-    background-color: #177e00;
   }
 
 .logocontainer {
@@ -558,6 +581,9 @@ input[type="text"][name="url"] {
   padding: 5px;
   /* margin-right: 5px; */
   text-decoration: underline;
+  /* width === height */
+  width: 3px;
+  height: 3px;
   
   /* bold */
   font-weight: bold;
@@ -666,4 +692,31 @@ input[type="text"][name="url"] {
 .relevant-questions-container {
   margin-bottom: 10px;
   width: 90%;
+}
+
+.examples-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+}
+
+.instructions {
+  border-left: 3px solid #1E90FF;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.instruction {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.uaresearcher {
+  cursor: pointer;
+  color: #1E90FF;
+  text-decoration: none;
 }

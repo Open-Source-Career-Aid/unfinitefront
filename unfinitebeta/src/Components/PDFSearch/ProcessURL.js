@@ -67,12 +67,21 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
           <div className="loader">{loadalert}</div>
         ) : (
           <form onSubmit={handleSubmit} className="urlsubmit">
-            <input
-              type="text"
-              placeholder="Enter a URL that ends with .pdf. PLEASE ONLY LOAD PUBLICLY AVAILABLE PDFs."
-              name="url"
-            />
-            <button type="submit">Load Document</button>
+            <div className="instructions">
+              <h3>Learning made easy!</h3>
+              <p>1. Paste a link to a PDF in the search bar.</p>
+              <p className="instruction">2. Click on the <span className="signaturebutton" style={{margin:'5px', cursor:'auto'}}></span> button or press <span style={{'font-weight':'bold', 'margin-left':'5px'}}>ENTER</span>.</p>
+              <p>3. Learn from your document your own way!</p>
+            </div>
+            <div className="input-container">
+              <input
+                className="urlinput"
+                type="text"
+                placeholder="Enter a URL ending in .pdf"
+                name="url"
+              />
+              <button type="submit"><span className="signaturebutton"></span></button>
+            </div>
           </form>
         )}
       </div>
