@@ -27,11 +27,20 @@ const SuggestedBox = ({ suggested , setUrl , setAnswer , setQnA, setDataloaded ,
     return (
         <div className="suggested-box">
             {isRow ?  
-            <div className="suggested-box-body-row">
+            <div className="suggested-box-body">
             {suggested.map((s) => (
             <div className="suggested-box-item" key={s} onClick={() => handleResultClick(s[1])}>
-                <p>{s[0]}</p>
-                {/* <a href={s[1]} className="loadsearchresult" onClick={handleResultClick}>Load</a> */}
+                <p className="suggestions-title">{s[0]}</p>
+                <p className="suggestion-author-names">
+                    {s[2].map((author) => (
+                        <span key={author} className="author">{author}</span>
+                    ))}
+                </p>
+                <div className="suggestion-other-metadata">
+                    <span className="suggestion-year">{s[3]}</span>
+                    <span className="suggestion-publisher">{s[4]}</span>
+                </div>
+                {/* <a href={s[1]} className="loadsearchresult" onClick={handleResultClick}></a> */}
             </div>
             ))}
         </div> : <div className="suggested-box-body">
@@ -56,7 +65,7 @@ const SuggestedBox = ({ suggested , setUrl , setAnswer , setQnA, setDataloaded ,
     );
     }
 
-function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , docid , setDocid , setThreadid , isRow }) {
+function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , docid , setDocid , setThreadid , isRow , setTitle }) {
 
     const [suggested, setSuggested] = useState([]);
     const [engine, setEngine] = useState("gscholar");
@@ -186,6 +195,7 @@ function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , docid , setD
             setDocid={setDocid}
             setThreadid={setThreadid}
             isRow={isRow}
+            setTitle={setTitle}
             />
         </div>
     );
