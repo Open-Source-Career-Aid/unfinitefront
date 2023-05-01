@@ -720,3 +720,29 @@
   color: #1E90FF;
   text-decoration: none;
 }
+
+.right-side-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.image-discord-logo {
+  width: 35px;
+  height: 35px;
+  background-image: url('../../public/assets/discord-mark-black.svg');
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  background-position: center;
+  /* increast the transparency to 60% */
+  opacity: 0.2;
+  margin: 0 10px;
+  cursor: pointer;
+  /* transition */
+  transition: opacity 0.5s ease;
+}
+/* hover */
+.image-discord-logo:hover {
+  opacity: 1;
+}

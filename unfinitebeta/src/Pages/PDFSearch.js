@@ -11,6 +11,7 @@ import userLogout from "../Functions/userLogout";
 import ExamplesBox from "../Components/PDFSearch/ExamplesBox";
 import Suggestions from "../Components/PDFSearch/Suggestions";
 import DocOutline from "../Components/PDFSearch/docoutline";
+import Discordbranding from "../Components/PDFSearch/Discordbranding";
 import { useLocation } from "react-router-dom";
 ReactGA.initialize("G-8YXPLS55QD");
 
@@ -99,7 +100,8 @@ function PDFSearch() {
             ) : null}
           </div>
         </div>
-        <div>
+        <div className="right-side-header">
+          <Discordbranding />
           <button className="headerbutton" onClick={handleLogout}>
             Logout
           </button>
