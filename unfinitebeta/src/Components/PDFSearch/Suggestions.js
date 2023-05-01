@@ -3,21 +3,23 @@ import { useState } from "react";
 import gscholarresults from "../../Functions/PDFSearch/gscholarresults";
 import arxivresults from "../../Functions/PDFSearch/arxivresults";
 import unfiniteresults from "../../Functions/PDFSearch/unfiniteresults";
+import getRecommendations from "../../Functions/PDFSearch/getRecommendations";
 import { useNavigate } from "react-router-dom";
 
-const SuggestedBox = ({ suggested , setUrl , setAnswer , setQnA, setDataloaded , setDocid , setThreadid , isRow }) => {
+const SuggestedBox = ({ suggested , setUrl , setAnswer , setQnA, setDataloaded , setDocid , setThreadid , isRow , setTitle }) => {
 
     const navigate = useNavigate();
 
     const handleResultClick = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         console.log('clicked');
-        const url = e.target.href;
+        const url = e;
         setAnswer("");
         setQnA(new Map());
         setDataloaded(false);
         setDocid(null);
         setThreadid(null);
+        setTitle(null);
         setUrl(url);
         // navigate(`/?url=${url}`);
     }
@@ -27,16 +29,25 @@ const SuggestedBox = ({ suggested , setUrl , setAnswer , setQnA, setDataloaded ,
             {isRow ?  
             <div className="suggested-box-body-row">
             {suggested.map((s) => (
-            <div className="suggested-box-item" key={s}>
+            <div className="suggested-box-item" key={s} onClick={() => handleResultClick(s[1])}>
                 <p>{s[0]}</p>
-                <a href={s[1]} className="loadsearchresult" onClick={handleResultClick}>Load</a>
+                {/* <a href={s[1]} className="loadsearchresult" onClick={handleResultClick}>Load</a> */}
             </div>
             ))}
         </div> : <div className="suggested-box-body">
             {suggested.map((s) => (
-            <div className="suggested-box-item" key={s}>
-                <p>{s[0]}</p>
-                <a href={s[1]} className="loadsearchresult" onClick={handleResultClick}>Load</a>
+            <div className="suggested-box-item" key={s} onClick={() => handleResultClick(s[1])}>
+                <p className="suggestions-title">{s[0]}</p>
+                <p className="suggestion-author-names">
+                    {s[2].map((author) => (
+                        <span key={author} className="author">{author}</span>
+                    ))}
+                </p>
+                <div className="suggestion-other-metadata">
+                    <span className="suggestion-year">{s[3]}</span>
+                    <span className="suggestion-publisher">{s[4]}</span>
+                </div>
+                {/* <a href={s[1]} className="loadsearchresult" onClick={handleResultClick}></a> */}
             </div>
             ))}
         </div>}
@@ -45,13 +56,59 @@ const SuggestedBox = ({ suggested , setUrl , setAnswer , setQnA, setDataloaded ,
     );
     }
 
-function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , setDocid , setThreadid , isRow }) {
+function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , docid , setDocid , setThreadid , isRow }) {
 
     const [suggested, setSuggested] = useState([]);
     const [engine, setEngine] = useState("gscholar");
     const [query, setQuery] = useState(null);
+    const [getrecom, setGetrecom] = useState(false);
+
+    // useEffect(() => {
+    //     console.log('query', query);
+    //     if (query === null) {
+    //         return;
+    //     }
+    //     async function getResults() {
+    //         if (engine === "gscholar") {
+    //             const results = await gscholarresults(query);
+    //             console.log('results', results);
+    //             setSuggested(results);
+    //         }
+    //         else if (engine === "arxiv") {
+    //             const results = await arxivresults(query);
+    //             console.log('results', results);
+    //             setSuggested(results);
+    //         }
+    //         else if (engine === "unfinite") {
+    //             const results = await unfiniteresults(query);
+    //             console.log('results', results);
+    //             setSuggested(results);
+    //         }
+    //     }
+    //     if (query) {
+    //         getResults();
+    //         setQuery(null);
+    //     }
+    // }, [query]);
 
     useEffect(() => {
+
+        if (getrecom===false) {
+            return;
+        }
+        async function getResults() {
+            const results = await getRecommendations(docid);
+            console.log('results', results);
+            setSuggested(results);
+        }
+        getResults();
+    }, [getrecom]);
+
+
+    const handleSubmit = (e) => {
+
+        e.preventDefault();
+
         console.log('query', query);
         if (query === null) {
             return;
@@ -73,36 +130,32 @@ function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , setDocid , s
                 setSuggested(results);
             }
         }
-        if (query) {
-            getResults();
-        }
-    }, [query]);
 
-    const handleSubmit = (e) => {
-
+        getResults();
         setQuery(null);
-        e.preventDefault();
-        // get query from input type text
-        const query = e.target[3].value;
-        setQuery(query);
-        console.log('query::', query);
         
     };
 
-    useEffect(() => {
-        console.log('engine', engine);
-    }, [engine]);
-
-    const handleEngineradio = (e) => {
-        setEngine(e.target.value);
-        setQuery(null);
+    const handleInputChange = (e) => {
+        setQuery(e.target.value);
     }
+
+    // useEffect(() => {
+    //     console.log('engine', engine);
+    // }, [engine]);
+
+    // const handleEngineradio = (e) => {
+    //     setEngine(e.target.value);
+    //     setQuery(null);
+    // }
 
     return (
         <div className="suggested">
-            <h3>Search articles</h3>
-            <form className="suggested-input" onSubmit={handleSubmit}>
-                <div className="radio-group">
+            <h3>{getrecom ? null : <button className="getrecom" onClick={() => setGetrecom(!getrecom)}></button>}Recommendations</h3>
+            {/* get recom button */}
+            
+            {/* <form className="suggested-input" onSubmit={handleSubmit}> */}
+                {/* <div className="radio-group">
                     <div className="radio-item">
                         { engine==='gscholar' ? <label htmlFor="gscholar" className="labelselected">Google Scholar</label> : 
                         <label htmlFor="gscholar">Google Scholar</label>}
@@ -118,13 +171,12 @@ function Suggestions({ setUrl , setAnswer , setQnA, setDataloaded , setDocid , s
                         <label htmlFor="unfinite">Unfinite (Semantic Search)</label>}
                         <input type="radio" id="unfinite" name="engine" value="unfinite" onClick={handleEngineradio} />
                     </div>
-                </div>
-                <div className="input-group">
-                    <input className='scholarinput' type="text" placeholder="Search" />
+                </div> */}
+                {/* <div className="input-group">
+                    <input className='scholarinput' type="text" placeholder="Search" onChange={handleInputChange} />
                     <button className="scholarbutton" type="submit">Search</button>
-                    {/* <p>*semantic search is limited</p> */}
-                </div>
-            </form>
+                </div> */}
+            {/* </form> */}
             <SuggestedBox
             suggested={suggested}
             setUrl={setUrl}

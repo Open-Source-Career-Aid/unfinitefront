@@ -35,7 +35,7 @@ async function ProcessPDF({ url }) {
         // console.log(data.document_id);
 
         // return (JSON.parse(data.completion), JSON.parse(data.track));
-        return [data.document_id, data.thread_id];
+        return [data.document_id, data.thread_id, data.title];
     }
 
 }
