@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: 0 5%;
+  width: 90%;
 }
   .bodypdfsearch {
     display: flex;
@@ -105,7 +106,7 @@
     font-size: 16px;
     padding: 10px 20px;
     cursor: pointer;
-    margin: 5px;
+    /* margin: 5px; */
   }
   .headerbutton:hover {
     background-color: rgb(62, 62, 62);
@@ -496,7 +497,7 @@
   /* decreast the space b/w lines */
   line-height: 1.4em;
   margin: 0 10px;
-  max-width: 30%;
+  max-width: 300px;
   /* overflow: ellipsis; */
   white-space: nowrap;
   text-overflow: ellipsis;
