@@ -57,7 +57,7 @@ import LikeDislike from "./LikeDislike";
 //   ));
 // }
 
-function renderTextWithKPs( { answer , handleQuestionclick , setQuestions } ) {
+function renderTextWithKPs( { answer , handleQuestionclick , setQuestions , handleKPclick } ) {
 
   let parts = [];
   let subparts = [];
@@ -86,7 +86,7 @@ function renderTextWithKPs( { answer , handleQuestionclick , setQuestions } ) {
     parts.map((part, index) => {
       console.log(part);
       if (part.startsWith("<kp>") && part.endsWith("</kp>")) {
-        return <span key={index} className="kp" onClick={handleQuestionclick}>{part.slice(4, -5)}</span>;
+        return <span key={index} className="kp" onClick={handleKPclick}>{part.slice(4, -5)}</span>;
       } else if (part.startsWith("{") && part.endsWith("}")) {
         // pass this part
         return null;
@@ -204,6 +204,11 @@ function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , current
         setNextquestion(event.target.innerText);
     };
 
+    const handleKPclick = (event) => {
+        setRelevantqs(false);
+        setNextquestion("What is "+event.target.innerText+"?");
+    };
+
     useEffect(() => {
 
       if (specialresponse !== null) {
@@ -238,7 +243,7 @@ function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , current
           {/* {highlight(answer)} */}
           <p className="answer">
           {/* {answer} */}
-          {renderTextWithKPs({ answer , handleQuestionclick , setQuestions })}
+          {renderTextWithKPs({ answer , handleQuestionclick , setQuestions , handleKPclick })}
           </p>
           <div className="relevant-questions">
           {relevantqs ? <> <p className="relevant-questions-title">Relevant questions</p> </> : null}
