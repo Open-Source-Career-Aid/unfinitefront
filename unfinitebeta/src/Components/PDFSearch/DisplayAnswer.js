@@ -74,7 +74,7 @@ function renderTextWithKPs( { answer , handleQuestionclick , setQuestions , hand
 
     subparts.forEach((subpart, index) => {
 
-      console.log(subpart);
+      // console.log(subpart);
 
       parts.push(subpart);
 
@@ -84,7 +84,7 @@ function renderTextWithKPs( { answer , handleQuestionclick , setQuestions , hand
 
   return (
     parts.map((part, index) => {
-      console.log(part);
+      // console.log(part);
       if (part.startsWith("<kp>") && part.endsWith("</kp>")) {
         return <span key={index} className="kp" onClick={handleKPclick}>{part.slice(4, -5)}</span>;
       } else if (part.startsWith("{") && part.endsWith("}")) {
@@ -115,7 +115,7 @@ function renderTextWithQs( { answer , handleQuestionclick , setQuestions , relev
 
     subparts.forEach((subpart, index) => {
 
-      console.log(subpart);
+      // console.log(subpart);
 
       parts.push(subpart);
 
@@ -126,7 +126,7 @@ function renderTextWithQs( { answer , handleQuestionclick , setQuestions , relev
 
   return(
     parts.map((part, index) => {
-    console.log(part);
+    // console.log(part);
     if (part.startsWith("<kp>") && part.endsWith("</kp>")) {
       // return <span key={index} className="q" onClick={handleQuestionclick}>{part.slice(3, -4)}</span>;
       return
