@@ -1,11 +1,31 @@
+.examples-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.examples-box-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+}
+
 .examples-box-body-example {
-    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    padding: 5px;
+    width: 20%;
+    border: 2px solid #1E90FF;
+    border-radius: 10px;
 }
 
 .examples-box-body-example a {
     text-decoration: none;
     color: #000;
-    background-color: bisque;
     border-radius: 100vh;
     padding: 0 10px;
 }

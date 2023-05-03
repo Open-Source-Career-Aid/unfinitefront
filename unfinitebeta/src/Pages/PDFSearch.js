@@ -130,7 +130,7 @@ function PDFSearch() {
               setTitle={setTitle}
             />
             <div className="examples-container">
-              {/* <ExamplesBox setUrl={setUrl} /> */}
+              <ExamplesBox setUrl={setUrl} />
             </div>
             <div style={
               {
