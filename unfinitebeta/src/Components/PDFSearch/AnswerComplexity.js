@@ -13,17 +13,19 @@ function AnswerComplexity( { setSpecialresponse } ) {
     }
 
     return (
-        <div className="complexity">
-            {/* <h3>Modify the response</h3> */}
-            <div className="complexity-buttons">
-                <div className="complexity-button" onClick={handleComplexity} value={1} >
-                    <p>Dumbsplain</p>
-                </div>
-                <div className="complexity-button" onClick={handleComplexity} value={2} >
-                    <p>Simplify</p>
-                </div>
-                <div className="complexity-button" onClick={handleComplexity} value={3} >
-                    <p>Talk to me like you would talk to an academic</p>
+        <div className='filters'>
+            {/* <p className='filter-title'>Modify the response</p> */}
+            <div className="complexity">
+                <div className="complexity-buttons">
+                    <div className="complexity-button" onClick={handleComplexity} value={1} >
+                        <p>Analogify</p>
+                    </div>
+                    <div className="complexity-button" onClick={handleComplexity} value={2} >
+                        <p>Simplify</p>
+                    </div>
+                    <div className="complexity-button" onClick={handleComplexity} value={3} >
+                        <p>Comprehensify</p>
+                    </div>
                 </div>
             </div>
         </div>

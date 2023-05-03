@@ -1,8 +1,14 @@
+::selection {
+  background: #1E90FF;
+  color: #fff;
+}
+
 .pdfsearch {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 0 5%;
+  width: 90%;
 }
   .bodypdfsearch {
     display: flex;
@@ -14,51 +20,75 @@
 .pdfsearch .headerpdfsearch {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+}
+
+.searchbar {
+  /* fix it to the center of the screen */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* make it vertically center */
+  height: 50vh;
+}
+
+.urlsubmit .input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  border: 1px solid #979797;
+  border-radius: 100vh;
 }
 
 .logopdfsearch {
     margin: 10px 0;
     margin-right: 10px;
+    cursor: pointer;
   }
 
 .urlsubmit {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
-input[type="text"][name="url"] {
-    box-sizing: border-box;
-    height: 40px;
+.urlinput {
+    height: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 50vh;
     font-size: 16px;
-    outline: none;
-    margin-bottom: 10px;
+    width: 95%;
+    border: none;
   }
-  input[type="text"][name="url"]:focus {
-    border-color: #000000;
+.urlinput:focus {
+  border: none;
+  outline: none;
   }
   ::placeholder {
     color: #aaa;
   }  
 
   button[type="submit"] {
-    background-color: #40b600;
-    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: transparent;
+    width: 5%;
+    /* color: #fff; */
     border: none;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     font-size: 16px;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     cursor: pointer;
-    width: 10%;
-  }
-  button[type="submit"]:hover {
-    background-color: #177e00;
   }
 
 .logocontainer {
@@ -76,7 +106,7 @@ input[type="text"][name="url"] {
     font-size: 16px;
     padding: 10px 20px;
     cursor: pointer;
-    margin: 5px;
+    /* margin: 5px; */
   }
   .headerbutton:hover {
     background-color: rgb(62, 62, 62);
@@ -88,14 +118,14 @@ input[type="text"][name="url"] {
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border-left: 1px solid #ccc;
   }
 
   .askcontainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 25%;
+    width: 30%;
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -104,7 +134,7 @@ input[type="text"][name="url"] {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   width: 60%;
   height: 80%;
 }
@@ -136,48 +166,55 @@ input[type="text"][name="url"] {
 
 .qinlist {
   padding-left: 10px;
+  padding-right: 20px;
 }
 
 .qinlist p {
-  font-size: 1em;
+  font-size: 0.9em;
   text-shadow: none; /* Set the initial shadow to none */
-  transition: text-shadow 0.5s ease; /* Add a transition effect for a smoother animation */
+  transition: color 0.5s ease; /* Add a transition effect for a smoother animation */
 }
 
 .qinlist p:hover {
   cursor: pointer;
-  text-shadow: 1px 1px 5px #6f6f6f; /* Set the shadow effect on hover */
+  color: #1E90FF;
 }
 
 .ask input[type="text"] {
   box-sizing: border-box;
-  width: 100%;
   height: 40px;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  /* border: 1px solid #ccc; */
+  border-radius: 100vh;
   font-size: 16px;
   outline: none;
-  margin-bottom: 10px;
-  width: 70%;
-  margin-right: 10px;
+  /* margin-bottom: 10px; */
+  width: 90%;
+  /* remove all borders */
+  border: none;
 }
-.ask input[type="text"]:focus {
+/* .ask input[type="text"]:focus {
   border-color: #000000;
-}
+} */
 .ask ::placeholder {
   color: #aaa;
 }  
 
 .ask button[type="submit"] {
-  background-color: #40b600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #1E90FF; */
+  background-color: transparent;
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 25vh;
   font-size: 16px;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
+  width: 10%;
   cursor: pointer;
-  width: 20%;
+  /* width: 20%; */
 }
 
 .steps {
@@ -238,14 +275,34 @@ input[type="text"][name="url"] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  align-items: center;
-  padding: 10px 10px;
-  margin: 5px;
-  border: solid 1px #d4d4d4;
+  /* align-items: center; */
+  padding: 0 10px;
+  margin: 15px 0;
+  border-left: solid 3px #d4d4d4;
   min-width: 40%;
   font-size: 14px;
+  min-height: 20%;
+  max-height: 20%;
+  height: 20%;
+  margin-top: 0;
   /* border-radius: 10px; */
   /* height: 10%; */
+  /* add a 0.5 sec transition */
+  transition: border-left 0.5s ease;
+}
+.suggested-box-item:hover {
+  cursor: pointer;
+  border-left: solid 3px #1E90FF;
+}
+
+.suggestions-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  /* italic */
+  font-style: italic;
 }
 
 .loadsearchresult {
@@ -266,9 +323,20 @@ input[type="text"][name="url"] {
 }
 
 .scholarinput {
-  align-items: center;
-  margin: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 25px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 10px;
+  outline: none;
+  margin-bottom: 10px;
   width: 70%;
+  margin-right: 10px;
+}
+.scholarinput:focus {
+  border-color: #000000;
 }
 
 .suggested-input {
@@ -282,13 +350,18 @@ input[type="text"][name="url"] {
 }
 
 .suggested-input .scholarbutton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #979797;
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 100vh;
   font-size: 10px;
   cursor: pointer;
   width: 30%;
+  height: 25px;
 }
 
 .inputcontainer {
@@ -317,10 +390,12 @@ input[type="text"][name="url"] {
   align-items: center;
   max-width: 100%;
   border: 1px solid #979797;
+  border-radius: 100vh;
   white-space: nowrap;
   padding: 0 5px;
   cursor: pointer;
   font-size: 14px;
+  margin: 5px;
 } 
 
 .radio-item:hover {
@@ -335,12 +410,14 @@ input[type="text"][name="url"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
   cursor: pointer;
+  padding: 0 5px;
 }
 
 .radio-item .labelselected {
   background-color: #979797;
+  border-radius: 100vh;
   color: #fff;
   width: 100%;
   padding: 0 5px;
@@ -352,17 +429,323 @@ input[type="text"][name="url"] {
   justify-content: flex-start;
   align-items: flex-start;
   margin: 10px;
+  margin-left: 20px;
   width: 100%;
 }
 
 .qs {
-  cursor: pointer;
   /* bold */
   /* font-weight: bold; */
   /* italic */
   font-style: italic;
+  /* font-size: 0.9em; */
+  /* background-color: #cdecff; */
+  /* border-bottom: 1px solid #979797;
+  margin: 0;
+  padding: 0; */
+  /* time for transition */
+  transition: color 0.5s ease;
+}
+.qs:hover {
+  cursor: pointer;
+  /* bg color */
+  color: #1E90FF;
 }
 
 .limitedaccess {
   margin-left: 10px;
+}
+
+.kp {
+  /* underline */
+  text-decoration: underline;
+  /* underline color */
+  text-decoration-color: #979797;
+  /* underline style */
+  text-decoration-style: dashed;
+  /* underline offset from text */
+  text-underline-offset: 3px;
+  /* transition */
+  transition: color 0.5s ease;
+}
+
+.kp:hover {
+  cursor: pointer;
+  /* bg color */
+  color: #1E90FF;
+}
+
+.question {
+  width: 90%;
+  padding-left: 20px;
+  font-size: 1.4em;
+  /* bold */
+  font-weight: bold;
+  margin: 0;
+  color: #000000;
+  /* decreast the space b/w lines */
+  line-height: 1.4em;
+}
+
+.title {
+  /* width: 80%; */
+  /* bold */
+  font-weight: bold;
+  /* italic */
+  font-style: italic;
+  color: #1E90FF;
+  /* decreast the space b/w lines */
+  line-height: 1.4em;
+  margin: 0 10px;
+  max-width: 300px;
+  /* overflow: ellipsis; */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.docinfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  width: 100%;
+}
+
+.closedoc {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2px;
+  border-radius: 5px;
+  height: 20px;
+  width: 20px;
+  border: 1px solid #979797;
+  color: #979797;
+  background-color: transparent;
+}
+.closedoc:hover {
+  cursor: pointer;
+  color: #ff0000;
+  border: 1px solid #ff0000;
+}
+
+.askcontainer h4 {
+  /* margin: 0; */
+  margin-bottom: 10px;
+  /* not bold */
+  font-weight: normal;
+}
+
+.suggested h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.getrecom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 10px;
+  /* remove all default button deco */
+  border: 3px solid #1E90FF;
+  border-radius: 100vh;
+  background: none;
+  padding: 0;
+  color: #1E90FF;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 5px;
+  text-decoration: underline;
+  
+  /* bold */
+  font-weight: bold;
+}
+
+.signaturebutton {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  /* remove all default button deco */
+  border: 3px solid #1E90FF;
+  border-radius: 100vh;
+  background: none;
+  color: #1E90FF;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 5px;
+  /* margin-right: 5px; */
+  text-decoration: underline;
+  /* width === height */
+  width: 3px;
+  height: 3px;
+  
+  /* bold */
+  font-weight: bold;
+}
+/* 
+.askbutton {
+  display: flex;
+  flex-direction: row;
+} */
+
+.askinputcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  border: 1px solid #979797;
+  border-radius: 100vh;
+}
+
+.suggestion-author-names {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  /* wrap if flex overflows */
+  flex-wrap: wrap;
+  color: #979797;
+  background-color: transparent;
+  margin: 0;
+}
+
+.author {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  /* margin-left: 10px; */
+  border-radius: 5px;
+  height: 20px;
+  margin-top: 0;
+  /* border: 1px solid #979797; */
+  color: #979797;
+  background-color: transparent;
+  /* padding: 0 5px; */
+  text-decoration: underline;
+  /* make underline thinner */
+  text-decoration-thickness: 1px;
+  /* underline color */
+  text-decoration-color: #979797;
+  /* underline offset */
+  text-underline-offset: 2px;
+  margin-right: 8px;
+  font-size: 0.8em;
+}
+
+.suggestion-other-metadata {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #979797;
+  background-color: transparent;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.suggestion-year {
+  font-size: 0.8em;
+}
+
+.suggestion-publisher {
+  font-size: 0.8em;
+  background-color: #ccc;
+  color: #000000;
+  border-radius: 50vh;
+  padding: 0 5px;
+}
+
+.filter-title {
+  margin: 0;
+  margin-left: 20px;
+  font-size: 0.8em;
+}
+
+.relevant-questions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 20px;
+  width: 100%;
+}
+
+.relevant-questions-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  /* bold */
+  font-weight: bold;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.relevant-questions-container {
+  margin-bottom: 10px;
+  width: 90%;
+}
+
+.examples-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+}
+
+.instructions {
+  border-left: 3px solid #1E90FF;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  /* make not selectable */
+  user-select: none;
+}
+
+.instruction {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.uaresearcher {
+  cursor: pointer;
+  color: #1E90FF;
+  text-decoration: none;
+}
+
+.right-side-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.image-discord-logo {
+  width: 35px;
+  height: 35px;
+  background-image: url('../../public/assets/discord-mark-black.svg');
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  background-position: center;
+  /* increast the transparency to 60% */
+  opacity: 0.2;
+  margin: 0 10px;
+  cursor: pointer;
+  /* transition */
+  transition: opacity 0.5s ease;
+}
+/* hover */
+.image-discord-logo:hover {
+  opacity: 1;
 }

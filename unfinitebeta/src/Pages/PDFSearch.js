@@ -10,6 +10,8 @@ import FeedbackBox from "../Components/FeedbackBox";
 import userLogout from "../Functions/userLogout";
 import ExamplesBox from "../Components/PDFSearch/ExamplesBox";
 import Suggestions from "../Components/PDFSearch/Suggestions";
+import DocOutline from "../Components/PDFSearch/docoutline";
+import Discordbranding from "../Components/PDFSearch/Discordbranding";
 import { useLocation } from "react-router-dom";
 ReactGA.initialize("G-8YXPLS55QD");
 
@@ -26,6 +28,7 @@ function PDFSearch() {
   const [qids, setQids] = useState([]);
   const [selectedqid, setSelectedqid] = useState(null);
   const [nextquestion, setNextquestion] = useState(null);
+  const [title, setTitle] = useState(null);
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -40,6 +43,8 @@ function PDFSearch() {
     setDataloaded(false);
     setDocid(null);
     setThreadid(null);
+    setTitle(null);
+    setQnA(new Map());
   }, []);
 
   useEffect(() => {
@@ -66,6 +71,7 @@ function PDFSearch() {
     setDocid(null);
     setUrl(null);
     setThreadid(null);
+    setTitle(null);
     navigate("/");
   };
 
@@ -82,16 +88,20 @@ function PDFSearch() {
     <div className="pdfsearch">
       <div className="headerpdfsearch">
         <div className="logocontainer">
-          <h1 className="logopdfsearch">unfinite</h1>
+          <h1 className="logopdfsearch" onClick={handlenewPDF}>unfinite</h1>
+        </div>
+        <div className="docinfo">
+          <h3 className="title">{title}</h3>
           <div>
             {dataloaded ? (
-              <button className="headerbutton" onClick={handlenewPDF}>
-                load another pdf
+              <button className="closedoc" onClick={handlenewPDF}>
+                x
               </button>
             ) : null}
           </div>
         </div>
-        <div>
+        <div className="right-side-header">
+          <Discordbranding />
           <button className="headerbutton" onClick={handleLogout}>
             Logout
           </button>
@@ -101,10 +111,10 @@ function PDFSearch() {
         <div className="pdfurlcontainer">
           {dataloaded ? (
             <>
-              PDF was loaded. Answering based on {url}{" "}
+              {/* PDF was loaded. Answering based on <b>{title}</b>{" "}
               <a href="https://forms.gle/6JU7uBvXHe4WMRhK7" target="_blank">
                 ARE YOU A RESEARCHER?
-              </a>
+              </a> */}
             </>
           ) : (
             <>
@@ -116,22 +126,26 @@ function PDFSearch() {
               setUrl={setUrl}
               threadid={threadid}
               setThreadid={setThreadid}
+              setTitle={setTitle}
             />
-            <ExamplesBox setUrl={setUrl} />
+            <div className="examples-container">
+              {/* <ExamplesBox setUrl={setUrl} /> */}
+            </div>
             <div style={
               {
-                'width': "50%"
+                "width": "50%"
               }
             }>
-              <Suggestions 
+              {/* <Suggestions 
               setUrl={setUrl}
               setAnswer={setAnswer}
               setQnA={setQnA}
               setDataloaded={setDataloaded}
+              docid={docid}
               setDocid={setDocid}
               setThreadid={setThreadid}
               isRow={true}
-              />
+              /> */}
               </div>
             </>
           )}
@@ -157,11 +171,12 @@ function PDFSearch() {
               />
             </div>
             <div className="answercontainer">
-              {dataloaded ? <DisplayAnswer answer={answer}
+              {dataloaded ? <>
+              <DisplayAnswer answer={answer}
               nextquestion={nextquestion}
               setNextquestion={setNextquestion}
               currentquestion={currentquestion}
-              /> : null}
+              /></> : null}
             </div>
             <div style={
               {
@@ -173,10 +188,13 @@ function PDFSearch() {
             setAnswer={setAnswer}
             setQnA={setQnA}
             setDataloaded={setDataloaded}
+            docid={docid}
             setDocid={setDocid}
             setThreadid={setThreadid}
             isRow={false}
+            setTitle={setTitle}
             />
+            {/* <DocOutline /> */}
             </div>
           </div>
         ) : null}
@@ -185,7 +203,7 @@ function PDFSearch() {
         <FeedbackBox />
       </div>
       <div className="footer">
-        <a href="https://forms.gle/6JU7uBvXHe4WMRhK7" target="_blank">
+        <a href="https://forms.gle/6JU7uBvXHe4WMRhK7" target="_blank" className="uaresearcher">
           ARE YOU A RESEARCHER?
         </a>
         <p className="limitedaccess">LIMITED ACCESS © 2023 unfinite</p>

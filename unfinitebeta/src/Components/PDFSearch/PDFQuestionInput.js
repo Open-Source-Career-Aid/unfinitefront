@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import answerQuestion from "../../Functions/PDFSearch/answerQuestion";
 import DisplayAnswer from "./DisplayAnswer";
+import answerquestionstream from "../../Functions/PDFSearch/answerquestionstream";
 
 function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid , nextquestion , setNextquestion , setCurrentquestion }) {
 
@@ -21,9 +22,9 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid ,
       //   setAnswer(response);
       //   setQnA((map) => new Map(map.set("Introduction", response)));
       //   console.log("query complete ✅");
-      setNextquestion("Introduction");
+      setNextquestion("Overview");
       }
-  }, []);
+  }, [docid]);
 
   const handleInputChange = (event) => {
     // setQuestion(event.target.value);
@@ -90,8 +91,11 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid ,
     async function getAnswer() {
       if (!handlingSubmit) {
         setHandlingSubmit(true);
+        setCurrentquestion(question);
         setAnswer("Loading...");
-        const response = await answerQuestion(question, [docid], threadid);
+        // const response = await answerQuestion(question, [docid], threadid);
+        const response = await answerquestionstream(question, [docid], threadid, setAnswer);
+        console.log(answer)
         if (response==="") {
           setAnswer("Seems like the team has more work to do. Please use the feedback box on the bottom left to leave a note, and we will have it fixed in no time.");
         }
@@ -128,14 +132,14 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid ,
 
   return (
     <div className="ask">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="askinputcontainer">
         <input
           type="text"
-          placeholder="Ask something."
+          placeholder="Follow your curiosity."
           value={middleQuestion}
           onChange={handleInputChange}
         />
-        <button type="submit">Ask</button>
+        <button type="submit" className="askbutton"><span className="signaturebutton"></span></button>
       </form>
     </div>
   );
