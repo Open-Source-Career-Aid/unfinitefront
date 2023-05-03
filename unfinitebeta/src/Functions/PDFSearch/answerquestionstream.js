@@ -4,25 +4,25 @@ import getCookie from "../getCookie";
 
 async function answerquestionstream( question, docids, threadid , setAnswer ) {
 
-    let special_text = null;
-    let special_id = null;
+    let specialText = null;
+    let specialID = null;
 
-    // finr the text followed by sr: in the question and set it to special_text and modify the question to be just the question. If it includes multiple sr: then it will just take the last one.
+    // finr the text followed by sr: in the question and set it to specialText and modify the question to be just the question. If it includes multiple sr: then it will just take the last one.
     if (question.includes("sr:")) {
-        special_text = question.split("sr:")[1];
+        specialText = question.split("sr:")[1];
         question = question.split("sr:")[0].trim();
     }
 
-    console.log("special_text:", special_text);
+    console.log("specialText:", specialText);
 
-    if (special_text==='Simplify') {
-        special_id = 1;
+    if (specialText==='Simplify') {
+        specialID = 1;
     }
-    else if (special_text==='Analogify') {
-        special_id = 4;
+    else if (specialText==='Analogify') {
+        specialID = 4;
     }
-    else if (special_text==='Comprehensify') {
-        special_id = 3;
+    else if (specialText==='Comprehensify') {
+        specialID = 3;
     }
 
     await getCSRF();
@@ -41,7 +41,7 @@ async function answerquestionstream( question, docids, threadid , setAnswer ) {
         'question': question,
         'docids': JSON.stringify(docids),
         'threadid': threadid,
-        'special_id': special_id,
+        'specialID': specialID,
       })
     });
   

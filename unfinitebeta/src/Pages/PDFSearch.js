@@ -26,7 +26,7 @@ function PDFSearch() {
   const [threadid, setThreadid] = useState(null);
   const [QnA, setQnA] = useState(new Map());
   const [qids, setQids] = useState([]);
-  const [selectedqid, setSelectedqid] = useState(null);
+  const [selectedQuestionID, setSelectedQuestionID] = useState(null);
   const [nextquestion, setNextquestion] = useState(null);
   const [title, setTitle] = useState(null);
 
@@ -64,7 +64,7 @@ function PDFSearch() {
   //   }
   // }, [dataloaded]);
 
-  const handlenewPDF = () => {
+  const handleNewPDF = () => {
     setQnA(new Map());
     setAnswer("");
     setDataloaded(false);
@@ -88,13 +88,13 @@ function PDFSearch() {
     <div className="pdfsearch">
       <div className="headerpdfsearch">
         <div className="logocontainer">
-          <h1 className="logopdfsearch" onClick={handlenewPDF}>unfinite</h1>
+          <h1 className="logopdfsearch" onClick={handleNewPDF}>unfinite</h1>
         </div>
         <div className="docinfo">
           <h3 className="title">{title}</h3>
           <div>
             {dataloaded ? (
-              <button className="closedoc" onClick={handlenewPDF}>
+              <button className="closedoc" onClick={handleNewPDF}>
                 x
               </button>
             ) : null}
@@ -163,8 +163,8 @@ function PDFSearch() {
                 threadid={threadid}
                 qids={qids}
                 setQids={setQids}
-                selectedqid={selectedqid}
-                setSelectedqid={setSelectedqid}
+                selectedQuestionID={selectedQuestionID}
+                setSelectedQuestionID={setSelectedQuestionID}
                 nextquestion={nextquestion}
                 setNextquestion={setNextquestion}
                 setCurrentquestion={setCurrentquestion}
@@ -203,7 +203,7 @@ function PDFSearch() {
         <FeedbackBox />
       </div>
       <div className="footer">
-        <a href="https://forms.gle/6JU7uBvXHe4WMRhK7" target="_blank" className="uaresearcher">
+        <a href="https://forms.gle/6JU7uBvXHe4WMRhK7" target="_blank" className="uaresearcher" rel="noreferrer">
           ARE YOU A RESEARCHER?
         </a>
         <p className="limitedaccess">LIMITED ACCESS © 2023 unfinite</p>
