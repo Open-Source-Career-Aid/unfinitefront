@@ -691,6 +691,10 @@
 }
 
 .relevant-questions-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin-bottom: 10px;
   width: 90%;
 }
@@ -748,4 +752,25 @@
 /* hover */
 .image-discord-logo:hover {
   opacity: 1;
+}
+
+.outline {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 10px;
+  width: 100%;
+}
+
+.outline-item-title {
+  font-size: 0.9em;
+  text-shadow: none; /* Set the initial shadow to none */
+  transition: color 0.5s ease; /* Add a transition effect for a smoother animation */
+  margin: 10px 0;
+}
+
+.outline-item-title:hover {
+  cursor: pointer;
+  color: #1E90FF;
 }

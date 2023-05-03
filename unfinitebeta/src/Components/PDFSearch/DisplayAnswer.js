@@ -135,7 +135,7 @@ function renderTextWithQs( { answer , handleQuestionclick , setQuestions , relev
         setRelevantqs(true);
       }
       // setQuestions((questions) => [...questions, part.slice(1, -1)]);
-      return <div className="relevant-questions-container">Q. <span key={index} className="qs" onClick={handleQuestionclick}>{part.slice(1, -1)}</span></div>;
+      return <div className="relevant-questions-container">Q. <span key={index} className="qs" onClick={handleQuestionclick} style={{'margin-left':'5px'}}>{part.slice(1, -1)}</span></div>;
     } else {
       // return part;
       return
