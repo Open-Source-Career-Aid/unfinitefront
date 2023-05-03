@@ -12,6 +12,7 @@ import ExamplesBox from "../Components/PDFSearch/ExamplesBox";
 import Suggestions from "../Components/PDFSearch/Suggestions";
 import DocOutline from "../Components/PDFSearch/docoutline";
 import Discordbranding from "../Components/PDFSearch/Discordbranding";
+import Outline from "../Components/PDFSearch/Outline";
 import { useLocation } from "react-router-dom";
 ReactGA.initialize("G-8YXPLS55QD");
 
@@ -129,7 +130,7 @@ function PDFSearch() {
               setTitle={setTitle}
             />
             <div className="examples-container">
-              {/* <ExamplesBox setUrl={setUrl} /> */}
+              <ExamplesBox setUrl={setUrl} />
             </div>
             <div style={
               {
@@ -183,6 +184,7 @@ function PDFSearch() {
                 'width': "25%"
               }
             }>
+            <Outline docid={docid} setNextquestion={setNextquestion} />
             <Suggestions 
             setUrl={setUrl}
             setAnswer={setAnswer}
