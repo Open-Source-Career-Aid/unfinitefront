@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import ProcessPDF from "../../Functions/PDFSearch/ProcessPDF";
 import { useNavigate } from "react-router-dom";
 import UploadPDFForm from "../PDFSearch/PDFupload";
+import PdfUpload from "../PDFSearch/PDFupload";
 import { event } from "react-ga";
 
-function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadid , setThreadid }) {
+function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadid , setThreadid , setTitle }) {
   const [loadalert, setloadAlert] = useState(null);
   const [processing, setProcessing] = useState(false);
 
@@ -49,6 +50,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
         console.log("data", data);
         setDocid(data[0]);
         setThreadid(data[1]);
+        setTitle(data[2]);
       };
       getPDFdata();
 
@@ -65,19 +67,25 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
       <div className="searchbar">
         {processing ? (
           <div className="loader">{loadalert}</div>
-        ) : ( 
-          <>
+        ) : (
           <form onSubmit={handleSubmit} className="urlsubmit" style={{ display: 'inline' }}>
+            <div className="instructions">
+              <h3>Learning made easy!</h3>
+              <p>1. Paste a link to a PDF in the search bar.</p>
+              <p className="instruction">2. Click on the <span className="signaturebutton" style={{margin:'5px', cursor:'auto'}}></span> button or press <span style={{'font-weight':'bold', 'margin-left':'5px'}}>ENTER</span>.</p>
+              <p>3. Learn from your document your own way!</p>
+            </div>
+            <div className="input-container">
               <input
+                className="urlinput"
                 type="text"
-                placeholder="Enter a URL that ends with .pdf. PLEASE ONLY LOAD PUBLICLY AVAILABLE PDFs."
+                placeholder="Enter a URL ending in .pdf"
                 name="url" style={{ display: 'block' , width: '100%'}}/>
-              <button type="submit" style={{ display: 'inline' }}>Load Document</button>
-            </form>
-            <UploadPDFForm />
-          </>
+              <button type="submit" style={{ display: 'inline' }}><span className="signaturebutton"></span></button>
+            </div>
+          </form>
+          <UploadPDFForm />
         )}
-        
       </div>
     </div>
   );

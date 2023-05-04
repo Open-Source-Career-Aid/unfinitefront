@@ -5,6 +5,8 @@ import getCSRF from "../../Functions/getCSRF";
 import {ImFolderUpload} from 'react-icons/im';
 import { event } from 'react-ga';
 
+// upload pdf file to server
+
 function UploadPDFForm() {
   const [file, setFile] = useState(null);
   const [loadalert, setloadAlert] = useState(null);
