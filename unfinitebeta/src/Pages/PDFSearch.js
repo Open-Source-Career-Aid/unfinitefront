@@ -10,7 +10,7 @@ import FeedbackBox from "../Components/FeedbackBox";
 import userLogout from "../Functions/userLogout";
 import ExamplesBox from "../Components/PDFSearch/ExamplesBox";
 import Suggestions from "../Components/PDFSearch/Suggestions";
-import DocOutline from "../Components/PDFSearch/DocOutline";
+import DocOutline from "../Components/PDFSearch/docoutline";
 import Discordbranding from "../Components/PDFSearch/Discordbranding";
 import Outline from "../Components/PDFSearch/Outline";
 import { useLocation } from "react-router-dom";
