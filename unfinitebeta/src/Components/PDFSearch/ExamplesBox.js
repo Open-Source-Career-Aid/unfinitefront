@@ -18,10 +18,10 @@ function ExamplesBox( { setUrl } ) {
             </div>
             <div className="examples-box-body">
                 <div className="examples-box-body-example">
-                    <a href="https://arxiv.org/pdf/2305.00993.pdf" target="_blank" onClick={handleExampleClick}>Haunted haloes: tracking the ghosts of subhaloes lost by halo finders</a>
+                    <a href="https://arxiv.org/pdf/2305.00993.pdf" target="_blank" onClick={handleExampleClick} rel="noreferrer">Haunted haloes: tracking the ghosts of subhaloes lost by halo finders</a>
                 </div>
                 <div className="examples-box-body-example">
-                    <a href="https://arxiv.org/pdf/2303.10130.pdf" target="_blank" onClick={handleExampleClick}>GPTs are GPTs: An Early Look at the Labor Market Impact
+                    <a href="https://arxiv.org/pdf/2303.10130.pdf" target="_blank" onClick={handleExampleClick} rel="noreferrer">GPTs are GPTs: An Early Look at the Labor Market Impact
 Potential of Large Language Models</a>
                 </div>
                 {/* <div className="examples-box-body-example">

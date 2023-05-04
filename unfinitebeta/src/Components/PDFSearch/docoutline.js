@@ -1,10 +1,8 @@
 import React from "react";
 
 
-function DocOutline({ }) {
-
+function DocOutline() {
     const docoutline = ['Introduction' , 'Background' , 'Related Work' , 'Methodology' , 'Results' , 'Conclusion' , 'References' , 'Appendix'];
-
     const handleOutlineClick = (event) => {
         event.preventDefault();
         // const url = event.target.href;
@@ -20,7 +18,7 @@ function DocOutline({ }) {
                 {docoutline.map((item, index) => {
                     return (
                         <div className="doc-outline-body-item" key={index}>
-                            <a href={item.url} target="_blank" onClick={handleOutlineClick}>{item}</a>
+                            <a href={item.url} target="_blank" onClick={handleOutlineClick} rel="noreferrer">{item}</a>
                         </div>
                     )
                 })}

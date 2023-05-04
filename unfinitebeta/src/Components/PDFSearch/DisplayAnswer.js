@@ -24,9 +24,9 @@ import LikeDislike from "./LikeDislike";
 //     return null; // or return an empty array or default value
 //   }
 
-//   const partslayerone = answer.split(/({.*?})/);
+//   const answerChunks = answer.split(/({.*?})/);
 
-//   partslayerone.forEach((part, index) => {
+//   answerChunks.forEach((part, index) => {
 
 //     subparts = part.split(/(<kp>.*?<\/kp>)/);
 
@@ -66,9 +66,9 @@ function renderTextWithKPs( { answer , handleQuestionclick , setQuestions , hand
     return null; // or return an empty array or default value
   }
 
-  const partslayerone = answer.split(/({.*?})/);
+  const answerChunks = answer.split(/({.*?})/);
 
-  partslayerone.forEach((part, index) => {
+  answerChunks.forEach((part, index) => {
 
     subparts = part.split(/(<kp>.*?<\/kp>)/);
 
@@ -107,9 +107,9 @@ function renderTextWithQs( { answer , handleQuestionclick , setQuestions , relev
     return null; // or return an empty array or default value
   }
 
-  const partslayerone = answer.split(/({.*?})/);
+  const answerChunks = answer.split(/({.*?})/);
 
-  partslayerone.forEach((part, index) => {
+  answerChunks.forEach((part, index) => {
 
     subparts = part.split(/(<q>.*?<\/q>)/);
 
