@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProcessPDF from "../../Functions/PDFSearch/ProcessPDF";
 import { useNavigate } from "react-router-dom";
+import UploadPDFForm from "../PDFSearch/PDFupload";
 import PdfUpload from "../PDFSearch/PDFupload";
 import { event } from "react-ga";
 
@@ -52,6 +53,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
         setTitle(data[2]);
       };
       getPDFdata();
+
     } else if (url !== null && !url.includes(".pdf")) {
       alert("Please enter a valid PDF URL ending with .pdf");
       setDataloaded(false);
@@ -66,7 +68,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
         {processing ? (
           <div className="loader">{loadalert}</div>
         ) : (
-          <form onSubmit={handleSubmit} className="urlsubmit">
+          <form onSubmit={handleSubmit} className="urlsubmit" style={{ display: 'inline' }}>
             <div className="instructions">
               <h3>Learning made easy!</h3>
               <p>1. Paste a link to a PDF in the search bar.</p>
@@ -78,13 +80,12 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
                 className="urlinput"
                 type="text"
                 placeholder="Enter a URL ending in .pdf"
-                name="url"
-              />
-              <button type="submit"><span className="signaturebutton"></span></button>
+                name="url" style={{ display: 'block' , width: '100%'}}/>
+              <button type="submit" style={{ display: 'inline' }}><span className="signaturebutton"></span></button>
             </div>
           </form>
+          <UploadPDFForm />
         )}
-
       </div>
     </div>
   );
