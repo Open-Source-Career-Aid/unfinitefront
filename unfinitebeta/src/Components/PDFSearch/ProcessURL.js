@@ -68,23 +68,22 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
         {processing ? (
           <div className="loader">{loadalert}</div>
         ) : (
-          <form onSubmit={handleSubmit} className="urlsubmit" style={{ display: 'inline' }}>
-            <div className="instructions">
-              <h3>Learning made easy!</h3>
-              <p>1. Paste a link to a PDF in the search bar.</p>
-              <p className="instruction">2. Click on the <span className="signaturebutton" style={{margin:'5px', cursor:'auto'}}></span> button or press <span style={{'font-weight':'bold', 'margin-left':'5px'}}>ENTER</span>.</p>
-              <p>3. Learn from your document your own way!</p>
-            </div>
-            <div className="input-container">
-              <input
-                className="urlinput"
-                type="text"
-                placeholder="Enter a URL ending in .pdf"
-                name="url" style={{ display: 'block' , width: '100%'}}/>
-              <button type="submit" style={{ display: 'inline' }}><span className="signaturebutton"></span></button>
-            </div>
-          </form>
-          <UploadPDFForm />
+          <><form onSubmit={handleSubmit} className="urlsubmit" style={{ display: 'inline' }}>
+              <div className="instructions">
+                <h3>Learning made easy!</h3>
+                <p>1. Paste a link to a PDF in the search bar.</p>
+                <p className="instruction">2. Click on the <span className="signaturebutton" style={{ margin: '5px', cursor: 'auto' }}></span> button or press <span style={{ 'font-weight': 'bold', 'margin-left': '5px' }}>ENTER</span>.</p>
+                <p>3. Learn from your document your own way!</p>
+              </div>
+              <div className="input-container">
+                <input
+                  className="urlinput"
+                  type="text"
+                  placeholder="Enter a URL ending in .pdf"
+                  name="url" style={{ display: 'block', width: '100%' }} />
+                <button type="submit" style={{ display: 'inline' }}><span className="signaturebutton"></span></button>
+              </div>
+            </form><UploadPDFForm /></>
         )}
       </div>
     </div>
