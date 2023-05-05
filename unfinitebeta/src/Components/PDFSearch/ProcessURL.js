@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProcessPDF from "../../Functions/PDFSearch/ProcessPDF";
 import { useNavigate } from "react-router-dom";
-import UploadPDFForm from "../PDFSearch/PDFupload";
-import PdfUpload from "../PDFSearch/PDFupload";
+import UploadPDFFormLogic from "../../Functions/PDFSearch/PDFUpload/FilePDFUpload";
 import { event } from "react-ga";
 
 function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadid , setThreadid , setTitle }) {
@@ -83,7 +82,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
                   name="url" style={{ display: 'block', width: '100%' }} />
                 <button type="submit" style={{ display: 'inline' }}><span className="signaturebutton"></span></button>
               </div>
-            </form><UploadPDFForm /></>
+            </form><UploadPDFFormLogic /></>
         )}
       </div>
     </div>
