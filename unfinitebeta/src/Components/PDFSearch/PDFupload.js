@@ -91,9 +91,8 @@ function UploadPDFForm() {
   };
 
   const handleFileButton = (event) => {
-    if (event.target.files[0]){
-            // we need to click the submit button for the form to submit
-            if(event.target.files[0].files < 4194304){
+        // we need to click the submit button for the form to submit
+        if (file.size <= 4194304) {
               console.log(event.target.parentNode.nextElementSibling);
               event.target.parentNode.nextElementSibling.click();
               alert("Your document is being uploaded. Please wait for the confirmation message.")
@@ -102,23 +101,22 @@ function UploadPDFForm() {
               );
               setProcessing(true);
             }
-            else{
-              alert("File is too large. Please upload a file smaller than 4MB.");
+      else {
+              alert("File is too large. Please upload a file smaller than 40MB.");
               setFile(null);
               event.target.value = null;
             }
-    }
   }
   function hideSearchBar() {
     document.querySelector('.urlsubmit').style.display = 'none';
   }
   return (
   <div style={{display:"inline"}}>
-  { processing ? ( <> <div className="loader">{loadalert}</div> {hideSearchBar()} </>) : (
+  { processing ? ( <> <div className="loader">{loadalert}</div> </>) : (
     <form onSubmit={handleSubmit} encType="multipart/form-data" style={{ display: 'inline' }}>
     <label htmlFor="upload">
       <ImFolderUpload size={25} style={{ marginLeft: '1em', cursor: 'pointer', color: "#40b600" }}/>
-      <input type="file" accept=".pdf" onInput={handleFileChange} id="upload" ref={fileInputRef} onChange={handleFileButton} style={{display:"none"}}/>
+      <input type="file" accept=".pdf" onInput={handleFileChange} id="upload" ref={fileInputRef} onChange={handleFileButton} style={{display: "none"}}/>
     </label>
      <button type="submit" style={{display:"none"}}>Upload</button>
   </form>)}
