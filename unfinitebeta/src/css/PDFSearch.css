@@ -42,7 +42,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 100%;
   border: 1px solid #979797;
   border-radius: 100vh;
 }
@@ -773,4 +773,36 @@
 .outline-item-title:hover {
   cursor: pointer;
   color: #1E90FF;
+}
+
+.uploadButton {
+  width: 30px;
+  height: 30px;
+  background-image: url('../../public/assets/upload.svg');
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  background-position: center;
+  /* increast the transparency to 60% */
+  /* margin: 0 10px; */
+  cursor: pointer;
+}
+
+.urlorupload {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+
+.or {
+  margin: 0 10px;
+}
+
+.landingpageinputcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

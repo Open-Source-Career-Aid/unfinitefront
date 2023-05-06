@@ -3,10 +3,10 @@ import UploadPDFFormUI from "../../../Components/PDFSearch/PDFuploadForm";
 import UploadFormData from './UploadFormData';
 import { event } from 'react-ga';
 
-function UploadPDForm() {
+function UploadPDForm( { processing , setProcessing , loadalert , setloadAlert , setDataloaded , setThreadid , setDocid } ) {
     const [file, setFile] = useState(null);
-    const [loadalert, setloadAlert] = useState(null);
-    const [processing, setProcessing] = useState(false);
+    // const [loadalert, setloadAlert] = useState(null);
+    // const [processing, setProcessing] = useState(false);
     const fileInputRef = useRef(null);
 
     const handleFileChange = (event) => {
