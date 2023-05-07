@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import UploadPDFFormUI from "../../../Components/PDFSearch/PDFuploadForm";
 import UploadFormData from './UploadFormData';
-import { event } from 'react-ga';
+import { event, set } from 'react-ga';
 
-function UploadPDForm( { processing , setProcessing , loadalert , setloadAlert , setDataloaded , setThreadid , setDocid } ) {
+function UploadPDForm( { processing, loadalert, setloadAlert, setProcessing, setDataloaded, setDocid, setThreadid, setTitle } ) {
     const [file, setFile] = useState(null);
     // const [loadalert, setloadAlert] = useState(null);
     // const [processing, setProcessing] = useState(false);
@@ -38,7 +38,13 @@ function UploadPDForm( { processing , setProcessing , loadalert , setloadAlert ,
             formData.append('pdf', file);
             formData.append('fileName', file.name);
             const data = await UploadFormData({ FormData: formData, setProcessing });
-            return data;
+            if (data.length === 3) {
+                setDocid(data[0]);
+                setThreadid(data[1]);
+                setTitle(data[2]);
+                setDataloaded(true);
+            }
+            return;
         }
         } catch (error) {
         alert('Failed to upload PDF file: ' + error.message);
