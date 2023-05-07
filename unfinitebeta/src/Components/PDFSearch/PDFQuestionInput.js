@@ -3,7 +3,7 @@ import answerQuestion from "../../Functions/PDFSearch/answerQuestion";
 import DisplayAnswer from "./DisplayAnswer";
 import answerquestionstream from "../../Functions/PDFSearch/answerquestionstream";
 
-function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid , nextquestion , setNextquestion , setCurrentquestion }) {
+function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid , nextquestion , setNextquestion , setCurrentquestion , answerisgenerating , setAnswerisgenerating }) {
 
   const [question, setQuestion] = useState("");
   const [handlingSubmit, setHandlingSubmit] = useState(false);
@@ -94,6 +94,8 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid ,
         setCurrentquestion(question);
         setAnswer("Loading...");
         // const response = await answerQuestion(question, [docid], threadid);
+
+        setAnswerisgenerating(true);
         const response = await answerquestionstream(question, [docid], threadid, setAnswer);
         console.log(answer)
         if (response==="") {
@@ -105,6 +107,7 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid ,
         setQnA((map) => new Map(map.set(question, response)));
         console.log("query complete ✅");
         setHandlingSubmit(false);
+        setAnswerisgenerating(false);
       }
     }
 

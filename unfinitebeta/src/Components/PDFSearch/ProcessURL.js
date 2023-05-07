@@ -30,7 +30,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
   useEffect(() => {
     // event.preventDefault();
     console.log("url", url);
-    if (url !== null && url.slice(-4) === ".pdf") {
+    if (url !== null) {
       console.log("send pdf");
       setloadAlert(
         "Please wait while we process your PDF...it might take a while"
@@ -52,11 +52,20 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
         setTitle(data[2]);
       };
       getPDFdata();
+<<<<<<< Updated upstream
     } else if (url !== null && !url.includes(".pdf")) {
       alert("Please enter a valid PDF URL ending with .pdf");
       setDataloaded(false);
       setDocid(null);
+=======
+>>>>>>> Stashed changes
     }
+
+    // } else if (url !== null && !url.includes(".pdf")) {
+    //   alert("Please enter a valid PDF URL ending with .pdf");
+    //   setDataloaded(false);
+    //   setDocid(null);
+    // }
   }, [url]);
 
   return (
