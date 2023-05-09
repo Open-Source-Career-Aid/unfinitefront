@@ -2,71 +2,42 @@ import React, { useState, useEffect } from "react";
 import AnswerComplexity from "./AnswerComplexity";
 import LikeDislike from "./LikeDislike";
 
-// function findQs(text) {
-//   // finds the strings that are encapsulated by curly braces and returns a render of the whole text with the strings in curly braces highlighted
-//   const regex = /{([^}]+)}/g;
-//   const matches = text.match(regex);
-//   const qids = [];
-//   if (matches) {
-//     matches.forEach((match) => {
-//       qids.push(match.slice(1, -1));
-//     });
-//   }
-//   return qids;
-// }
-
-// function renderTextWithKPs( { answer , handleQuestionclick , setQuestions } ) {
-
-//   let parts = [];
-//   let subparts = [];
-
-//   if (!answer) {
-//     return null; // or return an empty array or default value
-//   }
-
-//   const answerChunks = answer.split(/({.*?})/);
-
-//   answerChunks.forEach((part, index) => {
-
-//     subparts = part.split(/(<kp>.*?<\/kp>)/);
-
-//     subparts.forEach((subpart, index) => {
-
-//       console.log(subpart);
-
-//       parts.push(subpart);
-
-//     });
-
-//   });
-
-
-//   return(
-//     parts.map((part, index) => {
-//     console.log(part);
-//     if (part.startsWith("<kp>") && part.endsWith("</kp>")) {
-//       return <span key={index} className="kp" onClick={handleQuestionclick}>{part.slice(4, -5)}</span>;
-//     } else if (part.startsWith("{") && part.endsWith("}")) {
-//       // pass this part
-//       return
-//     } else {
-//       return part;
-//     }
-//   }
-  
-//   ));
-// }
-
-function renderTextWithKPs( { answer , handleQuestionclick , setQuestions , handleKPclick } ) {
+function renderTextWithKPsandCitations( { answer , handleQuestionclick , setQuestions , handleKPclick , urls , setUrls , relevantqs , setRelevantqs } ) {
 
   let parts = [];
   let subparts = [];
+  let something = '';
+  let text = '';
+  let tempurls = '';
 
   if (!answer) {
     return null; // or return an empty array or default value
   }
 
-  const answerChunks = answer.split(/({.*?})/);
+  // find >>>PART<<< in answer and split it into parts
+  something = answer.split(/(>>>.*?<<<)/);
+  // remove entries if length is 0
+  something = something.filter(function (el) {
+    return el.length != 0;
+  });
+  // console.log(something);
+  text = something[0];
+
+  if (something[something.length - 1]==='>>>END<<<') {
+    tempurls = something[2];
+    // if urls is not null
+    if (urls === '') {
+      setUrls(tempurls);
+      // console.log(tempurls, 'ysysysy');
+    }
+    // if relevantqs is not null
+    if (relevantqs === '') {
+      setRelevantqs(something[4]);
+      // console.log(something[4], 'ysysysy');
+    }
+  }
+
+  const answerChunks = text.split(/(\[.*?\])/);
 
   answerChunks.forEach((part, index) => {
 
@@ -87,9 +58,15 @@ function renderTextWithKPs( { answer , handleQuestionclick , setQuestions , hand
       // console.log(part);
       if (part.startsWith("<kp>") && part.endsWith("</kp>")) {
         return <span key={index} className="kp" onClick={handleKPclick}>{part.slice(4, -5)}</span>;
-      } else if (part.startsWith("{") && part.endsWith("}")) {
-        // pass this part
-        return null;
+      } else if (part.startsWith("[") && part.endsWith("]")) {
+        // remove the unnecessary part after [ and before # if it exists
+        let citation = part.slice(1, -1);
+        if (citation.includes("#")) {
+          citation = citation.split("#")[1];
+        }
+        // add [] back to the citation
+        citation = "[" + citation + "]";
+        return <span key={index} className="citation">{citation}</span>;
       } else {
         return part;
       }
@@ -97,61 +74,77 @@ function renderTextWithKPs( { answer , handleQuestionclick , setQuestions , hand
   );
 }
 
-
-function renderTextWithQs( { answer , handleQuestionclick , setQuestions , relevantqs , setRelevantqs } ) {
+function renderURLs( { urls } ) {
 
   let parts = [];
-  let subparts = [];
 
-  if (!answer) {
+  if (!urls) {
     return null; // or return an empty array or default value
   }
 
-  const answerChunks = answer.split(/({.*?})/);
+  let text = urls
+
+  // split by <url> and </url>
+  const answerChunks = text.split(/(<url>.*?<\/url>)/);
 
   answerChunks.forEach((part, index) => {
 
-    subparts = part.split(/(<q>.*?<\/q>)/);
+    if (part.startsWith("<url>") && part.endsWith("</url>")) {
+      // remove <url> and </url>
+      part = part.slice(5, -6);
 
-    subparts.forEach((subpart, index) => {
+      // break url into it's parent domain
+      let url = new URL(part);
+      let domain = url.hostname;
 
-      // console.log(subpart);
-
-      parts.push(subpart);
-
-    });
+      // push the domaun and url to parts as a list item
+      parts.push([domain, part]);
+    }
 
   });
 
-
-  return(
+  return (
     parts.map((part, index) => {
-    // console.log(part);
-    if (part.startsWith("<kp>") && part.endsWith("</kp>")) {
-      // return <span key={index} className="q" onClick={handleQuestionclick}>{part.slice(3, -4)}</span>;
-      return
-    } else if (part.startsWith("{") && part.endsWith("}")) {
-      if (relevantqs===false) {
-        setRelevantqs(true);
-      }
-      // setQuestions((questions) => [...questions, part.slice(1, -1)]);
-      return <div className="relevant-questions-container">Q. <span key={index} className="qs" onClick={handleQuestionclick} style={{'margin-left':'5px'}}>{part.slice(1, -1)}</span></div>;
-    } else {
-      // return part;
-      return
-    }
-  }
-  
-  ));
-
+      return <a key={index} className="urlreference" href={part[1]} target="_blank" ><span className="urlreference-index">{index+1}</span>{part[0]}</a>;
+    })
+  );
 }
 
-function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , currentquestion }) {
+function renderRelevantQs( { relevantqs , handleQuestionclick } ) {
+
+  let parts = [];
+
+  if (!relevantqs) {
+    return null; // or return an empty array or default value
+  }
+
+  let text = relevantqs
+
+  // split by next line
+  const answerChunks = text.split(/\n/);
+  // remove entries if length is 0
+  answerChunks.forEach((part, index) => {
+
+    if (part.length !== 0) {
+      // remove the first word
+      part = part.split(" ").slice(1).join(" ");
+      parts.push(part);
+    }
+
+  });
+
+  return (
+    parts.map((part, index) => {
+      return <div key={index} className="qs" onClick={handleQuestionclick}>{part}</div>;
+    })
+  );
+}
+
+function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , currentquestion , urls , setUrls , relevantqs , setRelevantqs }) {
 
     const [thumbs, setThumbs] = useState(0);
     const [specialresponse, setSpecialresponse] = useState(null);
     const [questions , setQuestions] = useState([]);
-    const [relevantqs , setRelevantqs] = useState(false);
     let displayanswer = null;
 
     // find questions in the answer that are encapsulated by curly braces and return an array of the text not in curly braces and the text in curly braces
@@ -194,6 +187,10 @@ function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , current
     //     return displayanswer;
     // };
 
+    // useEffect(() => {
+    //     console.log('urls', urls);
+    // }, [urls]);
+
     useEffect(() => {
         console.log(thumbs);
     }, [thumbs]);
@@ -234,27 +231,23 @@ function DisplayAnswer({ qid , answer , nextquestion , setNextquestion , current
   return (
     <>
       <div className="displayanswer">
-        {/* <p className="title">{title}</p> */}
         <p className="question">
           {currentquestion}
         </p>
         <AnswerComplexity setSpecialresponse={setSpecialresponse} />
-        {/* <p className="answer"> */}
-          {/* {highlight(answer)} */}
           <p className="answer">
-          {/* {answer} */}
-          {renderTextWithKPs({ answer , handleQuestionclick , setQuestions , handleKPclick })}
+            {renderTextWithKPsandCitations({ answer , handleQuestionclick , setQuestions , handleKPclick , urls , setUrls , relevantqs , setRelevantqs })}
           </p>
-          <div className="relevant-questions">
-          {relevantqs ? <> <p className="relevant-questions-title">Relevant questions</p> </> : null}
-          {renderTextWithQs({ answer , handleQuestionclick , setQuestions , relevantqs , setRelevantqs })}
+          {/* <div className="references">References</div> */}
+          <div className="references-container">
+            {renderURLs({ urls })}
           </div>
-          {/* </p> */}
-        {/* {findQs(answer).map((qid) => {
-          return <p className="answer">{"Q. "}<span className="qs" onClick={handleQuestionclick}>{qid}</span></p>;
-        }
-        )} */}
-        {/* { answer ? <LikeDislike setThumbs={setThumbs} ></LikeDislike> : null} */}
+          <div className="relevant-questions-container">
+            <div className="relevant-questions">
+              <div className="relevant-questions-title">Relevant Questions</div>
+              {renderRelevantQs({ relevantqs , handleQuestionclick })}
+            </div>
+          </div>
       </div>
     </>
   );

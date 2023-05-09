@@ -31,6 +31,8 @@ function PDFSearch() {
   const [nextquestion, setNextquestion] = useState(null);
   const [title, setTitle] = useState(null);
   const [answerisgenerating, setAnswerisgenerating] = useState(false);
+  const [urls, setUrls] = useState('');
+  const [relevantqs, setRelevantqs] = useState('');
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -172,6 +174,10 @@ function PDFSearch() {
                 setCurrentquestion={setCurrentquestion}
                 setAnswerisgenerating={setAnswerisgenerating}
                 answerisgenerating={answerisgenerating}
+                urls={urls}
+                setUrls={setUrls}
+                relevantqs={relevantqs}
+                setRelevantqs={setRelevantqs}
               />
             </div>
             <div className="answercontainer">
@@ -183,6 +189,10 @@ function PDFSearch() {
               setCurrentquestion={setCurrentquestion}
               answerisgenerating={answerisgenerating}
               setAnswerisgenerating={setAnswerisgenerating}
+              urls={urls}
+              setUrls={setUrls}
+              relevantqs={relevantqs}
+              setRelevantqs={setRelevantqs}
               /></> : null}
             </div>
             <div style={

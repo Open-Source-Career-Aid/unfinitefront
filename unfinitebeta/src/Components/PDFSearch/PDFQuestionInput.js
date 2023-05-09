@@ -3,7 +3,7 @@ import answerQuestion from "../../Functions/PDFSearch/answerQuestion";
 import DisplayAnswer from "./DisplayAnswer";
 import answerquestionstream from "../../Functions/PDFSearch/answerquestionstream";
 
-function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid , nextquestion , setNextquestion , setCurrentquestion , answerisgenerating , setAnswerisgenerating }) {
+function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid , nextquestion , setNextquestion , setCurrentquestion , answerisgenerating , setAnswerisgenerating , urls , setUrls , relevantqs , setRelevantqs }) {
 
   const [question, setQuestion] = useState("");
   const [handlingSubmit, setHandlingSubmit] = useState(false);
@@ -96,14 +96,16 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid ,
         // const response = await answerQuestion(question, [docid], threadid);
 
         setAnswerisgenerating(true);
-        const response = await answerquestionstream(question, [docid], threadid, setAnswer);
+        setUrls('')
+        setRelevantqs('')
+        const response = await answerquestionstream(question, [docid], threadid, answer , setAnswer);
         console.log(answer)
         if (response==="") {
           setAnswer("Seems like the team has more work to do. Please use the feedback box on the bottom left to leave a note, and we will have it fixed in no time.");
         }
-        else {
-        setAnswer(response);
-        }
+        // else {
+        // setAnswer(response);
+        // }
         setQnA((map) => new Map(map.set(question, response)));
         console.log("query complete ✅");
         setHandlingSubmit(false);

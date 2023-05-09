@@ -33,13 +33,13 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
     if (url !== null) {
       console.log("send pdf");
       setloadAlert(
-        "Please wait while we process your PDF...it might take a while"
+        "Please wait while we process your URL...it might take a while"
       );
       setProcessing(true);
       const getPDFdata = async () => {
         const data = await ProcessPDF({ url });
         if (data === null) {
-          alert("Please enter a valid PDF URL ending with .pdf");
+          alert("There was an error processing your URL. If it persists, please submit feedback and we will resolve it asap.");
           setDataloaded(false);
           setDocid(null);
           setUrl(null);
@@ -52,13 +52,6 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
         setTitle(data[2]);
       };
       getPDFdata();
-<<<<<<< Updated upstream
-    } else if (url !== null && !url.includes(".pdf")) {
-      alert("Please enter a valid PDF URL ending with .pdf");
-      setDataloaded(false);
-      setDocid(null);
-=======
->>>>>>> Stashed changes
     }
 
     // } else if (url !== null && !url.includes(".pdf")) {
@@ -78,7 +71,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
           <form onSubmit={handleSubmit} className="urlsubmit">
             <div className="instructions">
               <h3>Learning made easy!</h3>
-              <p>1. Paste a link to a PDF in the search bar.</p>
+              <p>1. Paste a link <b>OR</b> upload a PDF from your local disk.</p>
               <p className="instruction">2. Click on the <span className="signaturebutton" style={{margin:'5px', cursor:'auto'}}></span> button or press <span style={{'font-weight':'bold', 'margin-left':'5px'}}>ENTER</span>.</p>
               <p>3. Learn from your document your own way!</p>
             </div>
@@ -86,7 +79,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
               <input
                 className="urlinput"
                 type="text"
-                placeholder="Enter a URL ending in .pdf"
+                placeholder="Enter a url to an article, or a youtube video, or a pdf..."
                 name="url"
               />
               <button type="submit"><span className="signaturebutton"></span></button>
