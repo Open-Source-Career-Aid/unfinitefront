@@ -1,17 +1,21 @@
 import React , { useState , useEffect } from "react";
 import getOutline from "../../Functions/PDFSearch/getOutline";
 
-function Outline({ docid , setNextquestion }) {
+function Outline({ docid , setNextquestion , answerisgenerating , setAnswerisgenerating }) {
 
     const [outline, setOutline] = useState(null);
+    const [loadingtext, setLoadingtext] = useState(null);
 
     useEffect(() => {
-        async function getOutlineData() {
-            const outlineData = await getOutline(docid);
-            setOutline(outlineData);
+        if (outline===null && answerisgenerating===false) {
+            setLoadingtext("Loading outline...");
+            async function getOutlineData() {
+                const outlineData = await getOutline(docid);
+                setOutline(outlineData);
+            }
+            getOutlineData();
         }
-        getOutlineData();
-    }, [docid]);
+    }, [docid, answerisgenerating]);
 
     const handleOutlineclick = (e) => {
         // const question = e.target.innerText;
@@ -23,7 +27,7 @@ function Outline({ docid , setNextquestion }) {
     return (
         <div className="outline">
             <h3>Outline</h3>
-            { outline===null ? <p>Loading...</p> : <div className="outline-container">
+            { outline===null ? <p>{loadingtext}</p> : <div className="outline-container">
                 {outline && outline.map((item, index) => {
                     return (
                         <div className="outline-item">
