@@ -80,9 +80,11 @@ function PDFQuestionInput({ QnA, setQnA, docid , setAnswer , answer , threadid ,
     //   console.log("querying for " + nextquestion);
     //   getAnswer();
     // }
-    setQuestion(nextquestion);
-    setMiddleQuestion(nextquestion);
-    setCurrentquestion(nextquestion);
+    if (answerisgenerating===false) {
+      setQuestion(nextquestion);
+      setMiddleQuestion(nextquestion);
+      setCurrentquestion(nextquestion);
+    }
 
   }, [nextquestion]);
 

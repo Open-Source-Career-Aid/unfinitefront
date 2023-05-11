@@ -48,7 +48,6 @@ async function answerquestionstream( question, docids, threadid , answer , setAn
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
     let text = '';
-    let prefix = '';
     let toreturn = '';
 
     const readStream = async () => {

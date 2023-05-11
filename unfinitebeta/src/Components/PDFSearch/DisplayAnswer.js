@@ -23,18 +23,31 @@ function renderTextWithKPsandCitations( { answer , handleQuestionclick , setQues
   // console.log(something);
   text = something[0];
 
-  if (something[something.length - 1]==='>>>END<<<') {
-    tempurls = something[2];
-    // if urls is not null
-    if (urls === '') {
-      setUrls(tempurls);
-      // console.log(tempurls, 'ysysysy');
+  try {
+    if (something[1]==='>>>PART<<<' && urls!==something[2]) {
+      tempurls = something[2];
+      // if urls is not null
+        setUrls(tempurls);
+        // console.log(tempurls, 'ysysysy');
+      // // if relevantqs is not null
+      // if (relevantqs === '') {
+      //   setRelevantqs(something[4]);
+      //   // console.log(something[4], 'ysysysy');
+      // }
     }
-    // if relevantqs is not null
-    if (relevantqs === '') {
-      setRelevantqs(something[4]);
-      // console.log(something[4], 'ysysysy');
+  } catch (error) {
+    console.log(error);
+  }
+
+  try {
+    if (something[3]==='>>>PART<<<' && relevantqs!==something[4]) {
+      // if relevantqs is not null
+        setRelevantqs(something[4]);
+        // console.log(something[4], 'ysysysy');
     }
+  }
+  catch (error) {
+    console.log(error);
   }
 
   const answerChunks = text.split(/(\[.*?\])/);

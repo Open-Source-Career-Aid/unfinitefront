@@ -10,10 +10,8 @@ import FeedbackBox from "../Components/FeedbackBox";
 import userLogout from "../Functions/userLogout";
 import ExamplesBox from "../Components/PDFSearch/ExamplesBox";
 import Suggestions from "../Components/PDFSearch/Suggestions";
-import DocOutline from "../Components/PDFSearch/docoutline";
 import Discordbranding from "../Components/PDFSearch/Discordbranding";
 import Outline from "../Components/PDFSearch/Outline";
-import { useLocation } from "react-router-dom";
 ReactGA.initialize("G-8YXPLS55QD");
 
 function PDFSearch() {
@@ -63,11 +61,6 @@ function PDFSearch() {
     checkUserStatus();
   }, [userstatus]);
 
-  // useEffect(() => {
-  //   if (dataloaded && docid !== null) {
-  //   }
-  // }, [dataloaded]);
-
   const handleNewPDF = () => {
     setQnA(new Map());
     setAnswer("");
@@ -82,10 +75,6 @@ function PDFSearch() {
   const handleLogout = () => {
     userLogout();
     navigate("/login");
-  };
-
-  const handleOldapp = () => {
-    navigate("/oldapp");
   };
 
   return (
