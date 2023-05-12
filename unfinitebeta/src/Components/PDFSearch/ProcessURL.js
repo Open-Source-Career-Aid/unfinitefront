@@ -30,16 +30,16 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
   useEffect(() => {
     // event.preventDefault();
     console.log("url", url);
-    if (url !== null && url.slice(-4) === ".pdf") {
+    if (url !== null) {
       console.log("send pdf");
       setloadAlert(
-        "Please wait while we process your PDF...it might take a while"
+        "Please wait while we process your URL...it might take a while"
       );
       setProcessing(true);
       const getPDFdata = async () => {
         const data = await ProcessPDF({ url });
         if (data === null) {
-          alert("Please enter a valid PDF URL ending with .pdf");
+          alert("There was an error processing your URL. If it persists, please submit feedback and we will resolve it asap.");
           setDataloaded(false);
           setDocid(null);
           setUrl(null);
@@ -52,12 +52,13 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
         setTitle(data[2]);
       };
       getPDFdata();
-
-    } else if (url !== null && !url.includes(".pdf")) {
-      alert("Please enter a valid PDF URL ending with .pdf");
-      setDataloaded(false);
-      setDocid(null);
     }
+
+    // } else if (url !== null && !url.includes(".pdf")) {
+    //   alert("Please enter a valid PDF URL ending with .pdf");
+    //   setDataloaded(false);
+    //   setDocid(null);
+    // }
   }, [url]);
 
   return (
@@ -80,7 +81,7 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
                     <input
                       className="urlinput"
                       type="text"
-                      placeholder="Enter a URL ending in .pdf"
+                      placeholder="Enter a url to an article, or a youtube video, or a pdf..."
                       name="url" style={{ display: 'block', width: '100%' }} />
                     <button type="submit" style={{ display: 'inline' }}><span className="signaturebutton"></span></button>
                   </div>

@@ -2,7 +2,7 @@ import getCSRF from "../getCSRF";
 import { API_URL } from "../../API_URL";
 import getCookie from "../getCookie";
 
-async function answerquestionstream( question, docids, threadid , setAnswer ) {
+async function answerquestionstream( question, docids, threadid , answer , setAnswer ) {
 
     let specialText = null;
     let specialID = null;
@@ -48,7 +48,7 @@ async function answerquestionstream( question, docids, threadid , setAnswer ) {
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
     let text = '';
-    let prefix = '';
+    let toreturn = '';
 
     const readStream = async () => {
       let incompleteMessage = '';
@@ -78,12 +78,47 @@ async function answerquestionstream( question, docids, threadid , setAnswer ) {
                 // console.log('Received message:', message);
                 const json = JSON.parse(message);
                 // console.log('Parsed message:', json);
+                if (json.finalresponse===4) {
+                  text += '\n'
+                  toreturn += '\n'
+                  text += json.detail
+                  toreturn += json.detail
+                  setAnswer(text);
+                  return toreturn
+                }
+                if (json.finalresponse===3) {
+                  text += json.data.choices[0].delta.content;
+                  toreturn += json.data.choices[0].delta.content;
+                  setAnswer(text);
+                  continue
+                }
+                if (json.finalresponse===2) {
+                  // console.log('Final response received', json.data);
+                  console.log('URLs received', json.urls);
+                  // for each url in the list json.urls add it to the answer
+                  text += '\n'
+                  toreturn += '\n'
+                  for (let i = 0; i < json.urls.length; i++) {
+                    const url = json.urls[i];
+                    if (json.urls[i]==='>>>PART<<<') {
+                      text += url + '\n'
+                      toreturn += url + '\n'
+                      setAnswer(text);
+                      continue
+                    }
+                    text += '<url>' + url + '</url>';
+                    toreturn += '<url>' + url + '</url>';
+                    setAnswer(text);
+                  }
+                  continue
+                }
                 if (json.finalresponse===1) {
                   // console.log('Final response received', json.data);
                   setAnswer(json.data)
-                  return json.data;
+                  continue
                 }
                 text += json.data.choices[0].delta.content;
+                toreturn += json.data.choices[0].delta.content;
                 setAnswer(text);
               } else {
                 incompleteMessage += message + '\n';

@@ -10,10 +10,8 @@ import FeedbackBox from "../Components/FeedbackBox";
 import userLogout from "../Functions/userLogout";
 import ExamplesBox from "../Components/PDFSearch/ExamplesBox";
 import Suggestions from "../Components/PDFSearch/Suggestions";
-import DocOutline from "../Components/PDFSearch/docoutline";
 import Discordbranding from "../Components/PDFSearch/Discordbranding";
 import Outline from "../Components/PDFSearch/Outline";
-import { useLocation } from "react-router-dom";
 ReactGA.initialize("G-8YXPLS55QD");
 
 function PDFSearch() {
@@ -30,6 +28,9 @@ function PDFSearch() {
   const [selectedQuestionID, setSelectedQuestionID] = useState(null);
   const [nextquestion, setNextquestion] = useState(null);
   const [title, setTitle] = useState(null);
+  const [answerisgenerating, setAnswerisgenerating] = useState(false);
+  const [urls, setUrls] = useState('');
+  const [relevantqs, setRelevantqs] = useState('');
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -60,11 +61,6 @@ function PDFSearch() {
     checkUserStatus();
   }, [userstatus]);
 
-  // useEffect(() => {
-  //   if (dataloaded && docid !== null) {
-  //   }
-  // }, [dataloaded]);
-
   const handleNewPDF = () => {
     setQnA(new Map());
     setAnswer("");
@@ -79,10 +75,6 @@ function PDFSearch() {
   const handleLogout = () => {
     userLogout();
     navigate("/login");
-  };
-
-  const handleOldapp = () => {
-    navigate("/oldapp");
   };
 
   return (
@@ -169,6 +161,12 @@ function PDFSearch() {
                 nextquestion={nextquestion}
                 setNextquestion={setNextquestion}
                 setCurrentquestion={setCurrentquestion}
+                setAnswerisgenerating={setAnswerisgenerating}
+                answerisgenerating={answerisgenerating}
+                urls={urls}
+                setUrls={setUrls}
+                relevantqs={relevantqs}
+                setRelevantqs={setRelevantqs}
               />
             </div>
             <div className="answercontainer">
@@ -177,6 +175,13 @@ function PDFSearch() {
               nextquestion={nextquestion}
               setNextquestion={setNextquestion}
               currentquestion={currentquestion}
+              setCurrentquestion={setCurrentquestion}
+              answerisgenerating={answerisgenerating}
+              setAnswerisgenerating={setAnswerisgenerating}
+              urls={urls}
+              setUrls={setUrls}
+              relevantqs={relevantqs}
+              setRelevantqs={setRelevantqs}
               /></> : null}
             </div>
             <div style={
@@ -184,7 +189,8 @@ function PDFSearch() {
                 'width': "25%"
               }
             }>
-            <Outline docid={docid} setNextquestion={setNextquestion} />
+            <Outline docid={docid} setNextquestion={setNextquestion} 
+            answerisgenerating={answerisgenerating} setAnswerisgenerating={setAnswerisgenerating} />
             <Suggestions 
             setUrl={setUrl}
             setAnswer={setAnswer}
