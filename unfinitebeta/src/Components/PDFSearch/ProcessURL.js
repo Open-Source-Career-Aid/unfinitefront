@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProcessPDF from "../../Functions/PDFSearch/ProcessPDF";
 import { useNavigate } from "react-router-dom";
-import PdfUpload from "../PDFSearch/PDFupload";
+import UploadPDFFormLogic from "../../Functions/PDFSearch/PDFUpload/FilePDFUpload";
 import { event } from "react-ga";
 
 function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadid , setThreadid , setTitle }) {
@@ -68,25 +68,38 @@ function ProcessURL({ dataloaded, setDataloaded, setDocid, url, setUrl , threadi
         {processing ? (
           <div className="loader">{loadalert}</div>
         ) : (
-          <form onSubmit={handleSubmit} className="urlsubmit">
+          <div className="landingpageinputcontainer">
             <div className="instructions">
               <h3>Learning made easy!</h3>
-              <p>1. Paste a link <b>OR</b> upload a PDF from your local disk.</p>
-              <p className="instruction">2. Click on the <span className="signaturebutton" style={{margin:'5px', cursor:'auto'}}></span> button or press <span style={{'font-weight':'bold', 'margin-left':'5px'}}>ENTER</span>.</p>
+              <p>1. Paste a link to a PDF in the search bar <span style={{ 'font-weight': 'bold' }}>OR</span> upload a PDF file.</p>
+              <p className="instruction">2. Click on the <span className="signaturebutton" style={{ margin: '5px', cursor: 'auto' }}></span> button or press <span style={{ 'font-weight': 'bold', 'margin-left': '5px' }}>ENTER</span>.</p>
               <p>3. Learn from your document your own way!</p>
             </div>
-            <div className="input-container">
-              <input
-                className="urlinput"
-                type="text"
-                placeholder="Enter a url to an article, or a youtube video, or a pdf..."
-                name="url"
-              />
-              <button type="submit"><span className="signaturebutton"></span></button>
+            <div className="urlorupload">
+              <form onSubmit={handleSubmit} className="urlsubmit">
+                  <div className="input-container">
+                    <input
+                      className="urlinput"
+                      type="text"
+                      placeholder="Enter a url to an article, or a youtube video, or a pdf..."
+                      name="url" style={{ display: 'block', width: '100%' }} />
+                    <button type="submit" style={{ display: 'inline' }}><span className="signaturebutton"></span></button>
+                  </div>
+              </form>
+              <div className="or">OR</div>
+              <UploadPDFFormLogic
+                  processing={processing}
+                  loadalert={loadalert}
+                  setloadAlert={setloadAlert}
+                  setProcessing={setProcessing}
+                  setDataloaded={setDataloaded}
+                  setDocid={setDocid}
+                  setThreadid={setThreadid}
+                  setTitle={setTitle}
+                  />
             </div>
-          </form>
+          </div>
         )}
-
       </div>
     </div>
   );
