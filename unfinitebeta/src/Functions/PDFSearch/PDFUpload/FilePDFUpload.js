@@ -54,7 +54,8 @@ function UploadPDForm( { processing, loadalert, setloadAlert, setProcessing, set
     const handleFileButton = (event) => {
             // we need to click the submit button for the form to submit
         console.log(file);
-        if ( file && file.size <= 4194304) {
+        // limit file size to 1MB
+        if (file !== null && file.size < 1000000) {
                 console.log(event.target.parentNode.nextElementSibling);
                 event.target.parentNode.nextElementSibling.click();
                 alert("Your document is being uploaded. Please wait for the confirmation message.")
