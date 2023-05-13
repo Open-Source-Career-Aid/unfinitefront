@@ -107,8 +107,14 @@ function renderURLs( { urls } ) {
       part = part.slice(5, -6);
 
       // break url into it's parent domain
-      let url = new URL(part);
-      let domain = url.hostname;
+      let domain = '';
+      try {
+        let url = new URL(part);
+        domain = url.hostname;
+      }
+      catch (error) {
+        console.log(error);
+      }
 
       // push the domaun and url to parts as a list item
       parts.push([domain, part]);
