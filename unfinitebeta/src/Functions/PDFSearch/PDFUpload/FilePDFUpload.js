@@ -69,7 +69,7 @@ function UploadPDForm( { processing, loadalert, setloadAlert, setProcessing, set
             return;
         }
         else {
-                alert("File is too large. Please upload a file smaller than 4MB.");
+                alert("File is too large. Please upload a file smaller than 1MB.");
                 setFile(null);
                 event.target.value = null;
                 return;
