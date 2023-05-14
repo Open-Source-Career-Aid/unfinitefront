@@ -54,8 +54,8 @@ function UploadPDForm( { processing, loadalert, setloadAlert, setProcessing, set
     const handleFileButton = (event) => {
             // we need to click the submit button for the form to submit
         console.log(file);
-        // limit file size to 1MB
-        if (file !== null && file.size < 1000000) {
+        // limit file size to 5MB
+        if (file !== null && file.size < 5000000) {
                 console.log(event.target.parentNode.nextElementSibling);
                 event.target.parentNode.nextElementSibling.click();
                 alert("Your document is being uploaded. Please wait for the confirmation message.")
@@ -69,7 +69,7 @@ function UploadPDForm( { processing, loadalert, setloadAlert, setProcessing, set
             return;
         }
         else {
-                alert("File is too large. Please upload a file smaller than 1MB.");
+                alert("File is too large. Please upload a file smaller than 5MB.");
                 setFile(null);
                 event.target.value = null;
                 return;
